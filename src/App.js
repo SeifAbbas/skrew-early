@@ -6,6 +6,10 @@ import SignIn from "./Utils/SignIn";
 import DonorRegistration from "./Donor/DonorRegistration";
 import OrganizationRegistration from "./Organization/OrganizationRegistration";
 
+import AdminDashboard from "./Admin/AdminDashboard";
+import DonorDashboard from "./Donor/DonorDashboard";
+import OrganizationDashboard from "./Organization/OrganizationDashboard";
+
 function App() {
   const [activeUser, setActiveUser] = useState("Donor"); // Initial active state
 
@@ -15,15 +19,25 @@ function App() {
 
   return (
     <div className="App">
-      {/* <SideNavBar
-        activeUser={activeUser}
-        handleRegisterClick={handleRegisterClick}
-      /> */}
-      {/* {activeUser === "Donor" && <DonorRegistration activeUser={activeUser} />}
-      {activeUser === "Organization" && (
-        <OrganizationRegistration activeUser={activeUser} />
-      )} */}
-      <SignIn />
+      <div className="testLogin">
+        {/* <SideNavBar
+          activeUser={activeUser}
+          handleRegisterClick={handleRegisterClick}
+        />
+
+        {activeUser === "Donor" && (
+          <DonorRegistration activeUser={activeUser} />
+        )}
+        {activeUser === "Organization" && (
+          <OrganizationRegistration activeUser={activeUser} />
+        )} */}
+      </div>
+
+      {/* <SignIn /> */}
+
+      <AdminDashboard />
+      {/* <OrganizationDashboard /> */}
+      {/* <DonorDashboard /> */}
     </div>
   );
 }
