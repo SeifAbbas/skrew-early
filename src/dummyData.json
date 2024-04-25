@@ -1,0 +1,26 @@
+{
+  "donorRegFields": [
+    { "name": "First Name" },
+    { "name": "Last Name" },
+    { "name": "Email" },
+    { "name": "Contact Number" },
+    { "name": "Password" },
+    { "name": "Address" },
+    { "name": "Area" },
+    { "name": "Governorate" },
+    { "name": "Gender" }
+  ],
+  "organizationRegFields": [
+    { "name": "First Name" },
+    { "name": "Last Name" },
+    { "name": "Email" },
+    { "name": "Password" },
+    { "name": "Contact Number" },
+    { "name": "Organization Name" },
+    { "name": "Organization Type" },
+    { "name": "Organization Address" },
+    { "name": "Organization Area" },
+    { "name": "Organization Governorate" },
+    { "name": "Gender" }
+  ]
+}
