@@ -1,4 +1,11 @@
 import { useState } from "react";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 
 import SideNavBar from "./SideNavBar";
 
@@ -11,15 +18,27 @@ import DonorDashboard from "./Donor/DonorDashboard";
 import OrganizationDashboard from "./Organization/OrganizationDashboard";
 
 function App() {
-  const [activeUser, setActiveUser] = useState("Donor"); // Initial active state
-
+  const [activeUser, setActiveUser] = useState(null); // Initial active state
   const handleRegisterClick = (userType) => {
     setActiveUser(userType);
   };
 
   return (
     <div className="App">
-      <div className="testLogin">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn setActiveUser={setActiveUser} />} />
+          <Route
+            path="/Dashboard"
+            element={
+              (activeUser === "Admin" && <AdminDashboard />) ||
+              (activeUser === "Organization" && <OrganizationDashboard />) ||
+              (activeUser === "Donor" && <DonorDashboard />)
+            }
+          />
+        </Routes>
+
+        {/* <div className="testLogin"> */}
         {/* <SideNavBar
           activeUser={activeUser}
           handleRegisterClick={handleRegisterClick}
@@ -31,13 +50,8 @@ function App() {
         {activeUser === "Organization" && (
           <OrganizationRegistration activeUser={activeUser} />
         )} */}
-      </div>
-
-      {/* <SignIn /> */}
-
-      <AdminDashboard />
-      {/* <OrganizationDashboard /> */}
-      {/* <DonorDashboard /> */}
+        {/* </div> */}
+      </BrowserRouter>
     </div>
   );
 }

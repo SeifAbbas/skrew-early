@@ -1,4 +1,6 @@
-import * as React from "react";
+import { React } from "react";
+import { useState } from "react";
+
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
@@ -14,8 +16,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ListItems from "./ListItems";
-
-import { useState } from "react";
 
 const drawerWidth = 240;
 
@@ -66,7 +66,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function AdminDashboard({ content }) {
+export default function Dashboard({ content }) {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {

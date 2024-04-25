@@ -1,4 +1,7 @@
 import * as React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,14 +18,31 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({ setActiveUser }) {
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    if (data.get("email") === "a" && data.get("password") === "a") {
+      setActiveUser("Admin");
+    } else if (data.get("email") === "o" && data.get("password") === "o") {
+      setActiveUser("Organization");
+    } else if (data.get("email") === "d" && data.get("password") === "d") {
+      setActiveUser("Donor");
+    } else {
+      // Handle invalid credentials
+      if (!["a", "d", "o"].includes(data.get("email"))) {
+        setErrorMsg("Invalid Email");
+      } else {
+        setErrorMsg("Invalid Password");
+      }
+      return;
+    }
+
+    navigate("/Dashboard");
   };
 
   return (
@@ -58,7 +78,11 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              error={errorMsg === "Invalid Email"}
             />
+            {errorMsg === "Invalid Email" && (
+              <span className="text-red-500">{errorMsg}</span>
+            )}
             <TextField
               margin="normal"
               required
@@ -68,7 +92,14 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              error={errorMsg === "Invalid Password"}
             />
+            {errorMsg === "Invalid Password" && (
+              <>
+                <span className="text-red-500">{errorMsg}</span>
+                <br />
+              </>
+            )}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
