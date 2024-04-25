@@ -1,23 +1,9 @@
-import Dashboard from "../Utils/Dashboard";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SearchIcon from '@mui/icons-material/Search';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import BusinessIcon from '@mui/icons-material/Business';
-import LogoutIcon from '@mui/icons-material/Logout';
-
 const DonorDashboard = () => {
-  const content = [
-    { text: "Dashboard", icon: <DashboardIcon /> },
-    { text: "Search Requests", icon: <SearchIcon /> },
-    { text: "Delivery", icon: <LocalShippingIcon /> },
-    { text: "Organizations", icon: <BusinessIcon /> },
-    { text: "Account", icon: <AccountCircleIcon /> },
-    { text: "Logout", icon: <LogoutIcon /> },
-
-  ];
-
-  return <Dashboard content={content} />;
+  return (
+    <>
+      <h1>hello from Donor Dashboard</h1>
+    </>
+  );
 };
 
 export default DonorDashboard;

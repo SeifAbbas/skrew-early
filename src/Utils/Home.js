@@ -15,7 +15,11 @@ import Badge from "@mui/material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+
 import ListItems from "./ListItems";
+import AdminRoutes from "../Admin/Routes";
+import DonorRoutes from "../Donor/Routes";
+import OrganizationRoutes from "../Organization/Routes";
 
 const drawerWidth = 240;
 
@@ -66,7 +70,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Dashboard({ content }) {
+export default function Home({ activeUser, navbarContent }) {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -126,7 +130,7 @@ export default function Dashboard({ content }) {
           </Toolbar>
           <Divider />
           <List component="nav">
-            <ListItems content={content} />
+            <ListItems content={navbarContent} />
           </List>
         </Drawer>
         <Box
@@ -142,6 +146,10 @@ export default function Dashboard({ content }) {
           }}
         >
           <Toolbar />
+
+          {activeUser === "Admin" && <AdminRoutes />}
+          {activeUser === "Organization" && <OrganizationRoutes />}
+          {activeUser === "Donor" && <DonorRoutes />}
         </Box>
       </Box>
     </ThemeProvider>

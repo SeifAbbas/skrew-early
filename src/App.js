@@ -1,56 +1,33 @@
 import { useState } from "react";
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-
-import SideNavBar from "./SideNavBar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import SignIn from "./Utils/SignIn";
-import DonorRegistration from "./Donor/DonorRegistration";
-import OrganizationRegistration from "./Organization/OrganizationRegistration";
-
-import AdminDashboard from "./Admin/AdminDashboard";
-import DonorDashboard from "./Donor/DonorDashboard";
-import OrganizationDashboard from "./Organization/OrganizationDashboard";
+import Home from "./Utils/Home";
 
 function App() {
-  const [activeUser, setActiveUser] = useState(null); // Initial active state
-  const handleRegisterClick = (userType) => {
-    setActiveUser(userType);
-  };
+  const [activeUser, setActiveUser] = useState(null);
+  const [navbarContent, setNavbarContent] = useState(null);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignIn setActiveUser={setActiveUser} />} />
           <Route
-            path="/Dashboard"
+            path="/"
             element={
-              (activeUser === "Admin" && <AdminDashboard />) ||
-              (activeUser === "Organization" && <OrganizationDashboard />) ||
-              (activeUser === "Donor" && <DonorDashboard />)
+              <SignIn
+                setActiveUser={setActiveUser}
+                setNavbarContent={setNavbarContent}
+              />
+            }
+          />
+          <Route
+            path="/Home/*"
+            element={
+              <Home activeUser={activeUser} navbarContent={navbarContent} />
             }
           />
         </Routes>
-
-        {/* <div className="testLogin"> */}
-        {/* <SideNavBar
-          activeUser={activeUser}
-          handleRegisterClick={handleRegisterClick}
-        />
-
-        {activeUser === "Donor" && (
-          <DonorRegistration activeUser={activeUser} />
-        )}
-        {activeUser === "Organization" && (
-          <OrganizationRegistration activeUser={activeUser} />
-        )} */}
-        {/* </div> */}
       </BrowserRouter>
     </div>
   );

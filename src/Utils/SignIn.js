@@ -16,9 +16,22 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+// ICONS
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import DoneIcon from "@mui/icons-material/Done";
+import AddIcon from "@mui/icons-material/Add";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import LogoutIcon from "@mui/icons-material/Logout";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import SearchIcon from "@mui/icons-material/Search";
+import BusinessIcon from "@mui/icons-material/Business";
+import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import RateReviewIcon from "@mui/icons-material/RateReview";
+
 const defaultTheme = createTheme();
 
-export default function SignIn({ setActiveUser }) {
+export default function SignIn({ setActiveUser, setNavbarContent }) {
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -28,10 +41,95 @@ export default function SignIn({ setActiveUser }) {
 
     if (data.get("email") === "a" && data.get("password") === "a") {
       setActiveUser("Admin");
+      setNavbarContent([
+        {
+          text: "Dashboard",
+          icon: <DashboardIcon />,
+          route: "/Home/Dashboard",
+        },
+        {
+          text: "Donors",
+          icon: <VolunteerActivismIcon />,
+          route: "/Home/Donors",
+        },
+        {
+          text: "Organizations",
+          icon: <BusinessIcon />,
+          route: "/Home/Organizations",
+        },
+        {
+          text: "Review Submissions",
+          icon: <RateReviewIcon />,
+          route: "/Home/ReviewSubmissions",
+        },
+        {
+          text: "Account",
+          icon: <AccountCircleIcon />,
+          route: "/Home/Account",
+        },
+        { text: "Logout", icon: <LogoutIcon />, route: "/" },
+      ]);
     } else if (data.get("email") === "o" && data.get("password") === "o") {
       setActiveUser("Organization");
+      setNavbarContent([
+        {
+          text: "Dashboard",
+          icon: <DashboardIcon />,
+          route: "/Home/Dashboard",
+        },
+        { text: "New Request", icon: <AddIcon />, route: "/Home/NewRequest" },
+        {
+          text: "My Requests",
+          icon: <InventoryIcon />,
+          route: "/Home/MyRequests",
+        },
+        {
+          text: "Delivery",
+          icon: <LocalShippingIcon />,
+          route: "/Home/Delivery",
+        },
+        {
+          text: "Fulfilled Requests",
+          icon: <DoneIcon />,
+          route: "/Home/FulfilledRequests",
+        },
+        {
+          text: "Account",
+          icon: <AccountCircleIcon />,
+          route: "/Home/Account",
+        },
+        { text: "Logout", icon: <LogoutIcon />, route: "/" },
+      ]);
     } else if (data.get("email") === "d" && data.get("password") === "d") {
       setActiveUser("Donor");
+      setNavbarContent([
+        {
+          text: "Dashboard",
+          icon: <DashboardIcon />,
+          route: "/Home/Dashboard",
+        },
+        {
+          text: "Search Requests",
+          icon: <SearchIcon />,
+          route: "/Home/Requests",
+        },
+        {
+          text: "Delivery",
+          icon: <LocalShippingIcon />,
+          route: "/Home/Delivery",
+        },
+        {
+          text: "Organizations",
+          icon: <BusinessIcon />,
+          route: "/Home/Organizations",
+        },
+        {
+          text: "Account",
+          icon: <AccountCircleIcon />,
+          route: "/Home/Account",
+        },
+        { text: "Logout", icon: <LogoutIcon />, route: "/" },
+      ]);
     } else {
       // Handle invalid credentials
       if (!["a", "d", "o"].includes(data.get("email"))) {
@@ -42,7 +140,7 @@ export default function SignIn({ setActiveUser }) {
       return;
     }
 
-    navigate("/Dashboard");
+    navigate("/Home/Dashboard");
   };
 
   return (
