@@ -95,3 +95,96 @@
     opacity: 1;
   }
 }
+.donor-what-to-donate- {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  gap: 20px; /* Add spacing between buttons */
+}
+
+.donor-what-to-donate h1 {
+  color: #f1356d;
+  font-size: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+  background-color: blanchedalmond;
+}
+.button-with-image1 img {
+  width: 400px;
+  height: 150px;
+  border-radius: 0;
+  margin-bottom: 0px;
+  transition: transform 0.3s ease; /* Add smooth transition for scaling */
+}
+.button-text {
+  color: blueviolet; /* Change text color */
+}
+.button-with-image1:hover img {
+  transform: scale(2) translateY(37px) translateX(50px);
+  opacity: 0.8;
+
+}
+.button-with-image2 img {
+  width: 400px;
+  height: 150px;
+  border-radius: 0;
+  margin-bottom: 0px;
+  transition: transform 0.3s ease; /* Add smooth transition for scaling */
+}
+.button-with-image2:hover img {
+  transform: scale(2) translateY(37px);
+  opacity: 0.9;
+
+}
+.button-with-image3 img {
+  width: 400px;
+  height: 150px;
+  border-radius: 0;
+  margin-bottom: 0px;
+  transition: transform 0.3s ease; /* Add smooth transition for scaling */
+}
+.button-with-image3:hover img {
+  transform: scale(2) translateY(37px) translateX(-50px);
+  opacity: 0.9;
+
+}
+
+.teaching-class h1 {
+  color: #f1356d;
+  font-size: 20px;
+  margin-left: 250px;
+  margin-top: 20px;
+
+}
+.teaching-class button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 500px;
+}
+.teaching-class button:hover {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.teaching-class input
+{
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-left: 700px;
+  margin-top: -35px;
+}
+
+
+
+
