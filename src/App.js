@@ -35,9 +35,9 @@ function App() {
 
       {/* <SignIn /> */}
 
-      <AdminDashboard />
+      {/* <AdminDashboard /> */}
       {/* <OrganizationDashboard /> */}
-      {/* <DonorDashboard /> */}
+      <DonorDashboard />
     </div>
   );
 }
