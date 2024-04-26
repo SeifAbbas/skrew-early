@@ -147,6 +147,42 @@
   opacity: 0.9;
 
 }
+.clinic-visits h1 {
+  color: #f1356d;
+  font-size: 20px;
+  margin-left: 350px;
+  margin-top: 20px;
+
+}
+.clinic-visits button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 500px;
+}
+.clinic-visits button:hover {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.clinic-visits input
+{
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-left: 600px;
+  margin-top: -35px;
+}
 
 .teaching-class h1 {
   color: #f1356d;
