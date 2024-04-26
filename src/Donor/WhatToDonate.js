@@ -10,12 +10,14 @@ const WhatToDonate = () => {
             {/* I want to add an image inside a button */}
             <h1>What do you want to donate</h1>
 
+            <Link to="/Home/Dashboard/TeachingClasses">
             <button class="button-with-image1">
             <img src="https://media.licdn.com/dms/image/D5612AQE7WdYNUZxdTw/article-cover_image-shrink_600_2000/0/1695272708584?e=2147483647&v=beta&t=E2uUybzO5zudOX8gZV3HvGPO6qTQT-vACuW7AzHacH0" alt="Button Image"/>
             <span class="button-text">Teaching Classes</span>
-            {/* <Link to="/TeachingClasses"></Link> */}
             {/* <Route path="/TeachingClasses" element={<TeachingClasses />} /> */}
             </button>
+            </Link>
+
 
             <button class="button-with-image2">
             <img src="https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg" alt="Button Image"/>           

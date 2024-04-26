@@ -8,7 +8,7 @@ const DonorRoutes = () => {
   return (
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
-      <Route path="/TeachingClasses" element={<TeachingClasses />} />
+      <Route path="Dashboard/TeachingClasses" element={<TeachingClasses />} />
     </Routes>
   );
 };
