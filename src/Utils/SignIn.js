@@ -145,7 +145,7 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
           sx={{
@@ -217,7 +217,7 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/Register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

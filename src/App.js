@@ -3,10 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import SignIn from "./Utils/SignIn";
 import Home from "./Utils/Home";
+import SignUp from "./Utils/SignUp";
+
+import dummyData from "./dummyData.json";
 
 function App() {
-  const [activeUser, setActiveUser] = useState(null);
+  const [activeUser, setActiveUser] = useState("Donor");
   const [navbarContent, setNavbarContent] = useState(null);
+  const [inputFields, setInputFields] = useState(dummyData.donorRegFields);
 
   return (
     <div className="App">
@@ -18,6 +22,17 @@ function App() {
               <SignIn
                 setActiveUser={setActiveUser}
                 setNavbarContent={setNavbarContent}
+              />
+            }
+          />
+          <Route
+            path="/Register"
+            element={
+              <SignUp
+                activeUser={activeUser}
+                setActiveUser={setActiveUser}
+                inputFields={inputFields}
+                setInputFields={setInputFields}
               />
             }
           />
