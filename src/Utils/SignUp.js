@@ -31,7 +31,6 @@ export default function SignUp({
 }) {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
-  const [address, setAddress] = useState("");
   const [showMap, setShowMap] = useState(false);
 
   const handleMarkerDrag = async (lat, lng) => {
@@ -39,10 +38,24 @@ export default function SignUp({
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_GEOCODING_API_KEY}`
     );
     const data = await response.json();
-    setAddress(data.results[0].formatted_address);
+
+    let newInputFields = [...inputFields];
+    if (activeUser === "Organization") {
+      newInputFields.find(
+        (field) => field.name === "Organization Address"
+      ).value = data.results[0].formatted_address;
+    } else {
+      newInputFields.find((field) => field.name === "Address").value =
+        data.results[0].formatted_address;
+    }
+
+    setInputFields([...newInputFields]);
   };
 
   const handleSwitchForms = () => {
+    setShowMap(false);
+    setFormErrors({});
+
     if (activeUser === "Organization") {
       setInputFields(dummyData.donorRegFields);
       setActiveUser("Donor");
@@ -72,11 +85,6 @@ export default function SignUp({
     navigate("/");
   };
 
-  useEffect(() => {
-    setAddress("");
-    setFormErrors({});
-  }, [activeUser]);
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <div className="flex items-center space-x-[-430px]">
@@ -103,58 +111,57 @@ export default function SignUp({
               sx={{ mt: 3 }}
             >
               <Grid container spacing={2}>
-                {inputFields.map((field, index) => (
-                  <Grid item xs={12} sm={6} key={index}>
-                    {field.name === "Gender" ? (
-                      <FormControl>
-                        <FormLabel id="demo-radio-buttons-group-label">
-                          Gender
-                        </FormLabel>
-                        <RadioGroup
-                          aria-labelledby="demo-radio-buttons-group-label"
-                          defaultValue="female"
-                          name="radio-buttons-group"
-                        >
-                          <FormControlLabel
-                            value="female"
-                            control={<Radio />}
-                            label="Female"
-                          />
-                          <FormControlLabel
-                            value="male"
-                            control={<Radio />}
-                            label="Male"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                    ) : (
-                      <TextField
-                        required
-                        fullWidth
-                        label={field.name}
-                        name={field.name}
-                        type={field.name === "password" ? "password" : "text"}
-                        className="mb-2"
-                        error={!!formErrors[field.name]}
-                        helperText={formErrors[field.name]}
-                        value={
-                          ["Address", "Organization Address"].includes(
-                            field.name
-                          )
-                            ? address
-                            : undefined
-                        }
-                        onFocus={
-                          ["Address", "Organization Address"].includes(
-                            field.name
-                          )
-                            ? () => setShowMap(true)
-                            : () => setShowMap(false)
-                        }
-                      />
-                    )}
-                  </Grid>
-                ))}
+                {Array.isArray(inputFields) &&
+                  inputFields.map((field, index) => (
+                    <Grid item xs={12} sm={6} key={index}>
+                      {field.name === "Gender" ? (
+                        <FormControl>
+                          <FormLabel id="demo-radio-buttons-group-label">
+                            Gender
+                          </FormLabel>
+                          <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            defaultValue="female"
+                            name="radio-buttons-group"
+                          >
+                            <FormControlLabel
+                              value="female"
+                              control={<Radio />}
+                              label="Female"
+                            />
+                            <FormControlLabel
+                              value="male"
+                              control={<Radio />}
+                              label="Male"
+                            />
+                          </RadioGroup>
+                        </FormControl>
+                      ) : (
+                        <TextField
+                          required
+                          fullWidth
+                          label={field.name}
+                          name={field.name}
+                          type={field.name === "password" ? "password" : "text"}
+                          className="mb-2"
+                          error={!!formErrors[field.name]}
+                          helperText={formErrors[field.name]}
+                          value={field.value || ""}
+                          onChange={(event) => {
+                            let newInputFields = [...inputFields];
+                            newInputFields[index].value = event.target.value;
+                            setInputFields([...newInputFields]);
+                          }}
+                          onFocus={() =>
+                            setShowMap(
+                              field.name === "Address" ||
+                                field.name === "Organization Address"
+                            )
+                          }
+                        />
+                      )}
+                    </Grid>
+                  ))}
               </Grid>
               <Button
                 type="submit"

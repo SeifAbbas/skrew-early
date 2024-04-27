@@ -1,26 +1,26 @@
 {
   "donorRegFields": [
-    { "name": "First Name" },
-    { "name": "Last Name" },
-    { "name": "Email" },
-    { "name": "Contact Number" },
-    { "name": "Password" },
-    { "name": "Address" },
-    { "name": "Area" },
-    { "name": "Governorate" },
-    { "name": "Gender" }
+    { "name": "First Name", "value": "" },
+    { "name": "Last Name", "value": "" },
+    { "name": "Email", "value": "" },
+    { "name": "Contact Number", "value": "" },
+    { "name": "Password", "value": "" },
+    { "name": "Address", "value": "" },
+    { "name": "Area", "value": "" },
+    { "name": "Governorate", "value": "" },
+    { "name": "Gender", "value": "" }
   ],
   "organizationRegFields": [
-    { "name": "First Name" },
-    { "name": "Last Name" },
-    { "name": "Email" },
-    { "name": "Password" },
-    { "name": "Contact Number" },
-    { "name": "Organization Name" },
-    { "name": "Organization Type" },
-    { "name": "Organization Address" },
-    { "name": "Organization Area" },
-    { "name": "Organization Governorate" },
-    { "name": "Gender" }
+    { "name": "First Name", "value": "" },
+    { "name": "Last Name", "value": "" },
+    { "name": "Email", "value": "" },
+    { "name": "Password", "value": "" },
+    { "name": "Contact Number", "value": "" },
+    { "name": "Organization Name", "value": "" },
+    { "name": "Organization Type", "value": "" },
+    { "name": "Organization Address", "value": "" },
+    { "name": "Organization Area", "value": "" },
+    { "name": "Organization Governorate", "value": "" },
+    { "name": "Gender", "value": "" }
   ]
 }
