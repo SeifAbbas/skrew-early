@@ -19,6 +19,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import dummyData from "../dummyData.json";
 import { useNavigate } from "react-router-dom";
 
+import SimpleMap from "./Maps";
+
 const defaultTheme = createTheme();
 
 export default function SignUp({
@@ -29,6 +31,16 @@ export default function SignUp({
 }) {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
+  const [address, setAddress] = useState("");
+  const [showMap, setShowMap] = useState(false);
+
+  const handleMarkerDrag = async (lat, lng) => {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_GEOCODING_API_KEY}`
+    );
+    const data = await response.json();
+    setAddress(data.results[0].formatted_address);
+  };
 
   const handleSwitchForms = () => {
     if (activeUser === "Organization") {
@@ -61,99 +73,116 @@ export default function SignUp({
   };
 
   useEffect(() => {
+    setAddress("");
     setFormErrors({});
   }, [activeUser]);
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="sm">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            {activeUser === "Donor" ? <AiOutlineHeart /> : <BsBuilding />}
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
+      <div className="flex items-center space-x-[-430px]">
+        <Container component="main" maxWidth="sm">
+          <CssBaseline />
           <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <Grid container spacing={2}>
-              {inputFields.map((field, index) => (
-                <Grid item xs={12} sm={6} key={index}>
-                  {field.name === "Gender" ? (
-                    <FormControl>
-                      <FormLabel id="demo-radio-buttons-group-label">
-                        Gender
-                      </FormLabel>
-                      <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        defaultValue="female"
-                        name="radio-buttons-group"
-                      >
-                        <FormControlLabel
-                          value="female"
-                          control={<Radio />}
-                          label="Female"
-                        />
-                        <FormControlLabel
-                          value="male"
-                          control={<Radio />}
-                          label="Male"
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                  ) : (
-                    <TextField
-                      required
-                      fullWidth
-                      label={field.name}
-                      name={field.name}
-                      type={field.name === "password" ? "password" : "text"}
-                      className="mb-2"
-                      error={!!formErrors[field.name]}
-                      helperText={formErrors[field.name]}
-                    />
-                  )}
-                </Grid>
-              ))}
-              ;
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              {activeUser === "Donor" ? <AiOutlineHeart /> : <BsBuilding />}
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 3 }}
             >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item xs={12} sm={7}>
-                <Button onClick={handleSwitchForms} variant="body2">
-                  Are you
-                  {activeUser === "Donor" ? " an organization " : " a donor "}?
-                  Register here
-                </Button>
+              <Grid container spacing={2}>
+                {inputFields.map((field, index) => (
+                  <Grid item xs={12} sm={6} key={index}>
+                    {field.name === "Gender" ? (
+                      <FormControl>
+                        <FormLabel id="demo-radio-buttons-group-label">
+                          Gender
+                        </FormLabel>
+                        <RadioGroup
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          defaultValue="female"
+                          name="radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="female"
+                            control={<Radio />}
+                            label="Female"
+                          />
+                          <FormControlLabel
+                            value="male"
+                            control={<Radio />}
+                            label="Male"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    ) : (
+                      <TextField
+                        required
+                        fullWidth
+                        label={field.name}
+                        name={field.name}
+                        type={field.name === "password" ? "password" : "text"}
+                        className="mb-2"
+                        error={!!formErrors[field.name]}
+                        helperText={formErrors[field.name]}
+                        value={
+                          ["Address", "Organization Address"].includes(
+                            field.name
+                          )
+                            ? address
+                            : undefined
+                        }
+                        onFocus={
+                          ["Address", "Organization Address"].includes(
+                            field.name
+                          )
+                            ? () => setShowMap(true)
+                            : () => setShowMap(false)
+                        }
+                      />
+                    )}
+                  </Grid>
+                ))}
               </Grid>
-              <Grid item xs={12} sm={5}>
-                <Link href="/" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item xs={12} sm={7}>
+                  <Button onClick={handleSwitchForms} variant="body2">
+                    Are you
+                    {activeUser === "Donor" ? " an organization " : " a donor "}
+                    ? Register here
+                  </Button>
+                </Grid>
+                <Grid item xs={12} sm={5}>
+                  <Link href="/" variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+        {showMap && <SimpleMap onMarkerDrag={handleMarkerDrag} />}
+      </div>
     </ThemeProvider>
   );
 }
