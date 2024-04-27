@@ -87,7 +87,7 @@ export default function SignUp({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <div className="flex items-center space-x-[-430px]">
+      <div className="flex items-center flex-col space-x-0 xl:flex-row xl:space-x-[-430px]">
         <Container component="main" maxWidth="sm">
           <CssBaseline />
           <Box

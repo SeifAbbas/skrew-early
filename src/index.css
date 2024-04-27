@@ -2,99 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.testLogin {
-  display: flex;
-  justify-content: center;
-}
-
-/* Login Form Component*/
-
-.DonorRegistration,
-.OrganizationRegistration,
-.Login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-  width: 600px;
-  background-color: rgb(75, 75, 75);
-  border-radius: 10px;
-}
-
-.create {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-.create label {
-  text-align: left;
-  display: block;
-}
-.create h2 {
-  font-size: 20px;
-  color: #f1356d;
-  margin-bottom: 30px;
-}
-.create input,
-.create textarea,
-.create select {
-  width: 100%;
-  padding: 6px 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  display: block;
-}
-.create button {
-  background: #f1356d;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* SideNavBar Component*/
-
-.switch-buttons {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2px;
-}
-
-.RegisterButton button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 60px;
-  height: 200px;
-  border-radius: 5px;
-  margin-right: -5px;
-  margin-bottom: -2px;
-  cursor: pointer;
-
-  .icon {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .text {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-}
-
-.active-button {
-  background-color: #f1356d;
-}
-
-.RegisterButton button:hover {
-  .text {
-    opacity: 1;
-  }
-}
 .donor-what-to-donate- {
   display: flex;
   justify-content: center; /* Center buttons horizontally */
@@ -121,7 +28,6 @@
 .button-with-image1:hover img {
   transform: scale(2) translateY(37px) translateX(50px);
   opacity: 0.8;
-
 }
 .button-with-image2 img {
   width: 400px;
@@ -133,7 +39,6 @@
 .button-with-image2:hover img {
   transform: scale(2) translateY(37px);
   opacity: 0.9;
-
 }
 .button-with-image3 img {
   width: 400px;
@@ -145,14 +50,12 @@
 .button-with-image3:hover img {
   transform: scale(2) translateY(37px) translateX(-50px);
   opacity: 0.9;
-
 }
 .clinic-visits h1 {
   color: #f1356d;
   font-size: 20px;
   margin-left: 350px;
   margin-top: 20px;
-
 }
 .clinic-visits button {
   background: #f1356d;
@@ -172,8 +75,7 @@
   cursor: pointer;
   opacity: 0.8;
 }
-.clinic-visits input
-{
+.clinic-visits input {
   padding: 6px 10px;
   border: 1px solid #ddd;
   box-sizing: border-box;
@@ -189,7 +91,6 @@
   font-size: 20px;
   margin-left: 250px;
   margin-top: 20px;
-
 }
 .teaching-class button {
   background: #f1356d;
@@ -209,8 +110,7 @@
   cursor: pointer;
   opacity: 0.8;
 }
-.teaching-class input
-{
+.teaching-class input {
   padding: 6px 10px;
   border: 1px solid #ddd;
   box-sizing: border-box;
@@ -220,7 +120,3 @@
   margin-left: 700px;
   margin-top: -35px;
 }
-
-
-
-
