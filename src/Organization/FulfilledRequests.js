@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import {
   Box,
+  Button,
   Collapse,
   IconButton,
   Paper,
@@ -20,11 +21,17 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import dummyData from "../dummyData.json";
 
-const rows = dummyData.FulfilledRequests;
-
 function Row(props) {
-  const { row } = props;
+  const { row, setRows } = props;
   const [open, setOpen] = useState(false);
+
+  const handleDeleteRow = (event) => {
+    setRows((rows) => {
+      const updatedRows = rows.filter((r) => r.Name !== row.Name);
+      console.log(updatedRows);
+      return updatedRows;
+    });
+  };
 
   return (
     <>
@@ -42,6 +49,17 @@ function Row(props) {
         <TableCell align="center">{row.Type}</TableCell>
         <TableCell align="center">{row.Quantity}</TableCell>
         <TableCell align="center">{row.Date}</TableCell>
+        <TableCell align="center" sx={{ maxWidth: 70 }}>
+          <Button
+            onClick={handleDeleteRow}
+            sx={{
+              backgroundColor: "red",
+              color: "black",
+            }}
+          >
+            Delete post
+          </Button>
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -79,10 +97,11 @@ function Row(props) {
 }
 
 export default function CollapsibleTable() {
+  const [rows, setRows] = useState(dummyData.FulfilledRequests);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleChangePage = (newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -110,13 +129,14 @@ export default function CollapsibleTable() {
               <TableCell align="center" sx={{ color: "white" }}>
                 Date of Donation
               </TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => (
-                <Row key={row.name} row={row} />
+                <Row key={row.name} row={row} rows={rows} setRows={setRows} />
               ))}
           </TableBody>
         </Table>
