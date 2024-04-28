@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,9 +7,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
-import { blue } from '@mui/material/colors';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import TextField  from '@mui/material/TextField';
 import dummyData from "../dummyData.json";
@@ -28,10 +24,14 @@ export default function AlignItemsList() {
   return (
     <div>
     <TextField
-        label="Search"
+        label= "Search"
         variant="outlined"
         value={searchTerm}
         onChange={handleSearchChange}
+        sx ={{
+          marginTop:'10px',
+          marginBottom:'10px',
+        }}
       />
     <div className="list-container">
     <List sx={{ maxwidth: "20%", bgcolor: 'background.paper', display: 'flex', justifyContent: "space-between", flexWrap: 'wrap'  }}>
@@ -68,7 +68,7 @@ export default function AlignItemsList() {
         />
          <CardActions>
          <Button size="small" color="primary" variant='contained' sx={{ display: 'inline' }} className="learn-more-button">
-          Learn More
+        Learn More
         </Button>
       </CardActions>
           <Divider variant="inset" component="li" />
