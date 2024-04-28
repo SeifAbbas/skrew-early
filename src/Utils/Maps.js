@@ -21,7 +21,7 @@ const Marker = ({ maps, map, lat, lng, onDrag }) => {
   return null;
 };
 
-const SimpleMap = ({ onMarkerDrag }) => {
+const SimpleMap = ({ activeUser, inputFields, setInputFields }) => {
   const [mapsLoaded, setMapsLoaded] = useState(false);
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
@@ -38,6 +38,25 @@ const SimpleMap = ({ onMarkerDrag }) => {
     setMap(map);
     setMaps(maps);
     setMapsLoaded(true);
+  };
+
+  const handleMarkerDrag = async (lat, lng) => {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_GEOCODING_API_KEY}`
+    );
+    const data = await response.json();
+
+    let newInputFields = [...inputFields];
+    if (activeUser === "Organization") {
+      newInputFields.find(
+        (field) => field.name === "Organization Address"
+      ).value = data.results[0].formatted_address;
+    } else {
+      newInputFields.find((field) => field.name === "Address").value =
+        data.results[0].formatted_address;
+    }
+
+    setInputFields([...newInputFields]);
   };
 
   return (
@@ -57,7 +76,7 @@ const SimpleMap = ({ onMarkerDrag }) => {
             map={map}
             lat={defaultProps.center.lat}
             lng={defaultProps.center.lng}
-            onDrag={onMarkerDrag}
+            onDrag={handleMarkerDrag}
           />
         ) : null}
       </GoogleMapReact>
