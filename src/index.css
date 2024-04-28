@@ -120,3 +120,8 @@
   margin-left: 700px;
   margin-top: -35px;
 }
+
+.dx-list-item-content > div {
+  padding: 5px;
+  font-size: 15px;
+}
