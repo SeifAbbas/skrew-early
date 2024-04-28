@@ -125,3 +125,16 @@
   padding: 5px;
   font-size: 15px;
 }
+
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust this according to your spacing preference */
+}
+
+.list-item {
+  flex-basis: calc(33.33% - 20px); /* Adjust this to control the width of each item */
+  margin-bottom: 20px; /* Adjust margin between items */
+} 
+
