@@ -144,7 +144,7 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{

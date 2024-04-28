@@ -91,6 +91,7 @@ export default function SignUp({
               sx={{ mt: 3 }}
             >
               <SignUpFields
+                activeUser={activeUser}
                 inputFields={inputFields}
                 setInputFields={setInputFields}
                 formErrors={formErrors}
