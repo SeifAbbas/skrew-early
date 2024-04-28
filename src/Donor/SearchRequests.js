@@ -27,10 +27,13 @@ export default function AlignItemsList() {
         label= "Search"
         variant="outlined"
         value={searchTerm}
+        autoWidth
         onChange={handleSearchChange}
         sx ={{
           marginTop:'10px',
           marginBottom:'10px',
+          marginLeft: '10px',
+          backgroundColor:'background.paper',
         }}
       />
     <div className="list-container">
