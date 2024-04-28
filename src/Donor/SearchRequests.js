@@ -3,6 +3,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import TextField  from '@mui/material/TextField';
 import dummyData from "../dummyData.json";
@@ -28,6 +30,9 @@ export default function AlignItemsList() {
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
     {filteredItems.map((item, index) => (
         <ListItem key={index}>
+          <ListItemAvatar>
+          <Avatar alt="" src="/static/images/avatar/1.jpg" />
+        </ListItemAvatar>
           <ListItemText
           primary={item.Name}
           secondary={
