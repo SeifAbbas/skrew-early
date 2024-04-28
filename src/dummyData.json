@@ -185,5 +185,91 @@
       "Category": "Medication",
       "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
     }
+  ],
+  "FulfilledRequests": [
+    {
+      "Name": "item 1",
+      "Type": "Toy",
+      "Quantity": "1",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "Yousef Yasser",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    },
+    {
+      "Name": "item 2",
+      "Type": "Food",
+      "Quantity": "2",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "Rasheed Atia",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    },
+    {
+      "Name": "item 3",
+      "Type": "Clothes",
+      "Quantity": "3",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "Mohamed Elsawy",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    },
+    {
+      "Name": "item 4",
+      "Type": "Medication",
+      "Quantity": "4",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "SeifEldin Khaled",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    },
+    {
+      "Name": "item 5",
+      "Type": "Medical Supplies",
+      "Quantity": "5",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "Mostafa Hisham",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    },
+    {
+      "Name": "item 6",
+      "Type": "School Supplies",
+      "Quantity": "6",
+      "Date": "12 - 5 - 2024",
+      "Donor": [
+        {
+          "Name": "Ahmed Yehia",
+          "Role": "Doctor",
+          "Mobile": "0123456789",
+          "Email": "name@student.guc.edu.eg"
+        }
+      ]
+    }
   ]
 }
