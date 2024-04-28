@@ -3,12 +3,13 @@
     { "name": "First Name", "value": "" },
     { "name": "Last Name", "value": "" },
     { "name": "Email", "value": "" },
-    { "name": "Contact Number", "value": "" },
     { "name": "Password", "value": "" },
+    { "name": "Contact Number", "value": "" },
     { "name": "Address", "value": "" },
     { "name": "Area", "value": "" },
     { "name": "Governorate", "value": "" },
-    { "name": "Gender", "value": "" }
+    { "name": "Role", "value": "Regular Donor" },
+    { "name": "Gender", "value": "female" }
   ],
   "organizationRegFields": [
     { "name": "First Name", "value": "" },
@@ -17,13 +18,13 @@
     { "name": "Password", "value": "" },
     { "name": "Contact Number", "value": "" },
     { "name": "Organization Name", "value": "" },
-    { "name": "Organization Type", "value": "" },
+    { "name": "Organization Type", "value": "Charity" },
     { "name": "Organization Address", "value": "" },
     { "name": "Organization Area", "value": "" },
     { "name": "Organization Governorate", "value": "" },
-    { "name": "Gender", "value": "" }
+    { "name": "Gender", "value": "female" }
   ],
-  "requests":[
+  "requests": [
     {
       "ID": 1,
       "Name": "HD Video Player",
@@ -185,5 +186,4 @@
       "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
     }
   ]
-  
 }
