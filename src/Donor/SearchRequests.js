@@ -6,6 +6,12 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import Box from '@mui/material/Box';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Menu from '@mui/material/Menu';
+import IconButton  from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
@@ -17,10 +23,45 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import dummyData from "../dummyData.json";
+import { ListItemButton } from '@mui/material';
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [category, setCategory] = React.useState([]);
+  const [checked, setChecked] = React.useState([true, false]);
+
+  const handleChange1 = (event) => {
+    setChecked([event.target.checked, event.target.checked]);
+  };
+
+  const handleChange2 = (event) => {
+    setChecked([event.target.checked, checked[1]]);
+  };
+
+  const handleChange3 = (event) => {
+    setChecked([checked[0], event.target.checked]);
+  };
+
+  const children = (
+    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+      <FormControlLabel
+        label="Winter"
+        control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+      />
+      <FormControlLabel
+        label="Spring"
+        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+      />
+      <FormControlLabel
+        label="Summer"
+        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+      />
+      <FormControlLabel
+        label="Fall"
+        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+      />
+    </Box>
+  );
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -31,7 +72,8 @@ export default function AlignItemsList() {
     },
   },
 };
-  const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','School Supplies','Food','Blood Donations', 'Teaching Classes', 'Doctor Visits'];
+const names = ['Summer', 'Winter', 'Spring', 'Autumn'];
+const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','School Supplies','Food','Blood Donations', 'Teaching Classes', 'Doctor Visits'];
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -44,6 +86,17 @@ export default function AlignItemsList() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleFilterIconClick = (event) => {
+    if (anchorEl === event.currentTarget) {
+      // If the current target is the same as the anchor element, close the menu
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+    }
+  };
   let filteredItems = dummyData.requests.filter(item =>
     item.Category.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -54,7 +107,12 @@ export default function AlignItemsList() {
   }
   return (
     <div>
-    <Grid item xs={12} sm={6}>
+    <Grid item xs={12} sm={6} sx ={{
+          marginTop:'10px',
+          marginBottom:'10px',
+          marginLeft: '10px',
+          display: 'flex', justifyContent: 'left', alignItems: 'center', flexDirection: 'row'
+        }}>
     <TextField
         label= "Search"
         variant="outlined"
@@ -89,8 +147,36 @@ export default function AlignItemsList() {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
-      </Grid>
+      </FormControl>  
+      <IconButton onClick={handleFilterIconClick} sx={{ marginTop: '20px', marginBottom: '20px' }}> {/* IconButton component */}
+          <FilterListIcon
+            sx={{
+              color: "blue",
+              fontSize: '2rem',
+            }}
+          />
+        <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        MenuProps={MenuProps}
+      >
+      <MenuItem>
+      <FormControlLabel
+        label="Season"
+        control={
+          <Checkbox
+            checked={checked[0] && checked[1]}
+            indeterminate={checked[0] !== checked[1]}
+            onChange={handleChange1}
+          />
+        }
+      />
+      {children}
+    </MenuItem>
+        
+      </Menu>
+       </IconButton>
+      </Grid>      
     <div className="list-container">
     <List sx={{ maxwidth: "20%", bgcolor: 'background.paper', display: 'flex', justifyContent: "space-between", flexWrap: 'wrap'  }}>
     {filteredItems.map((item, index) => (
