@@ -49,9 +49,9 @@ const ToysFilters= () => {
   };
 
   
-    const seasons = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-          <FormControlLabel
+    const categories = (
+        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.7 }}>
+        <FormControlLabel
             label="Stuffed"
             control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
           />
@@ -70,8 +70,8 @@ const ToysFilters= () => {
         </Box>
       );
       const ages = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-          <FormControlLabel
+        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 0.7 }}>
+        <FormControlLabel
             label="Infant"
             control={<Checkbox checked={achecked[0]} onChange={handleChange2a} />}
           />
@@ -105,7 +105,7 @@ const ToysFilters= () => {
   };
 
   const genders = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.3 }}>
       <FormControlLabel
         label="Male"
         control={<Checkbox checked={gchecked[0]} onChange={handleChange2g} />}
@@ -118,17 +118,17 @@ const ToysFilters= () => {
   );
     return ( 
         <>
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
             <FormControlLabel
                 label="Toy Category"
                 control={<Checkbox
                     checked={checked[0] && checked[1] && checked[2] && checked[3]}
                     indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
                     onChange={handleChange1} />} />
-            {seasons}
+            {categories}
         </MenuItem>
         <Divider component="li" />
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Age"
                     control={<Checkbox
@@ -138,8 +138,7 @@ const ToysFilters= () => {
                 {ages}
             </MenuItem>
             <Divider component="li" />
-
-            <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
             <FormControlLabel
         label="Gender"
         control={
@@ -152,6 +151,7 @@ const ToysFilters= () => {
       />
       {genders}  
       </MenuItem>   
+      <Divider component="li" />
             </>
     );
 }

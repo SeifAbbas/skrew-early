@@ -24,6 +24,10 @@ import Checkbox from '@mui/material/Checkbox';
 import dummyData from "../dummyData.json";
 import ClothesFilters from './ClothesFilters';
 import ToysFilters from './ToysFilters';
+import FoodFilters from './FoodFilters';
+import MedicationFilters from './MedicationFilters';
+import SchoolSuppliesFilters from './SchoolSuppliesFilters';
+import MedicalSuppliesFilters from './MedicalSuppliesFilters';
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -139,9 +143,13 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
       />
       {children}
     </MenuItem> */}
-        <ClothesFilters />
-        <Divider component="li" />
-        <ToysFilters />
+        {category.length===0 && (<MenuItem disabled>Please Select a Category</MenuItem>)}
+        {category.includes('Clothes') && (<ClothesFilters />)}
+        {category.includes('Toys') && (<ToysFilters />)}
+        {category.includes('Medication') && (<MedicationFilters />)}
+        {category.includes('Medical Supplies') && (<MedicalSuppliesFilters />)}
+        {(category.includes('Books') || category.includes('School Supplies')) && (<SchoolSuppliesFilters />)}
+        {category.includes('Food') && (<FoodFilters />)}
 
       </Menu>
        </IconButton>
