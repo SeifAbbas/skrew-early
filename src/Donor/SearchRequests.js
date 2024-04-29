@@ -77,13 +77,13 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
     );
   }
   const itemsPerPage = 10;
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(0);
   const [noOfPages] = React.useState(
     Math.ceil(filteredItems.length / itemsPerPage)
   );
 
   const handlePageChange = (event, value) => {
-    setPage(value);
+    setPage(value-1);
   };
   return (
     <div>
@@ -152,8 +152,8 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
        </IconButton>
       </Grid>      
     <div className="list-container">
-    <List sx={{ maxwidth: "20%", bgcolor: 'background.paper', display: 'flex', justifyContent: "space-between", flexWrap: 'wrap'  }}>
-    {filteredItems.map((item, index) => (
+    <List sx={{ maxwidth: "20%", display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
+    {filteredItems.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map((item, index) => (
         <ListItem key={index} className="list-item">
           {/* <ListItemAvatar>
           <Avatar sx={{ bgcolor: blue[500] }} alt="" src="/static/images/avatar/1.jpg" />
@@ -185,7 +185,7 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
           }
         />
          <CardActions>
-         <Button size="small" color="primary" variant='contained' sx={{ display: 'inline' }} className="learn-more-button">
+         <Button size="small" color="primary" variant='contained' sx={{ display: 'inline', marginLeft: -1 }} className="learn-more-button">
         Learn More
         </Button>
       </CardActions>
@@ -195,7 +195,7 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
 
       ))}
     </List>
-    <Pagination count={noOfPages} page={page} onChange={handlePageChange}  color="primary"
+    <Pagination count={noOfPages} page={page+1} onChange={handlePageChange}  color="primary"
           showFirstButton
           showLastButton
            sx={{ marginTop: '20px', marginBottom: '20px' }}
