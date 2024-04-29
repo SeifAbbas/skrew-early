@@ -152,7 +152,7 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
        </IconButton>
       </Grid>      
     <div className="list-container">
-    <List sx={{ maxwidth: "20%", bgcolor: 'background.paper', display: 'flex', justifyContent: "space-between", flexWrap: 'wrap'  }}>
+    <List sx={{ maxwidth: "20%", bgcolor: 'background.paper', display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
     {filteredItems.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map((item, index) => (
         <ListItem key={index} className="list-item">
           {/* <ListItemAvatar>
