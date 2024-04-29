@@ -28,6 +28,7 @@ import FoodFilters from './FoodFilters';
 import MedicationFilters from './MedicationFilters';
 import SchoolSuppliesFilters from './SchoolSuppliesFilters';
 import MedicalSuppliesFilters from './MedicalSuppliesFilters';
+import { Pagination, TablePagination } from '@mui/material';
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -75,6 +76,15 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
       category.includes(item.Category)
     );
   }
+  const itemsPerPage = 10;
+  const [page, setPage] = React.useState(1);
+  const [noOfPages] = React.useState(
+    Math.ceil(filteredItems.length / itemsPerPage)
+  );
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
   return (
     <div>
     <Grid item xs={12} sm={6} sx ={{
@@ -130,19 +140,6 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
         open={Boolean(anchorEl)}
         MenuProps={MenuProps}
       >
-      {/* <MenuItem>
-      <FormControlLabel
-        label="Season"
-        control={
-          <Checkbox
-            checked={checked[0] && checked[1] && checked[2] && checked[3]}
-            indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
-            onChange={handleChange1}
-          />
-        }
-      />
-      {children}
-    </MenuItem> */}
         {category.length===0 && (<MenuItem disabled>Please Select a Category</MenuItem>)}
         {category.includes('Clothes') && (<ClothesFilters />)}
         {category.includes('Toys') && (<ToysFilters />)}
@@ -192,41 +189,20 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
         Learn More
         </Button>
       </CardActions>
-          <Divider variant="inset" component="li" />
+          <Divider component="li" />
         </CardActionArea>
         </ListItem>
 
       ))}
     </List>
+    <Pagination count={noOfPages} page={page} onChange={handlePageChange}  color="primary"
+          showFirstButton
+          showLastButton
+           sx={{ marginTop: '20px', marginBottom: '20px' }}
+            />
+
     </div>
     </div>
   );
 }
 
-
-
-// export default function MediaCard() {
-//   return (
-//     {filteredItems.map((item, index) => (
-//     <Card sx={{ maxWidth: 345 }}>
-//       <CardMedia
-//         sx={{ height: 140 }}
-//         image="/static/images/cards/contemplative-reptile.jpg"
-//         title="green iguana"
-//       />
-//       <CardContent>
-//         <Typography gutterBottom variant="h5" component="div">
-//           {item.Name}
-//         </Typography>
-//         <Typography variant="body2" color="text.secondary">
-        
-//         </Typography>
-//       </CardContent>
-//       <CardActions>
-//         <Button size="small">Learn More</Button>
-//       </CardActions>
-//     </Card>
-//   )
-// )
-//     });
-// }
