@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -8,7 +8,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -29,16 +28,21 @@ import BusinessIcon from "@mui/icons-material/Business";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 
+import dummyData from "../dummyData.json";
+
 const defaultTheme = createTheme();
 
 export default function SignIn({ setActiveUser, setNavbarContent }) {
+  const donorSignInData = dummyData.DonorSignIn;
+  const orgSignInData = dummyData.OrganizationSignIn;
+
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
+    console.log(donorSignInData);
     if (data.get("email") === "a" && data.get("password") === "a") {
       setActiveUser("Admin");
       setNavbarContent([
@@ -69,7 +73,10 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         },
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
-    } else if (data.get("email") === "o" && data.get("password") === "o") {
+    } else if (
+      data.get("email") === orgSignInData.email &&
+      data.get("password") === orgSignInData.password
+    ) {
       setActiveUser("Organization");
       setNavbarContent([
         {
@@ -100,7 +107,10 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         },
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
-    } else if (data.get("email") === "d" && data.get("password") === "d") {
+    } else if (
+      data.get("email") === donorSignInData.email &&
+      data.get("password") === donorSignInData.password
+    ) {
       setActiveUser("Donor");
       setNavbarContent([
         {
@@ -132,7 +142,11 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
       ]);
     } else {
       // Handle invalid credentials
-      if (!["a", "d", "o"].includes(data.get("email"))) {
+      if (
+        !["a", donorSignInData.email, donorSignInData.password].includes(
+          data.get("email")
+        )
+      ) {
         setErrorMsg("Invalid Email");
       } else {
         setErrorMsg("Invalid Password");
@@ -212,12 +226,12 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/Register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
