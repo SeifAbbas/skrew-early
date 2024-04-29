@@ -1,3 +1,7 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const ClinicVisits = () => {
     return ( 
         <div className="clinic-visits">
@@ -25,7 +29,9 @@ const ClinicVisits = () => {
             <h1>Available to</h1>
             <input type="time" placeholder=" Time" />
 
+            <Link to="/Home/Dashboard">
             <button>Submit</button>
+            </Link>
             </div>
      );
 }

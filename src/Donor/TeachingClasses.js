@@ -1,4 +1,7 @@
 
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const TeachingClasses = () => {
     return ( 
         <div className="teaching-class">
@@ -23,11 +26,9 @@ const TeachingClasses = () => {
             <h1>Class Time</h1>
             <input type="time" placeholder="Class Time" />
 
+            <Link to="/Home/Dashboard">
             <button>Submit</button>
-            
-
-
-            
+            </Link>
             
         </div>
      );
