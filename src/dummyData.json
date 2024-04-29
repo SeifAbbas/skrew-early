@@ -1,4 +1,29 @@
 {
+  "DonorSignIn": {
+    "firstName": "Yousef",
+    "lastName": "Yasser",
+    "email": "d",
+    "password": "d",
+    "mobile": "0123456789",
+    "address": "New Cairo",
+    "area": "New Cairo",
+    "governorate": "Cairo",
+    "role": "Regular Donor",
+    "gender": "male"
+  },
+  "OrganizationSignIn": {
+    "firstName": "Yousef",
+    "lastName": "Yasser",
+    "email": "o",
+    "password": "o",
+    "mobile": "0123456789",
+    "orgType": "Regular Donor",
+    "orgName": "Amazon",
+    "orgAddress": "New Cairo",
+    "orgArea": "New Cairo",
+    "orgGovernorate": "Cairo",
+    "gender": "male"
+  },
   "donorRegFields": [
     { "name": "First Name", "value": "" },
     { "name": "Last Name", "value": "" },

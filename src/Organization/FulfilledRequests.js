@@ -54,7 +54,7 @@ function Row(props) {
             onClick={handleDeleteRow}
             sx={{
               backgroundColor: "red",
-              color: "black",
+              color: "white",
             }}
           >
             Delete post

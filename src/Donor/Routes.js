@@ -13,7 +13,6 @@ const DonorRoutes = () => {
       <Route path="Dashboard/TeachingClasses" element={<TeachingClasses />} />
       <Route path="Dashboard/ClinicVisits" element={<ClinicVisits />} />
       <Route path="Requests" element={<SearchRequests />} />
-
     </Routes>
   );
 };

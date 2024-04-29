@@ -28,16 +28,21 @@ import BusinessIcon from "@mui/icons-material/Business";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 
+import dummyData from "../dummyData.json";
+
 const defaultTheme = createTheme();
 
 export default function SignIn({ setActiveUser, setNavbarContent }) {
+  const donorSignInData = dummyData.DonorSignIn;
+  const orgSignInData = dummyData.OrganizationSignIn;
+
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
+    console.log(donorSignInData);
     if (data.get("email") === "a" && data.get("password") === "a") {
       setActiveUser("Admin");
       setNavbarContent([
@@ -68,7 +73,10 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         },
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
-    } else if (data.get("email") === "o" && data.get("password") === "o") {
+    } else if (
+      data.get("email") === orgSignInData.email &&
+      data.get("password") === orgSignInData.password
+    ) {
       setActiveUser("Organization");
       setNavbarContent([
         {
@@ -99,7 +107,10 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         },
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
-    } else if (data.get("email") === "d" && data.get("password") === "d") {
+    } else if (
+      data.get("email") === donorSignInData.email &&
+      data.get("password") === donorSignInData.password
+    ) {
       setActiveUser("Donor");
       setNavbarContent([
         {
@@ -131,7 +142,11 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
       ]);
     } else {
       // Handle invalid credentials
-      if (!["a", "d", "o"].includes(data.get("email"))) {
+      if (
+        !["a", donorSignInData.email, donorSignInData.password].includes(
+          data.get("email")
+        )
+      ) {
         setErrorMsg("Invalid Email");
       } else {
         setErrorMsg("Invalid Password");
