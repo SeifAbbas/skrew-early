@@ -52,163 +52,243 @@
   "requests": [
     {
       "ID": 1,
-      "Name": "HD Video Player",
+      "Name": "Books",
       "Price": 330,
       "Current_Inventory": 225,
       "Backorder": 0,
       "Manufacturing": 10,
       "Category": "School Supplies",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://static.scientificamerican.com/sciam/cache/file/1DDFE633-2B85-468D-B28D05ADAE7D1AD8_source.jpg?w=1200"
     },
     {
       "ID": 3,
-      "Name": "SuperPlasma 50",
+      "Name": "Hoodie",
       "Price": 2400,
       "Current_Inventory": 0,
       "Backorder": 0,
       "Manufacturing": 0,
       "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://contents.mediadecathlon.com/p2372983/k$40c2598010d34384b09cc908565df000/men-s-hoodie-essentials-500-hazelnut.jpg?format=auto&quality=40&f=452x452"
     },
     {
       "ID": 4,
-      "Name": "SuperLED 50",
+      "Name": "T-shirt",
       "Price": 1600,
       "Current_Inventory": 77,
       "Backorder": 0,
       "Manufacturing": 55,
       "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbrVLem1vr25U-JZO_p7MwHEZkR6Co8_i1baJK4aDhjQ&s"
     },
     {
       "ID": 5,
-      "Name": "SuperLED 42",
+      "Name": "Jeans",
       "Price": 1450,
       "Current_Inventory": 445,
       "Backorder": 0,
       "Manufacturing": 0,
       "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://www.sportsdirect.com/images/imgzoom/64/64303218_xxl.jpg"
     },
     {
       "ID": 6,
-      "Name": "SuperLCD 55",
+      "Name": "Jacket",
       "Price": 1350,
       "Current_Inventory": 345,
       "Backorder": 0,
       "Manufacturing": 5,
       "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://contents.mediadecathlon.com/p2505125/k$ef71db84d12cee9efe39f3efe36ce4a6/-trek-900-.jpg?format=auto&quality=40&f=800x800"
     },
     {
       "ID": 7,
-      "Name": "SuperLCD 42",
+      "Name": "Shorts",
       "Price": 1200,
       "Current_Inventory": 210,
       "Backorder": 0,
       "Manufacturing": 20,
       "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://i5.walmartimages.com/seo/Pedort-Girls-Shorts-Casual-Shorts-Toddlers-Workout-Active-Running-Shorts-Gym-Short-Pants-Red-5T_67fd8d15-7e42-4494-8b7e-6cc711775abc.fa0ef3da950a518e9af4150f30b5b683.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
     },
     {
       "ID": 8,
-      "Name": "SuperPlasma 65",
+      "Name": "Ruler",
       "Price": 3500,
       "Current_Inventory": 0,
       "Backorder": 0,
       "Manufacturing": 0,
-      "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "Category": "School Supplies",
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFu3JT8wvO9EVXDUJaxDRMEzVgKZcPscyGJuZIZLU8mA&s"
     },
     {
       "ID": 9,
-      "Name": "SuperLCD 70",
+      "Name": "Pens",
       "Price": 4000,
       "Current_Inventory": 95,
       "Backorder": 0,
       "Manufacturing": 5,
-      "Category": "Clothes",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "Category": "School Supplies",
+      "ImageSrc": "https://upload.wikimedia.org/wikipedia/commons/e/e1/03-BICcristal2008-03-26.jpg"
     },
     {
       "ID": 10,
-      "Name": "DesktopLED 21",
+      "Name": "Chicken",
       "Price": 175,
       "Current_Inventory": null,
       "Backorder": 425,
       "Manufacturing": 75,
       "Category": "Food",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://www.eatingwell.com/thmb/fT-sHqVlgF3-bKn4fg_4RVhF2Gw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/7725524-353a378914d143929280d85059469d4e.jpg"
     },
     {
       "ID": 12,
-      "Name": "DesktopLCD 21",
+      "Name": "Meat",
       "Price": 170,
       "Current_Inventory": 210,
       "Backorder": 0,
       "Manufacturing": 60,
       "Category": "Food",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://www.safefood.net/getmedia/94101697-3c3f-4fe1-8ae8-5b595d3814ba/medium-rare-steak.jpg?w=2000&h=1333&ext=.jpg&width=1360&resizemode=force"
     },
     {
       "ID": 13,
-      "Name": "DesktopLCD 19",
+      "Name": "Fish",
       "Price": 160,
       "Current_Inventory": 150,
       "Backorder": 0,
       "Manufacturing": 210,
       "Category": "Food",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://static01.nyt.com/images/2020/12/23/dining/18kwanzarex1-grilled-fish/merlin_181220949_f7d795fc-ae3f-4c0b-91d6-03c4f51a2207-superJumbo.jpg"
     },
     {
       "ID": 14,
-      "Name": "Projector Plus",
+      "Name": "Doll",
       "Price": 550,
       "Current_Inventory": null,
       "Backorder": 55,
       "Manufacturing": 10,
       "Category": "Toys",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://i5.walmartimages.com/asr/7d67dd73-8ee1-478d-96db-7d7d746c41b9.c69acfcd6111fbf8a3caee5359ab0302.jpeg"
     },
     {
       "ID": 15,
-      "Name": "Projector PlusHD",
+      "Name": "Gloves",
       "Price": 750,
       "Current_Inventory": 110,
       "Backorder": 0,
       "Manufacturing": 90,
       "Category": "Medical Supplies",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "ImageSrc": "https://m.media-amazon.com/images/I/41E86StAIIS._AC_UF894,1000_QL80_.jpg"
     },
     {
       "ID": 17,
-      "Name": "ExcelRemote IR",
+      "Name": "Board games",
       "Price": 150,
       "Current_Inventory": 650,
       "Backorder": 0,
       "Manufacturing": 190,
-      "Category": "Medication",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "Category": "Toys",
+      "ImageSrc": "https://jokomisiada.pl/eng_pl_New-educational-game-set-18-in-1-GR0081-8545_1.jpg"
     },
     {
       "ID": 18,
-      "Name": "ExcelRemote BT",
+      "Name": "Stuffed toys",
       "Price": 180,
       "Current_Inventory": 310,
       "Backorder": 0,
       "Manufacturing": 0,
-      "Category": "Medication",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "Category": "Toys",
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4mSaLyLKFKcEHCU1TFydRLrRrTz9pqkW6S8lIDGkvsg&s"
     },
     {
-      "ID": 19,
-      "Name": "ExcelRemote IP",
+      "ID": 20,
+      "Name": "Cars",
       "Price": 200,
       "Current_Inventory": 0,
       "Backorder": 325,
       "Manufacturing": 225,
-      "Category": "Medication",
-      "ImageSrc": "https://previews.123rf.com/images/pupkis/pupkis1112/pupkis111200003/11726705-collection-of-many-objects-isolated-on-white-background.jpg"
+      "Category": "Toys",
+      "ImageSrc": "https://i.ebayimg.com/images/g/yjcAAOSwvCpg-vKW/s-l1600.webp"
+    },
+    {
+      "ID": 21,
+      "Name": "Outdoor toys",
+      "Price": 270,
+      "Current_Inventory": 10,
+      "Backorder": 35,
+      "Manufacturing": 22,
+      "Category": "Toys",
+      "ImageSrc": "https://i.ebayimg.com/images/g/dcQAAOSw71NgAcC2/s-l1200.webp"
+    },
+    {
+      "ID": 22,
+      "Name": "Sport toys",
+      "Price": 500,
+      "Current_Inventory": 40,
+      "Backorder": 25,
+      "Manufacturing": 5,
+      "Category": "Toys",
+      "ImageSrc": "https://m.media-amazon.com/images/I/71LMB8BDj1L._AC_SL1500_.jpg"
+    },
+    {
+      "ID": 23,
+      "Name": "Fruits",
+      "Price": 10,
+      "Current_Inventory": 1000,
+      "Backorder": 25,
+      "Manufacturing": 2250,
+      "Category": "Food",
+      "ImageSrc": "https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
+    },
+    {
+      "ID": 24,
+      "Name": "Vegetables",
+      "Price": 20,
+      "Current_Inventory": 2000,
+      "Backorder": 3250,
+      "Manufacturing": 2250,
+      "Category": "Food",
+      "ImageSrc": "https://cdn.britannica.com/17/196817-159-9E487F15/vegetables.jpg"
+    },
+    {
+      "ID": 25,
+      "Name": "Canned food",
+      "Price": 70,
+      "Current_Inventory": 100,
+      "Backorder": 65,
+      "Manufacturing": 85,
+      "Category": "Food",
+      "ImageSrc": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2Nhbm5lZC1mb29kLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6IjEyMDAifX19"
+    },
+    {
+      "ID": 26,
+      "Name": "Baked food",
+      "Price": 90,
+      "Current_Inventory": 500,
+      "Backorder": 915,
+      "Manufacturing": 1225,
+      "Category": "Food",
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb08hK6RwG8HZwK0n08tsONMZ_3CWb4dbglUD-0M5RUQ&s"
+    },
+    {
+      "ID": 28,
+      "Name": "Medical devices",
+      "Price": 2090,
+      "Current_Inventory": 50,
+      "Backorder": 5,
+      "Manufacturing": 2,
+      "Category": "Medical Supplies",
+      "ImageSrc": "https://www.massdevice.com/wp-content/uploads/2021/05/goddard-sponsored-hero-image-june2021.jpg"
+    },
+    {
+      "ID": 29,
+      "Name": "Medication",
+      "Price": 6700,
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Medical Supplies",
+      "ImageSrc": "https://firstaidforlife.org.uk/wp-content/uploads/2018/03/poisoning-pill-bottle.jpg"
     }
   ],
   "FulfilledRequests": [
