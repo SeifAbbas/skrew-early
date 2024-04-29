@@ -9,7 +9,6 @@ import ListItem from '@mui/material/ListItem';
 import Box from '@mui/material/Box';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from '@mui/material/Menu';
 import IconButton  from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
@@ -23,45 +22,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import dummyData from "../dummyData.json";
-import { ListItemButton } from '@mui/material';
+import ClothesFilters from './ClothesFilters';
+import ToysFilters from './ToysFilters';
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [category, setCategory] = React.useState([]);
-  const [checked, setChecked] = React.useState([true, false]);
-
-  const handleChange1 = (event) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
-
-  const handleChange2 = (event) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
-
-  const handleChange3 = (event) => {
-    setChecked([checked[0], event.target.checked]);
-  };
-
-  const children = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-      <FormControlLabel
-        label="Winter"
-        control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-      />
-      <FormControlLabel
-        label="Spring"
-        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-      />
-      <FormControlLabel
-        label="Summer"
-        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-      />
-      <FormControlLabel
-        label="Fall"
-        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-      />
-    </Box>
-  );
+ 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -72,7 +39,6 @@ export default function AlignItemsList() {
     },
   },
 };
-const names = ['Summer', 'Winter', 'Spring', 'Autumn'];
 const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','School Supplies','Food','Blood Donations', 'Teaching Classes', 'Doctor Visits'];
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -160,20 +126,23 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
         open={Boolean(anchorEl)}
         MenuProps={MenuProps}
       >
-      <MenuItem>
+      {/* <MenuItem>
       <FormControlLabel
         label="Season"
         control={
           <Checkbox
-            checked={checked[0] && checked[1]}
-            indeterminate={checked[0] !== checked[1]}
+            checked={checked[0] && checked[1] && checked[2] && checked[3]}
+            indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
             onChange={handleChange1}
           />
         }
       />
       {children}
-    </MenuItem>
-        
+    </MenuItem> */}
+        <ClothesFilters />
+        <Divider component="li" />
+        <ToysFilters />
+
       </Menu>
        </IconButton>
       </Grid>      
