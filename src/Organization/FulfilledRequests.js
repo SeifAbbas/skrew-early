@@ -18,6 +18,7 @@ import {
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { MdDelete } from "react-icons/md";
 
 import dummyData from "../dummyData.json";
 
@@ -55,8 +56,12 @@ function Row(props) {
             sx={{
               backgroundColor: "red",
               color: "white",
+              fontSize: "10px",
             }}
           >
+            <IconButton size="10px">
+              <MdDelete color="inherit" />
+            </IconButton>
             Delete post
           </Button>
         </TableCell>
@@ -111,8 +116,8 @@ export default function CollapsibleTable() {
   };
 
   return (
-    <Paper className="w-[70%] overflow-hidden mx-auto mt-10">
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper className="w-[70%] overflow-hidden mx-auto mt-14">
+      <TableContainer sx={{ maxHeight: 600 }}>
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: "#333333" }}>

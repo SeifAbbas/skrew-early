@@ -6,7 +6,7 @@ import {
   Container,
   Grid,
   Paper,
-  Typography
+  Typography,
 } from "@mui/material";
 import { LineChart, PieChart } from "@mui/x-charts";
 
@@ -68,24 +68,24 @@ const Chart = () => {
 const CategoryChart = () => {
   return (
     <>
-    <Typography variant="h6" component="div" align="center">
-    Donation Request Categories
-    </Typography>  
-    <PieChart
-    series={[
-      {
-        data: [
-          { id: 0, value: 10, label: 'Food' },
-          { id: 1, value: 20, label: 'Medical Supplies' },
-          { id: 2, value: 45, label: 'Medication' },
-          { id: 3, value: 25, label: 'Clothes' },
-        ],
-      },
-    ]}
-    height={300}
-  />
-  </>
-)
+      <Typography variant="h6" component="div" align="center">
+        Donation Request Categories
+      </Typography>
+      <PieChart
+        series={[
+          {
+            data: [
+              { id: 0, value: 10, label: "Food" },
+              { id: 1, value: 20, label: "Medical Supplies" },
+              { id: 2, value: 45, label: "Medication" },
+              { id: 3, value: 25, label: "Clothes" },
+            ],
+          },
+        ]}
+        height={300}
+      />
+    </>
+  );
 };
 
 const OrganizationDashboard = () => {
@@ -106,7 +106,7 @@ const OrganizationDashboard = () => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="xl" sx={{ mt: -8, mb: 4, mx: 10 }}>
+          <Container maxWidth="xl" sx={{ mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item lg={6} md={12}>
@@ -128,7 +128,7 @@ const OrganizationDashboard = () => {
                     flexDirection: "column",
                   }}
                 >
-                  <CategoryChart/>
+                  <CategoryChart />
                 </Paper>
               </Grid>
             </Grid>

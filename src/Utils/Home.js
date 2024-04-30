@@ -11,20 +11,22 @@ import {
   Typography,
   Divider,
   IconButton,
-  Badge
-} from '@mui/material';
+  Badge,
+} from "@mui/material";
 
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { DarkMode, LightMode } from '@mui/icons-material'
+import { DarkMode, LightMode } from "@mui/icons-material";
 
+import dummyData from "../dummyData.json";
 import ListItems from "./ListItems";
 import AdminRoutes from "../Admin/Routes";
 import DonorRoutes from "../Donor/Routes";
 import OrganizationRoutes from "../Organization/Routes";
+import OrganizationNotification from "../Organization/Notification";
 
 const drawerWidth = 240;
 
@@ -81,30 +83,35 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Home({ activeUser, navbarContent }) {
   const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const [notificationPanelOpen, setNotificationPanelOpen] = useState(false);
+  const [orgNotificationList, setOrgNotificationList] = useState(
+    dummyData.organizationNotifications
+  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const theme = createTheme({
     typography: {
-      fontFamily: 'Quicksand Variable',
+      fontFamily: "Quicksand Variable",
       fontSize: 15,
     },
     palette: {
-      mode: isDarkMode ? 'dark' : 'light',
+      mode: isDarkMode ? "dark" : "light",
       primary: {
         main: activeUser
           ? {
-              "Admin": '#F6BD60',
-              "Donor": '#5893e0',
-              "Organization": '#84A59D'
+              Admin: "#F6BD60",
+              Donor: "#5893e0",
+              Organization: "#84A59D",
             }[activeUser]
-          : '#393E41',
-        contrastText: '#fff',
+          : "#393E41",
+        contrastText: "#fff",
       },
       background: {
-        default: isDarkMode ? '#1e2122' : '#fafafa',
+        default: isDarkMode ? "#1e2122" : "#fafafa",
       },
     },
-  })
+  });
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -122,7 +129,6 @@ export default function Home({ activeUser, navbarContent }) {
           >
             <IconButton
               edge="start"
-              color="inherit"
               aria-label="open drawer"
               onClick={toggleDrawer}
               sx={{
@@ -130,7 +136,7 @@ export default function Home({ activeUser, navbarContent }) {
                 ...(open && { display: "none" }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon color="inherit" />
             </IconButton>
             <Typography
               component="h1"
@@ -141,19 +147,34 @@ export default function Home({ activeUser, navbarContent }) {
             >
               Dashboard
             </Typography>
+
             <IconButton
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                color="inherit"
+              onClick={() => setNotificationPanelOpen(!notificationPanelOpen)}
+            >
+              <Badge
+                badgeContent={orgNotificationList.length}
+                color="secondary"
               >
-                {isDarkMode ? <DarkMode /> : <LightMode />}
-              </IconButton>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+                <NotificationsIcon color="inherit" />
               </Badge>
+            </IconButton>
+            <IconButton onClick={() => setIsDarkMode(!isDarkMode)}>
+              {isDarkMode ? (
+                <DarkMode color="inherit" />
+              ) : (
+                <LightMode color="inherit" />
+              )}
             </IconButton>
           </Toolbar>
         </AppBar>
+
+        {notificationPanelOpen && activeUser === "Organization" && (
+          <OrganizationNotification
+            orgNotificationList={orgNotificationList}
+            setOrgNotificationList={setOrgNotificationList}
+          />
+        )}
+
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -182,6 +203,7 @@ export default function Home({ activeUser, navbarContent }) {
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
+            mt: "0px",
           }}
         >
           <Toolbar />
