@@ -3,66 +3,61 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-const FoodFilters= () => {
-    const [checked, setChecked] = React.useState([false, false,false,false]);
+import Divider from '@mui/material/Divider';
 
-  const handleChange1 = (event) => {
-    setChecked([event.target.checked, event.target.checked, event.target.checked, event.target.checked]);
-  };
+const FoodFilters = ({foodChecked, setFoodChecked}) => {
 
-  const handleChange2 = (event) => {
-    setChecked([event.target.checked, checked[1], checked[2]], checked[3]);
-  };
+    const handleChange = (index) => (event) => {
+        const newChecked = [...foodChecked];
+        newChecked[index] = event.target.checked;
+        setFoodChecked(newChecked);
+    };
 
-  const handleChange3 = (event) => {
-    setChecked([checked[0], event.target.checked, checked[2], checked[3]]);
-  };
+    const mainCheckboxChecked = foodChecked.every((isChecked) => isChecked);
+    const mainCheckboxIndeterminate = foodChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
-  const handleChange4 = (event) => {
-    setChecked([checked[0], checked[1], event.target.checked, checked[3]]);
-  };
-
-  const handleChange5 = (event) => {
-    setChecked([checked[0], checked[1],checked[2],event.target.checked]);
-  };
-  
     const foods = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr:2 }}>
           <FormControlLabel
             label="Canned"
-            control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+            control={<Checkbox checked={foodChecked[0]} onChange={handleChange(0)} />}
           />
           <FormControlLabel
             label="Baked"
-            control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+            control={<Checkbox checked={foodChecked[1]} onChange={handleChange(1)} />}
           />
           <FormControlLabel
             label="Fruits"
-            control={<Checkbox checked={checked[2]} onChange={handleChange4} />}
+            control={<Checkbox checked={foodChecked[2]} onChange={handleChange(2)} />}
           />
           <FormControlLabel
             label="Fresh"
-            control={<Checkbox checked={checked[3]} onChange={handleChange5} />}
+            control={<Checkbox checked={foodChecked[3]} onChange={handleChange(3)} />}
           />
         </Box>
-      );
-  
+    );
+
     return ( 
         <>
         <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
             <FormControlLabel
                 label="Food"
-                control={<Checkbox
-                    checked={checked[0] && checked[1] && checked[2] && checked[3]}
-                    indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
-                    onChange={handleChange1} />} />
+                control={
+                    <Checkbox
+                        checked={mainCheckboxChecked}
+                        indeterminate={mainCheckboxIndeterminate}
+                        onChange={() => {
+                            const allChecked = !mainCheckboxChecked;
+                            setFoodChecked([allChecked, allChecked, allChecked, allChecked]);
+                        }}
+                    />
+                }
+            />
             {foods}
         </MenuItem>
         <Divider component="li" />
-
-            </>
+        </>
     );
-}
- 
+};
+
 export default FoodFilters;

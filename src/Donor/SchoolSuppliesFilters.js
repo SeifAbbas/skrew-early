@@ -3,50 +3,49 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-const SchoolSuppliesFilters= () => {
-    const [checked, setChecked] = React.useState([false, false]);
+import Divider from '@mui/material/Divider';
 
-  const handleChange1 = (event) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
+const SchoolSuppliesFilters = ({schoolSuppliesChecked, setSchoolSuppliesChecked}) => {
+    const handleChange = (index) => (event) => {
+        const newChecked = [...schoolSuppliesChecked];
+        newChecked[index] = event.target.checked;
+        setSchoolSuppliesChecked(newChecked);
+    };
 
-  const handleChange2 = (event) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
+    const mainCheckboxChecked = schoolSuppliesChecked.every((isChecked) => isChecked);
+    const mainCheckboxIndeterminate = schoolSuppliesChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
-  const handleChange3 = (event) => {
-    setChecked([checked[0], event.target.checked]);
-  };
-
-  
     const supplies = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
           <FormControlLabel
             label="Books"
-            control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+            control={<Checkbox checked={schoolSuppliesChecked[0]} onChange={handleChange(0)} />}
           />
           <FormControlLabel
             label="Stationary"
-            control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+            control={<Checkbox checked={schoolSuppliesChecked[1]} onChange={handleChange(1)} />}
           />
         </Box>
       );
   
     return ( 
         <>
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <FormControlLabel
-                label="School Supplies"
-                control={<Checkbox
-                    checked={checked[0] && checked[1]}
-                    indeterminate={checked[0] !== checked[1]}
-                    onChange={handleChange1} />} />
-            {supplies}
-        </MenuItem>
-        <Divider component="li" />
-
-            </>
+            <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <FormControlLabel
+                    label="School Supplies"
+                    control={<Checkbox
+                        checked={mainCheckboxChecked}
+                        indeterminate={mainCheckboxIndeterminate}
+                        onChange={() => {
+                            const allChecked = !mainCheckboxChecked;
+                            setSchoolSuppliesChecked([allChecked, allChecked]);
+                        }}
+                    />}
+                />
+                {supplies}
+            </MenuItem>
+            <Divider component="li" />
+        </>
     );
 }
  

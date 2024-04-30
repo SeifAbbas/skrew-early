@@ -3,47 +3,36 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-const MedicationFilters= () => {
-    const [checked, setChecked] = React.useState([false, false,false,false]);
+import Divider from '@mui/material/Divider';
 
-  const handleChange1 = (event) => {
-    setChecked([event.target.checked, event.target.checked, event.target.checked, event.target.checked]);
-  };
+const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
 
-  const handleChange2 = (event) => {
-    setChecked([event.target.checked, checked[1], checked[2]], checked[3]);
-  };
+    const handleChange = (index) => (event) => {
+        const newChecked = [...medicationChecked];
+        newChecked[index] = event.target.checked;
+        setMedicationChecked(newChecked);
+    };
 
-  const handleChange3 = (event) => {
-    setChecked([checked[0], event.target.checked, checked[2], checked[3]]);
-  };
+    const mainCheckboxChecked = medicationChecked.every((isChecked) => isChecked);
+    const mainCheckboxIndeterminate = medicationChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
-  const handleChange4 = (event) => {
-    setChecked([checked[0], checked[1], event.target.checked, checked[3]]);
-  };
-
-  const handleChange5 = (event) => {
-    setChecked([checked[0], checked[1],checked[2],event.target.checked]);
-  };
-  
     const medications = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: -3 }}>
           <FormControlLabel
             label="Anti Biotic"
-            control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+            control={<Checkbox checked={medicationChecked[0]} onChange={handleChange(0)} />}
           />
           <FormControlLabel
             label="Vaccine"
-            control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+            control={<Checkbox checked={medicationChecked[1]} onChange={handleChange(1)} />}
           />
           <FormControlLabel
             label="Pain Reliever"
-            control={<Checkbox checked={checked[2]} onChange={handleChange4} />}
+            control={<Checkbox checked={medicationChecked[2]} onChange={handleChange(2)} />}
           />
           <FormControlLabel
             label="Prescribed"
-            control={<Checkbox checked={checked[3]} onChange={handleChange5} />}
+            control={<Checkbox checked={medicationChecked[3]} onChange={handleChange(3)} />}
           />
         </Box>
       );
@@ -51,17 +40,21 @@ const MedicationFilters= () => {
     return ( 
         <>
             <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
-            <FormControlLabel
-                label="Medication"
-                control={<Checkbox
-                    checked={checked[0] && checked[1] && checked[2] && checked[3]}
-                    indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
-                    onChange={handleChange1} />} />
-            {medications}
-        </MenuItem>
-        <Divider component="li" />
-
-            </>
+                <FormControlLabel
+                    label="Medication"
+                    control={<Checkbox
+                        checked={mainCheckboxChecked}
+                        indeterminate={mainCheckboxIndeterminate}
+                        onChange={() => {
+                            const allChecked = !mainCheckboxChecked;
+                            setMedicationChecked([allChecked, allChecked, allChecked, allChecked]);
+                        }}
+                    />}
+                />
+                {medications}
+            </MenuItem>
+            <Divider component="li" />
+        </>
     );
 }
  

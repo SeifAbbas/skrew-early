@@ -33,18 +33,29 @@ import { Pagination, TablePagination } from '@mui/material';
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [category, setCategory] = React.useState([]);
- 
+  const [seasonChecked, setSeasonChecked] = React.useState([false, false, false, false]);
+  const [ageChecked, setAgeChecked] = React.useState([false, false, false, false]);
+  const [genderChecked, setGenderChecked] = React.useState([false, false]);
+  const [foodChecked, setFoodChecked] = React.useState([false, false, false, false]);
+  const [medSuppliesChecked, setMedSuppliesChecked] = React.useState([false, false, false, false]);
+  const [medicationChecked, setMedicationChecked] = React.useState([false, false, false, false]);
+  const [schoolSuppliesChecked, setSchoolSuppliesChecked] = React.useState([false, false]);
+  const [toyCategoryChecked, setToyCategoryChecked] = React.useState([false, false, false, false]);
+  const [toyAgeChecked, setToyAgeChecked] = React.useState([false, false, false, false]);
+  const [toyGenderChecked, setToyGenderChecked] = React.useState([false, false]);
+
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
     },
-  },
-};
-const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','School Supplies','Food','Blood Donations', 'Teaching Classes', 'Doctor Visits'];
+    keepMounted: true, // Keep the menu open while interacting with checkboxes
+  };
+  const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','School Supplies','Food','Blood Donations', 'Teaching Classes', 'Doctor Visits'];
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -61,13 +72,21 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleFilterIconClick = (event) => {
-    if (anchorEl === event.currentTarget) {
-      // If the current target is the same as the anchor element, close the menu
-      setAnchorEl(null);
-    } else {
-      setAnchorEl(event.currentTarget);
-    }
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleCloseMenu);
+
+    return () => {
+      document.removeEventListener('mousedown', handleCloseMenu);
+    };
+  }, []);
+
   let filteredItems = dummyData.requests.filter(item =>
     item.Category.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -97,7 +116,6 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
         label= "Search"
         variant="outlined"
         value={searchTerm}
-        autoWidth
         onChange={handleSearchChange}
         sx ={{
           marginTop:'10px',
@@ -136,17 +154,45 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
             }}
           />
         <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        MenuProps={MenuProps}
-      >
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          MenuProps={MenuProps}
+        >
         {category.length===0 && (<MenuItem disabled>Please Select a Category</MenuItem>)}
-        {category.includes('Clothes') && (<ClothesFilters />)}
-        {category.includes('Toys') && (<ToysFilters />)}
-        {category.includes('Medication') && (<MedicationFilters />)}
-        {category.includes('Medical Supplies') && (<MedicalSuppliesFilters />)}
-        {(category.includes('Books') || category.includes('School Supplies')) && (<SchoolSuppliesFilters />)}
-        {category.includes('Food') && (<FoodFilters />)}
+        {category.includes('Clothes') && (<ClothesFilters
+         seasonChecked={seasonChecked}
+          setSeasonChecked= {setSeasonChecked}
+          ageChecked = {ageChecked}
+          setAgeChecked={setAgeChecked}
+          genderChecked={genderChecked}
+          setGenderChecked={setGenderChecked}
+  
+          />)}
+        {category.includes('Toys') && (<ToysFilters 
+        toyCategoryChecked={toyCategoryChecked}
+        setToyCategoryChecked={setToyCategoryChecked}
+        toyAgeChecked={toyAgeChecked}
+        setToyAgeChecked={setToyAgeChecked}
+        toyGenderChecked = {toyGenderChecked}
+        setToyGenderChecked={setToyGenderChecked}
+        />)}
+        {category.includes('Medication') && (<MedicationFilters 
+        medicationChecked = {medicationChecked}
+        setMedicationChecked={setMedicationChecked}
+        />)}
+        {category.includes('Medical Supplies') && (<MedicalSuppliesFilters 
+        medSuppliesChecked={medSuppliesChecked}
+        setMedSuppliesChecked={setMedSuppliesChecked}
+        />)}
+        {(category.includes('Books') || category.includes('School Supplies')) && (<SchoolSuppliesFilters 
+        schoolSuppliesChecked={schoolSuppliesChecked}
+        setSchoolSuppliesChecked={setSchoolSuppliesChecked}
+        />)}
+        {category.includes('Food') && (<FoodFilters
+        foodChecked = {foodChecked}
+        setFoodChecked = {setFoodChecked}
+        />)}
 
       </Menu>
        </IconButton>
@@ -205,4 +251,3 @@ const categories = ['Clothes', 'Toys', 'Books','Medication','Medical Supplies','
     </div>
   );
 }
-

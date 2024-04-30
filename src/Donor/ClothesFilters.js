@@ -4,157 +4,110 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
-const ClothesFilters= () => {
-    const [checked, setChecked] = React.useState([false, false,false,false]);
 
-  const handleChange1 = (event) => {
-    setChecked([event.target.checked, event.target.checked, event.target.checked, event.target.checked]);
-  };
+const ClothesFilters = ({ seasonChecked, setSeasonChecked, ageChecked, setAgeChecked, genderChecked, setGenderChecked }) => {
 
-  const handleChange2 = (event) => {
-    setChecked([event.target.checked, checked[1], checked[2]], checked[3]);
-  };
 
-  const handleChange3 = (event) => {
-    setChecked([checked[0], event.target.checked, checked[2], checked[3]]);
-  };
+    const handleChangeSeason = (index) => (event) => {
+        const newChecked = [...seasonChecked];
+        newChecked[index] = event.target.checked;
+        setSeasonChecked(newChecked);
+    };
 
-  const handleChange4 = (event) => {
-    setChecked([checked[0], checked[1], event.target.checked, checked[3]]);
-  };
+    const handleChangeAge = (index) => (event) => {
+        const newChecked = [...ageChecked];
+        newChecked[index] = event.target.checked;
+        setAgeChecked(newChecked);
+    };
 
-  const handleChange5 = (event) => {
-    setChecked([checked[0], checked[1],checked[2],event.target.checked]);
-  };
-  const [achecked, setCheckedA] = React.useState([false, false,false,false]);
+    const handleChangeGender = (index) => (event) => {
+        const newChecked = [...genderChecked];
+        newChecked[index] = event.target.checked;
+        setGenderChecked(newChecked);
+    };
 
-  const handleChange1a = (event) => {
-    setCheckedA([event.target.checked, event.target.checked, event.target.checked, event.target.checked]);
-  };
+    const mainSeasonCheckboxChecked = seasonChecked.every((isChecked) => isChecked);
+    const mainSeasonCheckboxIndeterminate = seasonChecked.some((isChecked) => isChecked) && !mainSeasonCheckboxChecked;
 
-  const handleChange2a = (event) => {
-    setCheckedA([event.target.checked, achecked[1], achecked[2]], achecked[3]);
-  };
+    const mainAgeCheckboxChecked = ageChecked.every((isChecked) => isChecked);
+    const mainAgeCheckboxIndeterminate = ageChecked.some((isChecked) => isChecked) && !mainAgeCheckboxChecked;
 
-  const handleChange3a = (event) => {
-    setCheckedA([achecked[0], event.target.checked, achecked[2], achecked[3]]);
-  };
-
-  const handleChange4a = (event) => {
-    setCheckedA([achecked[0], achecked[1], event.target.checked, achecked[3]]);
-  };
-
-  const handleChange5a = (event) => {
-    setCheckedA([achecked[0], achecked[1],achecked[2],event.target.checked]);
-  };
-
-  
-    const seasons = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 1.6 }}>
-          <FormControlLabel
-            label="Winter"
-            control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-          />
-          <FormControlLabel
-            label="Spring"
-            control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-          />
-          <FormControlLabel
-            label="Summer"
-            control={<Checkbox checked={checked[2]} onChange={handleChange4} />}
-          />
-          <FormControlLabel
-            label="Fall"
-            control={<Checkbox checked={checked[3]} onChange={handleChange5} />}
-          />
-        </Box>
-      );
-      const ages = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 0.7 }}>
-          <FormControlLabel
-            label="Infant"
-            control={<Checkbox checked={achecked[0]} onChange={handleChange2a} />}
-          />
-          <FormControlLabel
-            label="Child"
-            control={<Checkbox checked={achecked[1]} onChange={handleChange3a} />}
-          />
-          <FormControlLabel
-            label="Teenager"
-            control={<Checkbox checked={achecked[2]} onChange={handleChange4a} />}
-          />
-          <FormControlLabel
-            label="Adult"
-            control={<Checkbox checked={achecked[3]} onChange={handleChange5a} />}
-          />
-          
-        </Box>
-      );
-      const [gchecked, setCheckedG] = React.useState([false, false]);
-
-  const handleChange1g = (event) => {
-    setCheckedG([event.target.checked, event.target.checked]);
-  };
-
-  const handleChange2g = (event) => {
-    setCheckedG([event.target.checked, gchecked[1]]);
-  };
-
-  const handleChange3g = (event) => {
-    setCheckedG([gchecked[0], event.target.checked]);
-  };
-
-  const genders = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.3 }}>
-    <FormControlLabel
-        label="Male"
-        control={<Checkbox checked={gchecked[0]} onChange={handleChange2g} />}
-      />
-      <FormControlLabel
-        label="Female"
-        control={<Checkbox checked={gchecked[1]} onChange={handleChange3g} />}
-      />
-    </Box>
-  );
     return ( 
         <>
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
-            <FormControlLabel
-                label="Season"
-                control={<Checkbox
-                    checked={checked[0] && checked[1] && checked[2] && checked[3]}
-                    indeterminate={checked[0] !== checked[1] !== checked[2] !== checked[3]}
-                    onChange={handleChange1} />} />
-            {seasons}
-        </MenuItem>
-        <Divider component="li" />
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
-                    label="Age"
-                    control={<Checkbox
-                        checked={achecked[0] && achecked[1] && achecked[2] && achecked[3]}
-                        indeterminate={achecked[0] !== achecked[1] !== achecked[2] !== achecked[3]}
-                        onChange={handleChange1a} />} />
-                {ages}
+                    label="Season"
+                    control={
+                        <Checkbox
+                            checked={mainSeasonCheckboxChecked}
+                            indeterminate={mainSeasonCheckboxIndeterminate}
+                            onChange={() => {
+                                const allChecked = !mainSeasonCheckboxChecked;
+                                setSeasonChecked([allChecked, allChecked, allChecked, allChecked]);
+                            }}
+                        />
+                    }
+                />
+                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 1.6 }}>
+                    {['Winter', 'Spring', 'Summer', 'Fall'].map((label, index) => (
+                        <FormControlLabel
+                            key={index}
+                            label={label}
+                            control={<Checkbox checked={seasonChecked[index]} onChange={handleChangeSeason(index)} />}
+                        />
+                    ))}
+                </Box>
             </MenuItem>
             <Divider component="li" />
-
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
-            <FormControlLabel
-        label="Gender"
-        control={
-          <Checkbox
-            checked= 'false'
-            indeterminate='false'
-            onChange={handleChange1g}
-          />
-        }
-      />
-      {genders}  
-      </MenuItem>   
-      <Divider component="li" />
-
-            </>
+            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+                <FormControlLabel
+                    label="Age"
+                    control={
+                        <Checkbox
+                            checked={mainAgeCheckboxChecked}
+                            indeterminate={mainAgeCheckboxIndeterminate}
+                            onChange={() => {
+                                const allChecked = !mainAgeCheckboxChecked;
+                                setAgeChecked([allChecked, allChecked, allChecked, allChecked]);
+                            }}
+                        />
+                    }
+                />
+                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 0.7 }}>
+                    {['Infant', 'Child', 'Teenager', 'Adult'].map((label, index) => (
+                        <FormControlLabel
+                            key={index}
+                            label={label}
+                            control={<Checkbox checked={ageChecked[index]} onChange={handleChangeAge(index)} />}
+                        />
+                    ))}
+                </Box>
+            </MenuItem>
+            <Divider component="li" />
+            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+                <FormControlLabel
+                    label="Gender"
+                    control={
+                        <Checkbox
+                            checked={genderChecked[0]}
+                            indeterminate={genderChecked[1]}
+                            onChange={handleChangeGender(0)}
+                        />
+                    }
+                />
+                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.3 }}>
+                    <FormControlLabel
+                        label="Male"
+                        control={<Checkbox checked={genderChecked[0]} onChange={handleChangeGender(0)} />}
+                    />
+                    <FormControlLabel
+                        label="Female"
+                        control={<Checkbox checked={genderChecked[1]} onChange={handleChangeGender(1)} />}
+                    />
+                </Box>
+            </MenuItem>
+            <Divider component="li" />
+        </>
     );
 }
  
