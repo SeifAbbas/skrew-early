@@ -106,7 +106,7 @@ const OrganizationDashboard = () => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="xl" sx={{ mt: -8, mb: 4, mx: 15 }}>
+          <Container maxWidth="xl" sx={{ mt: -8, mb: 4, mx: 10 }}>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item lg={6} md={12}>

@@ -1,20 +1,25 @@
-import { React } from "react";
-import { useState } from "react";
+import { React, useState } from "react";
 
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import {
+  styled,
+  createTheme,
+  ThemeProvider,
+  CssBaseline,
+  Box,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  Badge
+} from '@mui/material';
+
 import MuiDrawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { DarkMode, LightMode } from '@mui/icons-material'
 
 import ListItems from "./ListItems";
 import AdminRoutes from "../Admin/Routes";
@@ -67,18 +72,46 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+/*
+ '#393E41'  BLACK
+ '#F6BD60' YELLOW
+ '#84A59D' GREEN
+ '#5893e0' BLUE
+*/
 
 export default function Home({ activeUser, navbarContent }) {
   const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Quicksand Variable',
+      fontSize: 15,
+    },
+    palette: {
+      mode: isDarkMode ? 'dark' : 'light',
+      primary: {
+        main: activeUser
+          ? {
+              "Admin": '#F6BD60',
+              "Donor": '#5893e0',
+              "Organization": '#84A59D'
+            }[activeUser]
+          : '#393E41',
+        contrastText: '#fff',
+      },
+      background: {
+        default: isDarkMode ? '#1e2122' : '#fafafa',
+      },
+    },
+  })
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -108,6 +141,12 @@ export default function Home({ activeUser, navbarContent }) {
             >
               Dashboard
             </Typography>
+            <IconButton
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                color="inherit"
+              >
+                {isDarkMode ? <DarkMode /> : <LightMode />}
+              </IconButton>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
