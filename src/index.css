@@ -141,4 +141,46 @@
   flex-basis: calc(33.33% - 20px); /* Adjust this to control the width of each item */
   margin-bottom: 20px; /* Adjust margin between items */
 } 
-
+.learn-more-container {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  align-content: center;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  max-width: 100%;
+}
+.learn-more-container h1 {
+  color: #1976d2;
+  font-size: 20px;
+  margin-top: 20px;
+  text-align:center;
+}
+.learn-more-container button {
+  background: #1976d2;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.learn-more-container button:hover {
+  background: #1976d2;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.learn-more-container img {
+  max-width: 100%; /* Ensure the image does not exceed the width of its container */
+  max-height: 100%;
+  width: 35%;
+  border-radius: 0;
+  margin-bottom: 0px;
+  transition: transform 0.3s ease; /* Add smooth transition for scaling */
+  align-self: center;
+  margin-left: 33%;
+}

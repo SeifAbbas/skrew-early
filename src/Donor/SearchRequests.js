@@ -29,6 +29,9 @@ import MedicationFilters from './MedicationFilters';
 import SchoolSuppliesFilters from './SchoolSuppliesFilters';
 import MedicalSuppliesFilters from './MedicalSuppliesFilters';
 import { Pagination, TablePagination } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -104,6 +107,7 @@ export default function AlignItemsList() {
   const handlePageChange = (event, value) => {
     setPage(value-1);
   };
+    const id = dummyData.requests.id;
   return (
     <div>
     <Grid item xs={12} sm={6} sx ={{
@@ -230,10 +234,13 @@ export default function AlignItemsList() {
             </React.Fragment>
           }
         />
+        {dummyData.requests.id === item.id}
          <CardActions>
+          <Link to={`/Home/Requests/LearnMore/${dummyData.requests.id}`}>
          <Button size="small" color="primary" variant='contained' sx={{ display: 'inline', marginLeft: -1 }} className="learn-more-button">
         Learn More
         </Button>
+        </Link>
       </CardActions>
           <Divider component="li" />
         </CardActionArea>
