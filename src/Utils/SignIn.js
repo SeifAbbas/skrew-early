@@ -42,7 +42,7 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(donorSignInData);
+
     if (data.get("email") === "a" && data.get("password") === "a") {
       setActiveUser("Admin");
       setNavbarContent([

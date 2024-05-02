@@ -26,7 +26,7 @@ import ListItems from "./ListItems";
 import AdminRoutes from "../Admin/Routes";
 import DonorRoutes from "../Donor/Routes";
 import OrganizationRoutes from "../Organization/Routes";
-import OrganizationNotification from "../Organization/Notification";
+import OrganizationNotification from "../Organization/Notifications/Notification";
 
 const drawerWidth = 240;
 
