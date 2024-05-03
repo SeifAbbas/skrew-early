@@ -29,7 +29,6 @@ function Row(props) {
   const handleDeleteRow = (event) => {
     setRows((rows) => {
       const updatedRows = rows.filter((r) => r.Name !== row.Name);
-      console.log(updatedRows);
       return updatedRows;
     });
   };
@@ -37,25 +36,40 @@ function Row(props) {
   return (
     <>
       <TableRow hover sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
+        <TableCell align="left">
+          {row.Donor.length !== 0 ? (
+            <Box display="flex" alignItems="center">
+              <IconButton
+                aria-label="expand row"
+                size="small"
+                onClick={() => setOpen(!open)}
+              >
+                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+
+              {open ? (
+                <Typography variant="body2">Hide Donor Details</Typography>
+              ) : (
+                <Typography variant="body2">Show Donor Details</Typography>
+              )}
+            </Box>
+          ) : (
+            <Typography variant="body2" style={{ marginLeft: "30px" }}>
+              Not fulfilled yet
+            </Typography>
+          )}
         </TableCell>
+
         <TableCell align="center">{row.Name}</TableCell>
         <TableCell align="center">{row.Type}</TableCell>
         <TableCell align="center">{row.Quantity}</TableCell>
         <TableCell align="center">{row.Date}</TableCell>
-        <TableCell align="center" sx={{ maxWidth: 70 }}>
+        <TableCell align="center" sx={{ maxWidth: 90 }}>
           <Button
             onClick={handleDeleteRow}
             sx={{
               backgroundColor: "red",
-              color: "white",
+              color: "inherit",
               fontSize: "10px",
             }}
           >
@@ -116,7 +130,7 @@ export default function CollapsibleTable() {
   };
 
   return (
-    <Paper className="w-[70%] overflow-hidden mx-auto mt-14">
+    <Paper className="w-[90%] overflow-hidden mx-auto mt-14">
       <TableContainer sx={{ maxHeight: 600 }}>
         <Table>
           <TableHead>
