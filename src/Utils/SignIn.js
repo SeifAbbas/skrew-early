@@ -91,11 +91,6 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
           route: "/Home/MyRequests",
         },
         {
-          text: "Delivery",
-          icon: <LocalShippingIcon />,
-          route: "/Home/Delivery",
-        },
-        {
           text: "Fulfilled Requests",
           icon: <DoneIcon />,
           route: "/Home/FulfilledRequests",
