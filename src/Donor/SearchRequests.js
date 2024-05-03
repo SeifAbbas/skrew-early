@@ -43,7 +43,15 @@ export default function AlignItemsList() {
   const [toyCategoryChecked, setToyCategoryChecked] = React.useState([false, false, false, false]);
   const [toyAgeChecked, setToyAgeChecked] = React.useState([false, false, false, false]);
   const [toyGenderChecked, setToyGenderChecked] = React.useState([false, false]);
-
+  const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+  const ages = ['Infant', 'Child', 'Teenager', 'Adult'];
+  const genders = ['Male', 'Female'];
+  const toyCategories = ['Stuffed','Sports','Dolls','Outdoor'];
+  const foods = ['Canned','Baked','Fruits','Fresh'];
+  const medSupplies = ['Class Is','Class IIa','Class IIb','Class III'];
+  const medications = ['Anti Biotic','Vaccine','Pain Reliever','Prescribed'];
+  const schoolSupplies = ['Books', 'Stationary'];
+  const filters = [['Clothes', 'Age', ages, ageChecked],['Clothes','Season', seasons, seasonChecked],['Clothes', 'Gender', genders, genderChecked],['Toys', 'Age', ages, toyAgeChecked],['Toys' ,'Type', toyCategories, toyCategoryChecked],['Toys', 'Gender', genders,genderChecked],['Food', 'Type', foods, foodChecked],['School Supplies', 'Type', schoolSupplies, schoolSuppliesChecked],['Medication', 'Type', medications, medicationChecked],['Medical Supplies', 'Type', medSupplies, medSuppliesChecked]]
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -95,6 +103,21 @@ export default function AlignItemsList() {
       category.includes(item.Category)
     );
   }
+  filters.forEach((filtering) => {
+    if (category.includes(filtering[0])) {
+        filteredItems = filteredItems.filter(item => {
+            return filtering[3].every((isChecked, index) => {
+                if (isChecked) {
+                    const cat = filtering[1];
+                    console.log(cat);
+                    return (item[cat] === filtering[2][index]);
+                }
+                return true;
+            });
+        });
+    }
+});
+
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
   const [noOfPages] = React.useState(
@@ -153,6 +176,7 @@ export default function AlignItemsList() {
               fontSize: '2rem',
             }}
           />
+        <div className='filtersmenu'>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -195,6 +219,7 @@ export default function AlignItemsList() {
         />)}
 
       </Menu>
+      </div>
        </IconButton>
       </Grid>      
     <div className="list-container">

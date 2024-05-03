@@ -41,7 +41,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                 control={<Checkbox checked={toyCategoryChecked[2]} onChange={handleCategoryChange(2)} />}
             />
             <FormControlLabel
-                label="Cars"
+                label="Outdoor"
                 control={<Checkbox checked={toyCategoryChecked[3]} onChange={handleCategoryChange(3)} />}
             />
         </Box>
@@ -54,15 +54,15 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                 control={<Checkbox checked={toyAgeChecked[0]} onChange={handleToyAgeChange(0)} />}
             />
             <FormControlLabel
-                label="Toddler"
+                label="Child"
                 control={<Checkbox checked={toyAgeChecked[1]} onChange={handleToyAgeChange(1)} />}
             />
             <FormControlLabel
-                label="Child"
+                label="Teenager"
                 control={<Checkbox checked={toyAgeChecked[2]} onChange={handleToyAgeChange(2)} />}
             />
             <FormControlLabel
-                label="Teenager"
+                label="Adult"
                 control={<Checkbox checked={toyAgeChecked[3]} onChange={handleToyAgeChange(3)} />}
             />
         </Box>
