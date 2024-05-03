@@ -54,7 +54,7 @@
       "ID": 1,
       "Name": "selah el telmeez",
       "Price": 330,
-      "Type":"Books",
+      "Type": "Books",
       "Current_Inventory": 225,
       "Backorder": 0,
       "Manufacturing": 10,
@@ -130,7 +130,7 @@
       "ID": 8,
       "Name": "Ruler",
       "Price": 3500,
-      "Type":"Stationary",
+      "Type": "Stationary",
       "Current_Inventory": 0,
       "Backorder": 0,
       "Manufacturing": 0,
@@ -141,7 +141,7 @@
       "ID": 9,
       "Name": "Pens",
       "Price": 4000,
-      "Type":"Stationary",
+      "Type": "Stationary",
       "Current_Inventory": 95,
       "Backorder": 0,
       "Manufacturing": 5,
@@ -274,7 +274,7 @@
       "ID": 23,
       "Name": "Banana",
       "Price": 10,
-      "Type":"Fruits",
+      "Type": "Fruits",
       "Current_Inventory": 1000,
       "Backorder": 25,
       "Manufacturing": 2250,
@@ -421,6 +421,33 @@
           "Email": "name@student.guc.edu.eg"
         }
       ]
+    }
+  ],
+  "organizationNotifications": [
+    {
+      "id": 1,
+      "content": "Your donation request was chosen by Yousef !!",
+      "date": "1-5-2024"
+    },
+    {
+      "id": 2,
+      "content": "Your donation request was chosen by Seif !!",
+      "date": "2-5-2024"
+    },
+    {
+      "id": 3,
+      "content": "Your donation request was chosen Sawy !!",
+      "date": "3-5-2024"
+    },
+    {
+      "id": 4,
+      "content": "Your donation request was chosen by Mostafa !!",
+      "date": "4-5-2024"
+    },
+    {
+      "id": 5,
+      "content": "Your donation request was chosen by Rasheed !!",
+      "date": "5-5-2024"
     }
   ]
 }
