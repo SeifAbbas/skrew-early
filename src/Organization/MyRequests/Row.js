@@ -10,13 +10,20 @@ import {
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { MdDelete } from "react-icons/md";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import DonorDetailsSubTable from "./DonorDetailsSubTable";
+import EditRequest from "./EditRequestPopup";
 
 export default function Row(props) {
   const { row, setRows } = props;
   const [open, setOpen] = useState(false);
+  const [openEditMode, setOpenEditMode] = useState(false);
+
+  const handleEditRow = () => {
+    setOpenEditMode(true);
+  };
 
   const handleDeleteRow = (event) => {
     setRows((rows) => {
@@ -58,23 +65,47 @@ export default function Row(props) {
         <TableCell align="center">{row.Date}</TableCell>
 
         <TableCell align="center" sx={{ maxWidth: 90 }}>
+          {row.Donor.length === 0 && (
+            <Button
+              onClick={handleEditRow}
+              sx={{
+                backgroundColor: "steelblue",
+                color: "inherit",
+                fontSize: "12px",
+                padding: "10px",
+              }}
+            >
+              <EditNoteIcon color="inherit" style={{ marginRight: "5px" }} />
+              Edit post
+            </Button>
+          )}
+        </TableCell>
+
+        <TableCell align="center" sx={{ maxWidth: 90 }}>
           <Button
             onClick={handleDeleteRow}
             sx={{
               backgroundColor: "red",
               color: "inherit",
-              fontSize: "10px",
+              fontSize: "12px",
+              padding: "10px",
             }}
           >
-            <IconButton size="10px">
-              <MdDelete color="inherit" />
-            </IconButton>
+            <DeleteIcon color="inherit" style={{ marginRight: "5px" }} />
             Delete post
           </Button>
         </TableCell>
       </TableRow>
 
       <DonorDetailsSubTable row={row} open={open} />
+      {openEditMode && (
+        <EditRequest
+          row={row}
+          setRows={setRows}
+          openEditMode={openEditMode}
+          setOpenEditMode={setOpenEditMode}
+        />
+      )}
     </>
   );
 }

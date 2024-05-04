@@ -48,13 +48,14 @@ export default function MyRequests() {
                 Date of Donation
               </TableCell>
               <TableCell />
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <Row key={row.name} row={row} rows={rows} setRows={setRows} />
+              .map((row, index) => (
+                <Row key={index} row={row} rows={rows} setRows={setRows} />
               ))}
           </TableBody>
         </Table>

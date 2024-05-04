@@ -11,17 +11,14 @@ import {
   Paper,
   Button,
 } from "@mui/material";
-import { useState } from "react";
 
-import dummyData from "../dummyData.json";
-
-const NewRequest = () => {
-  const [formFields, setFormFields] = useState(
-    dummyData.organizationNewRequest
-  );
-
-  const [chosenCategory, setChosenCategory] = useState("clothes");
-
+const NewRequest = ({
+  showInPopup,
+  formFields,
+  setFormFields,
+  chosenCategory,
+  setChosenCategory,
+}) => {
   const handleInputChange = (event, index) => {
     setFormFields((prevState) => {
       const newFormFields = { ...prevState };
@@ -44,9 +41,11 @@ const NewRequest = () => {
         flexDirection: "column",
       }}
     >
-      <Typography variant="h5" style={{ marginBottom: "40px" }}>
-        Donation Request
-      </Typography>
+      {!showInPopup && (
+        <Typography variant="h5" style={{ marginBottom: "40px" }}>
+          Donation Request
+        </Typography>
+      )}
 
       <FormControl>
         <InputLabel>Category</InputLabel>
@@ -94,9 +93,11 @@ const NewRequest = () => {
             />
           ))}
 
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
-            Post
-          </Button>
+          {!showInPopup && (
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
+              Post
+            </Button>
+          )}
         </Paper>
       </Box>
     </Grid>
