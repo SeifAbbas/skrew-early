@@ -74,8 +74,8 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
     } else if (
-      data.get("email") === orgSignInData.email &&
-      data.get("password") === orgSignInData.password
+      data.get("email") === orgSignInData.Email &&
+      data.get("password") === orgSignInData.Password
     ) {
       setActiveUser("Organization");
       setNavbarContent([
