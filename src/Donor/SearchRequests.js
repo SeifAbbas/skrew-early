@@ -43,13 +43,13 @@ export default function AlignItemsList() {
   const [medSuppliesChecked, setMedSuppliesChecked] = React.useState([false, false, false, false]);
   const [medicationChecked, setMedicationChecked] = React.useState([false, false, false, false]);
   const [schoolSuppliesChecked, setSchoolSuppliesChecked] = React.useState([false, false]);
-  const [toyCategoryChecked, setToyCategoryChecked] = React.useState([false, false, false, false]);
+  const [toyCategoryChecked, setToyCategoryChecked] = React.useState([false, false, false, false, false]);
   const [toyAgeChecked, setToyAgeChecked] = React.useState([false, false, false, false]);
   const [toyGenderChecked, setToyGenderChecked] = React.useState([false, false]);
   const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
   const ages = ['Infant', 'Child', 'Teenager', 'Adult'];
   const genders = ['Male', 'Female'];
-  const toyCategories = ['Stuffed','Sports','Dolls','Outdoor'];
+  const toyCategories = ['Stuffed','Sports','Dolls','Outdoor', 'Board Games'];
   const foods = ['Canned','Baked','Fruits','Fresh'];
   const medSupplies = ['Class Is','Class IIa','Class IIb','Class III'];
   const medications = ['Anti Biotic','Vaccine','Pain Reliever','Prescribed'];

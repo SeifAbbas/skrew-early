@@ -26,7 +26,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
     };
 
     const categories = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', mr:2.5}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mr: -2}}>
             <FormControlLabel
                 label="Stuffed"
                 control={<Checkbox checked={toyCategoryChecked[0]} onChange={handleCategoryChange(0)} />}
@@ -42,6 +42,10 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
             <FormControlLabel
                 label="Outdoor"
                 control={<Checkbox checked={toyCategoryChecked[3]} onChange={handleCategoryChange(3)} />}
+            />
+             <FormControlLabel
+                label="Board Games"
+                control={<Checkbox checked={toyCategoryChecked[4]} onChange={handleCategoryChange(4)} />}
             />
         </Box>
     );

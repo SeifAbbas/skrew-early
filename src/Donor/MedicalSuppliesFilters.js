@@ -40,7 +40,7 @@ const MedicalSuppliesFilters = ({medSuppliesChecked, setMedSuppliesChecked}) => 
         <>
             <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
-                    label="Medical Devices"
+                    label="Medical Supplies"
                     control={
                         <Checkbox
                             checked={mainCheckboxChecked}
