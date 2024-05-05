@@ -230,7 +230,7 @@ export default function AlignItemsList() {
        </IconButton>
       </Grid>      
     <div className="list-container">
-    <List sx={{ maxwidth: "30%", display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
+    <List sx={{ width: "100%", display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
     {filteredItems.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map((item, index) => (
         <ListItem key={index} className="list-item">
           {/* <ListItemAvatar>
