@@ -2,7 +2,6 @@ import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 
 const FoodFilters = ({foodChecked, setFoodChecked}) => {
@@ -17,7 +16,7 @@ const FoodFilters = ({foodChecked, setFoodChecked}) => {
     const mainCheckboxIndeterminate = foodChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
     const foods = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr:2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', ml:9, mr:2 }}>
           <FormControlLabel
             label="Canned"
             control={<Checkbox checked={foodChecked[0]} onChange={handleChange(0)} />}
@@ -39,7 +38,7 @@ const FoodFilters = ({foodChecked, setFoodChecked}) => {
 
     return ( 
         <>
-        <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div  style={{ display: 'flex', justifyContent: 'space-around', alignItems:'center' }}>
             <FormControlLabel
                 label="Food"
                 control={
@@ -54,7 +53,7 @@ const FoodFilters = ({foodChecked, setFoodChecked}) => {
                 }
             />
             {foods}
-        </MenuItem>
+        </div>
         <Divider component="li" />
         </>
     );

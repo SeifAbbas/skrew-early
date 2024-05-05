@@ -2,7 +2,6 @@ import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 
 const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
@@ -17,7 +16,7 @@ const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
     const mainCheckboxIndeterminate = medicationChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
     const medications = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: -3 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mr:-2}}>
           <FormControlLabel
             label="Anti Biotic"
             control={<Checkbox checked={medicationChecked[0]} onChange={handleChange(0)} />}
@@ -39,7 +38,7 @@ const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
   
     return ( 
         <>
-            <MenuItem  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+            <div  style={{ display: 'flex', justifyContent: 'space-between ', alignItems: 'center' }}>
                 <FormControlLabel
                     label="Medication"
                     control={<Checkbox
@@ -52,7 +51,7 @@ const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
                     />}
                 />
                 {medications}
-            </MenuItem>
+            </div>
             <Divider component="li" />
         </>
     );

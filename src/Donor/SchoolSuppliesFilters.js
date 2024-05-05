@@ -2,7 +2,6 @@ import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 
 const SchoolSuppliesFilters = ({schoolSuppliesChecked, setSchoolSuppliesChecked}) => {
@@ -16,7 +15,7 @@ const SchoolSuppliesFilters = ({schoolSuppliesChecked, setSchoolSuppliesChecked}
     const mainCheckboxIndeterminate = schoolSuppliesChecked.some((isChecked) => isChecked) && !mainCheckboxChecked;
 
     const supplies = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column'}}>
           <FormControlLabel
             label="Books"
             control={<Checkbox checked={schoolSuppliesChecked[0]} onChange={handleChange(0)} />}
@@ -30,20 +29,21 @@ const SchoolSuppliesFilters = ({schoolSuppliesChecked, setSchoolSuppliesChecked}
   
     return ( 
         <>
-            <MenuItem  style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <FormControlLabel
-                    label="School Supplies"
-                    control={<Checkbox
-                        checked={mainCheckboxChecked}
-                        indeterminate={mainCheckboxIndeterminate}
-                        onChange={() => {
-                            const allChecked = !mainCheckboxChecked;
-                            setSchoolSuppliesChecked([allChecked, allChecked]);
-                        }}
-                    />}
-                />
-                {supplies}
-            </MenuItem>
+            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+    <FormControlLabel
+        label="School Supplies"
+        control={<Checkbox
+            checked={mainCheckboxChecked}
+            indeterminate={mainCheckboxIndeterminate}
+            onChange={() => {
+                const allChecked = !mainCheckboxChecked;
+                setSchoolSuppliesChecked([allChecked, allChecked]);
+            }}
+        />}
+    />
+    {supplies}
+</div>
+
             <Divider component="li" />
         </>
     );

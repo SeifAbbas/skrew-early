@@ -3,7 +3,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
 
 const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, setToyAgeChecked, toyGenderChecked, setToyGenderChecked}) => {
     const handleCategoryChange = (index) => (event) => {
@@ -27,7 +26,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
     };
 
     const categories = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.7 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mr:2.5}}>
             <FormControlLabel
                 label="Stuffed"
                 control={<Checkbox checked={toyCategoryChecked[0]} onChange={handleCategoryChange(0)} />}
@@ -48,7 +47,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
     );
 
     const toyAges = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 0.7 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mr:2}}>
             <FormControlLabel
                 label="Infant"
                 control={<Checkbox checked={toyAgeChecked[0]} onChange={handleToyAgeChange(0)} />}
@@ -69,7 +68,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
     );
 
     const toyGenders = (
-        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mr: 2.3 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mr:3.5}}>
             <FormControlLabel
                 label="Male"
                 control={<Checkbox checked={toyGenderChecked[0]} onChange={handleToyGenderChange(0)} />}
@@ -83,7 +82,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
 
     return ( 
         <>
-            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Toy Category"
                     control={
@@ -98,9 +97,9 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                     }
                 />
                 {categories}
-            </MenuItem>
+            </div>
             <Divider component="li" />
-            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Toy Age"
                     control={
@@ -115,9 +114,9 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                     }
                 />
                 {toyAges}
-            </MenuItem>
+            </div>
             <Divider component="li" />
-            <MenuItem style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Toy Gender"
                     control={
@@ -132,7 +131,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                     }
                 />
                 {toyGenders}
-            </MenuItem>
+            </div>
             <Divider component="li" />
         </>
     );
