@@ -119,9 +119,9 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
           route: "/Home/Requests",
         },
         {
-          text: "Delivery",
+          text: "Volunteer Activities",
           icon: <LocalShippingIcon />,
-          route: "/Home/Delivery",
+          route: "/Home/VolunteerActivity",
         },
         {
           text: "Organizations",

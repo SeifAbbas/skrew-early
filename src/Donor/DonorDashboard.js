@@ -1,9 +1,7 @@
-import WhatToDonate from "./WhatToDonate";
 
 const DonorDashboard = () => {
   return (
     <>
-      <WhatToDonate />
     </>
   );
 };

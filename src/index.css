@@ -25,10 +25,10 @@
 .button-text {
   color: #1976d2; /* Change text color */
 }
-.button-with-image1:hover img {
+/* .button-with-image1:hover img {
   transform: scale(2) translateY(37px) translateX(50px);
   opacity: 0.8;
-}
+} */
 .button-with-image2 img {
   width: 400px;
   height: 150px;
@@ -36,10 +36,10 @@
   margin-bottom: 0px;
   transition: transform 0.3s ease; /* Add smooth transition for scaling */
 }
-.button-with-image2:hover img {
+/* .button-with-image2:hover img {
   transform: scale(2) translateY(37px);
   opacity: 0.9;
-}
+} */
 .button-with-image3 img {
   width: 400px;
   height: 150px;
@@ -47,10 +47,10 @@
   margin-bottom: 0px;
   transition: transform 0.3s ease; /* Add smooth transition for scaling */
 }
-.button-with-image3:hover img {
+/* .button-with-image3:hover img {
   transform: scale(2) translateY(37px) translateX(-50px);
   opacity: 0.9;
-}
+} */
 .clinic-visits h1 {
   color: #1976d2;
   font-size: 20px;
