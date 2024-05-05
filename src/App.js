@@ -11,6 +11,9 @@ function App() {
   const [activeUser, setActiveUser] = useState("Donor");
   const [navbarContent, setNavbarContent] = useState(null);
   const [inputFields, setInputFields] = useState(dummyData.donorRegFields);
+  const [orgNotificationList, setOrgNotificationList] = useState(
+    dummyData.organizationNotifications
+  );
 
   return (
     <div className="App">
@@ -39,7 +42,12 @@ function App() {
           <Route
             path="/Home/*"
             element={
-              <Home activeUser={activeUser} navbarContent={navbarContent} />
+              <Home
+                activeUser={activeUser}
+                navbarContent={navbarContent}
+                orgNotificationList={orgNotificationList}
+                setOrgNotificationList={setOrgNotificationList}
+              />
             }
           />
         </Routes>

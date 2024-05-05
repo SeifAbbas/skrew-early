@@ -81,13 +81,16 @@ const Drawer = styled(MuiDrawer, {
  '#5893e0' BLUE
 */
 
-export default function Home({ activeUser, navbarContent }) {
+export default function Home({
+  activeUser,
+  navbarContent,
+  orgNotificationList,
+  setOrgNotificationList,
+}) {
   const [open, setOpen] = useState(false);
 
   const [notificationPanelOpen, setNotificationPanelOpen] = useState(false);
-  const [orgNotificationList, setOrgNotificationList] = useState(
-    dummyData.organizationNotifications
-  );
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const theme = createTheme({
@@ -210,7 +213,9 @@ export default function Home({ activeUser, navbarContent }) {
 
           {activeUser === "Admin" && <AdminRoutes />}
           {activeUser === "Organization" && <OrganizationRoutes />}
-          {activeUser === "Donor" && <DonorRoutes />}
+          {activeUser === "Donor" && (
+            <DonorRoutes setOrgNotificationList={setOrgNotificationList} />
+          )}
         </Box>
       </Box>
     </ThemeProvider>

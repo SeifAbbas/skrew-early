@@ -8,14 +8,20 @@ import ClinicVisits from "./ClinicVisits";
 import LearnMore from "./LearnMore";
 import WhatToDonate from "./WhatToDonate";
 
-const DonorRoutes = () => {
+const DonorRoutes = ({ setOrgNotificationList }) => {
   return (
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
       <Route path="Requests" element={<SearchRequests />} />
-      <Route path="Requests/LearnMore/:id" Component={LearnMore} element={<LearnMore />} />
+      <Route
+        path="Requests/LearnMore/:id"
+        element={<LearnMore setOrgNotificationList={setOrgNotificationList} />}
+      />
       <Route path="VolunteerActivity" element={<WhatToDonate />} />
-      <Route path="VolunteerActivity/TeachingClasses" element={<TeachingClasses />} />
+      <Route
+        path="VolunteerActivity/TeachingClasses"
+        element={<TeachingClasses />}
+      />
       <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits />} />
     </Routes>
   );
