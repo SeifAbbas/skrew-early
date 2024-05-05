@@ -20,7 +20,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import DoneIcon from "@mui/icons-material/Done";
 import AddIcon from "@mui/icons-material/Add";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LogoutIcon from "@mui/icons-material/Logout";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import SearchIcon from "@mui/icons-material/Search";
@@ -120,7 +119,7 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
         },
         {
           text: "Volunteer Activities",
-          icon: <LocalShippingIcon />,
+          icon: <VolunteerActivismIcon />,
           route: "/Home/VolunteerActivity",
         },
         {
