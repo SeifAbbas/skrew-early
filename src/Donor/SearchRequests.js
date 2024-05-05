@@ -185,7 +185,10 @@ export default function AlignItemsList() {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleCloseMenu}
-          MenuProps={MenuProps}
+          MenuProps={{MenuProps}}
+          sx = {{
+          marginTop: '25 px',
+          right: '0',}}
         >
         {category.length===0 && (<MenuItem disabled>Please Select a Category</MenuItem>)}
         {category.includes('Clothes') && (<ClothesFilters
@@ -227,22 +230,24 @@ export default function AlignItemsList() {
        </IconButton>
       </Grid>      
     <div className="list-container">
-    <List sx={{ maxwidth: "20%", display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
+    <List sx={{ maxwidth: "30%", display: 'flex', justifyContent: "flex-start", flexWrap: 'wrap'  }}>
     {filteredItems.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map((item, index) => (
         <ListItem key={index} className="list-item">
           {/* <ListItemAvatar>
           <Avatar sx={{ bgcolor: blue[500] }} alt="" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar> */}
-        <CardActionArea>
-        <CardMedia
-          component="img"
-          sx={{
-            fit:'crop',
-            auto:'format',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-          }}
-          image={item.ImageSrc}
-          alt="green iguana"
+        <CardActionArea  className="card-action-area">
+  <CardMedia
+    component="img"
+    image={item.ImageSrc}
+    alt="green iguana"
+    sx={{
+      height: 200, // Set a fixed height for the image
+      objectFit: 'contain',
+      backgroundColor:'background.paper',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+    }}
+    className="card-media"
         />
           <ListItemText
           primary={item.Name}
