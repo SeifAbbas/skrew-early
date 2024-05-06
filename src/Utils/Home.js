@@ -21,7 +21,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { DarkMode, LightMode } from "@mui/icons-material";
 
-import dummyData from "../dummyData.json";
 import ListItems from "./ListItems";
 import AdminRoutes from "../Admin/Routes";
 import DonorRoutes from "../Donor/Routes";
@@ -141,12 +140,33 @@ export default function Home({
             >
               <MenuIcon color="inherit" />
             </IconButton>
+
+            <img
+              src={process.env.PUBLIC_URL + "/logo.png"}
+              alt="logo"
+              style={{
+                height: "auto",
+                width: "50px",
+                marginRight: "10px",
+              }}
+            />
+
             <Typography
               component="h1"
               variant="h6"
-              color="inherit"
+              color={isDarkMode ? "primary" : "white"}
               noWrap
               sx={{ flexGrow: 1 }}
+            >
+              Fa3el 5eir
+            </Typography>
+
+            <Typography
+              component="h1"
+              variant="h6"
+              color={isDarkMode ? "primary" : "white"}
+              noWrap
+              sx={{ flexGrow: 1, alignSelf: "center" }}
             >
               Dashboard
             </Typography>
