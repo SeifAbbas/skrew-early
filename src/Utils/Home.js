@@ -12,6 +12,7 @@ import {
   Divider,
   IconButton,
   Badge,
+  Avatar,
 } from "@mui/material";
 
 import MuiDrawer from "@mui/material/Drawer";
@@ -187,6 +188,12 @@ export default function Home({
               ) : (
                 <LightMode color="inherit" />
               )}
+            </IconButton>
+            <IconButton>
+              <Avatar
+                alt="Account Avatar"
+                src={process.env.PUBLIC_URL + "/Avatars/avatar2.png"}
+              />
             </IconButton>
           </Toolbar>
         </AppBar>
