@@ -137,6 +137,9 @@ export default function AlignItemsList() {
     "Teaching Classes",
     "Doctor Visits",
   ];
+  const vCategories = ["Blood Donations",
+  "Teaching Classes",
+  "Doctor Visits",]
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -194,13 +197,13 @@ export default function AlignItemsList() {
   const [area, setArea] = React.useState([]);
   if (governorate.length > 0) {
     filteredItems = filteredItems.filter((item) =>
-      governorate.includes(item.Governorate)
+      governorate.includes(item.Governorate)  || (!vCategories.includes(item.Category) && category.includes(item.Category))
     );
   }
   if (area.length > 0) {
     filteredItems = filteredItems.filter((item) =>
-      area.includes(item.Area)
-    );
+      area.includes(item.Area) || (!vCategories.includes(item.Category) && category.includes(item.Category))
+  );
   }
   const handleGovChange = (event) => {
     const {
@@ -210,6 +213,7 @@ export default function AlignItemsList() {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    setArea([])
   };
   const handleAreaChange = (event) => {
     const {
