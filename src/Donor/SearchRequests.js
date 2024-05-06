@@ -157,25 +157,11 @@ export default function AlignItemsList() {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    if((category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))){
+      setGovernorate([]);
+      setArea([]);
+    }
   };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleFilterIconClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
-
-  React.useEffect(() => {
-    document.addEventListener("mousedown", handleCloseMenu);
-
-    return () => {
-      document.removeEventListener("mousedown", handleCloseMenu);
-    };
-  }, []);
 
   let filteredItems = dummyData.requests.filter((item) =>
     item.Category.toLowerCase().includes(searchTerm.toLowerCase())
@@ -199,7 +185,41 @@ export default function AlignItemsList() {
       });
     }
   });
-
+  const governorates = ["Cairo", "Alexandria", "Giza", "Luxor", "Aswan", "Red Sea", "South Sinai", "Matrouh", "Suez", "Qena", "Faiyum", "Beheira", "Sharqia", "Damietta", "Sohag", "Beni Suef", "Minya", "New Valley", "North Sinai", "Kafr El Sheikh"];
+  const [governorate, setGovernorate] = React.useState([]);
+  let govAreas = dummyData.egyptGovernorates.filter((item) =>
+    item.name === governorate[0]
+  );
+  let areas = (govAreas.length>0) ?govAreas[0].areas: [];
+  const [area, setArea] = React.useState([]);
+  if (governorate.length > 0) {
+    filteredItems = filteredItems.filter((item) =>
+      governorate.includes(item.Governorate)
+    );
+  }
+  if (area.length > 0) {
+    filteredItems = filteredItems.filter((item) =>
+      area.includes(item.Area)
+    );
+  }
+  const handleGovChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setGovernorate(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+  const handleAreaChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setArea(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
   const [noOfPages] = React.useState(
@@ -267,6 +287,69 @@ export default function AlignItemsList() {
             ))}
           </Select>
         </FormControl>
+        {(category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))
+         && (<FormControl
+          sx={{
+            m: 1,
+            width: 200,
+            backgroundColor: "background.paper",
+            marginTop: "10px",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
+          <InputLabel id="demo-multiple-checkbox-label">Governorate</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            value={governorate}
+            onChange={handleGovChange}
+            input={<OutlinedInput label="Governorate" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {(governorates.length>0) && governorates.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={governorate.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>) 
+}
+        {(category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))
+        && (<FormControl
+          sx={{
+            m: 1,
+            width: 200,
+            backgroundColor: "background.paper",
+            marginTop: "10px",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
+          <InputLabel id="demo-multiple-checkbox-label">Area</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={area}
+            onChange={handleAreaChange}
+            input={<OutlinedInput label="Area" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {(areas.length>0) && areas.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={area.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+            {areas.length===0 && (
+              <MenuItem disabled>Please Select a Governorate</MenuItem>
+          )}
+          </Select>
+        </FormControl>)}
         <IconButton
           onClick={() => handleDrawerOpen(category[0])}
           sx={{ marginTop: "20px", marginBottom: "20px" }}

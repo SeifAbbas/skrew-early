@@ -335,7 +335,89 @@
       "Manufacturing": 5,
       "Category": "Medication",
       "ImageSrc": "https://rathnewpharmacy.ie/wp-content/uploads/2023/05/panadol_extra_tablets_24_rathnew_pharmacy_wicklow_pain_headache_migraine-800.jpg"
+    }, 
+    {
+      "ID": 30,
+      "Name": "The Hunter",
+      "Price": 6700,
+      "Author": "Tana French",
+      "Language": "English",
+      "Edition": "First Edition",
+      "Summary": "It's a blazing summer when two men arrive in a small village in the West of Ireland. One of them is coming home. Both of them are coming to get rich. One of them is coming to die.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://m.media-amazon.com/images/I/41K1N+mt+qL._SY400_.jpg"
+    },
+    {
+      "ID": 31,
+      "Name": "Read & Think Spanish",
+      "Price": 6700,
+      "Author": "DEBOLSILLO",
+      "Language": "Spanish",
+      "Edition": "Third Edition",
+      "Summary": "This book gives you an insider's look at the enchanting diversity of Hispanic life and culture―from the art of eating tapas in Spain to a walk along Cuba’s white sand beaches.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://m.media-amazon.com/images/I/71jdKS4zZxL._SY522_.jpg"
+    },
+    {
+      "ID": 32,
+      "Name": "Al-Ayyam",
+      "Price": 6700,
+      "Author": "Taha Hussein",
+      "Language": "Arabic",
+      "Edition": "First Edition",
+      "Summary": "It deals with his childhood in a small village, then his studies in Egypt and France.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://pictures.abebooks.com/isbn/9789770264119-us.jpg"
+    },
+    {
+      "ID": 33,
+      "Name": "Panadol",
+      "Price": 6700,
+      "Type": "Pain Reliever",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Blood Donations",
+      "Governorate": "Giza",
+      "Area": "Dokki",
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS8782XdbnWmcpbh2kqigv7-7iOYdAKIWGop7r9DXTEg&s"
+    },
+    {
+      "ID": 34,
+      "Name": "Panadol",
+      "Price": 6700,
+      "Type": "Pain Reliever",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Teaching Classes",
+      "Governorate": "Alexandria",
+      "Area": "Downtown",
+      "ImageSrc": "https://media.licdn.com/dms/image/D5612AQE7WdYNUZxdTw/article-cover_image-shrink_600_2000/0/1695272708584?e=2147483647&v=beta&t=E2uUybzO5zudOX8gZV3HvGPO6qTQT-vACuW7AzHacH0"
+    },
+    {
+      "ID": 35,
+      "Name": "Panadol",
+      "Price": 6700,
+      "Type": "Pain Reliever",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Doctor Visits",
+      "Governorate": "Cairo",
+      "Area": "Zamalek",
+      "ImageSrc": "https://plus.unsplash.com/premium_photo-1675686363399-91ad6111f82d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2xpbmljfGVufDB8fDB8fHww"
     }
+    
   ],
   "FulfilledRequests": [
     {
@@ -481,5 +563,87 @@
       { "name": "Medical History", "value": "" },
       { "name": "Quantity (Litres)", "value": "" }
     ]
-  }
+  },
+  "egyptGovernorates": [
+    {
+      "name": "Cairo",
+      "areas": ["Zamalek", "Mohandessin", "Maadi", "Nasr City", "Heliopolis"]
+    },
+    {
+      "name": "Alexandria",
+      "areas": ["Downtown", "Smouha", "Miami", "Roushdy", "Montaza"]
+    },
+    {
+      "name": "Giza",
+      "areas": ["6th of October City", "Sheikh Zayed", "Dokki", "Agouza", "Pyramids"]
+    },
+    {
+      "name": "Luxor",
+      "areas": ["Luxor City", "Karnak", "West Bank", "East Bank"]
+    },
+    {
+      "name": "Aswan",
+      "areas": ["Aswan City", "Nubian Village", "Elephantine Island"]
+    },
+    {
+      "name": "Red Sea",
+      "areas": ["Hurghada", "Sharm El Sheikh", "Marsa Alam", "El Gouna", "Dahab"]
+    },
+    {
+      "name": "South Sinai",
+      "areas": ["Saint Catherine", "Ras Mohammed", "Nuweiba", "Taba"]
+    },
+    {
+      "name": "Matrouh",
+      "areas": ["Marsa Matrouh", "Sidi Abdel Rahman", "Alamein", "Dabaa"]
+    },
+    {
+      "name": "Suez",
+      "areas": ["Suez City", "Ismailia", "El Gouna"]
+    },
+    {
+      "name": "Qena",
+      "areas": ["Qena City", "Dendera", "Nag Hammadi"]
+    },
+    {
+      "name": "Faiyum",
+      "areas": ["Faiyum City", "Ihnasya El Madina", "Tamiya"]
+    },
+    {
+      "name": "Beheira",
+      "areas": ["Damanhur", "Rosetta", "Kafr El Dawwar", "Abu Hummus"]
+    },
+    {
+      "name": "Sharqia",
+      "areas": ["Zagazig", "Ismailia", "Abu Kabeer", "Belbeis"]
+    },
+    {
+      "name": "Damietta",
+      "areas": ["Damietta City", "Ras El Bar", "Faraskur", "New Damietta"]
+    },
+    {
+      "name": "Sohag",
+      "areas": ["Sohag City", "Akhmim", "Gerga", "Dar El Salam"]
+    },
+    {
+      "name": "Beni Suef",
+      "areas": ["Beni Suef City", "Al Wasta", "Nasser", "El Fashn"]
+    },
+    {
+      "name": "Minya",
+      "areas": ["Minya City", "Maghagha", "Bani Mazar", "Samalut"]
+    },
+    {
+      "name": "New Valley",
+      "areas": ["Kharga", "Dakhla", "Farafra"]
+    },
+    {
+      "name": "North Sinai",
+      "areas": ["Arish", "Sheikh Zuweid", "Rafah"]
+    },
+    {
+      "name": "Kafr El Sheikh",
+      "areas": ["Kafr El Sheikh City", "Desouk", "Metoubes", "Baltim"]
+    }
+  ]
 }
