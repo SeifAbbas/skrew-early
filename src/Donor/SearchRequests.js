@@ -117,8 +117,14 @@ export default function AlignItemsList() {
   const medSupplies = ["Class Is", "Class IIa", "Class IIb", "Class III"];
   const medications = ["Anti Biotic", "Vaccine", "Pain Reliever", "Prescribed"];
   const schoolSupplies = ["Books", "Stationary"];
-  const subjects = [ "English","Math", "Science", "Art"];
-  const specialities = ["General", "Dentist", "Pediatrician", "Cardiologist", "Surgeon"];
+  const subjects = ["English", "Math", "Science", "Art"];
+  const specialities = [
+    "General",
+    "Dentist",
+    "Pediatrician",
+    "Cardiologist",
+    "Surgeon",
+  ];
   const filters = [
     ["Clothes", "Age", ages, ageChecked],
     ["Clothes", "Season", seasons, seasonChecked],
@@ -156,9 +162,7 @@ export default function AlignItemsList() {
     "Teaching Classes",
     "Doctor Visits",
   ];
-  const vCategories = ["Blood Donations",
-  "Teaching Classes",
-  "Doctor Visits",]
+  const vCategories = ["Blood Donations", "Teaching Classes", "Doctor Visits"];
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -179,7 +183,11 @@ export default function AlignItemsList() {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    if((category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))){
+    if (
+      category.includes("Teaching Classes") ||
+      category.includes("Doctor Visits") ||
+      category.includes("Blood Donations")
+    ) {
       setGovernorate([]);
       setArea([]);
     }
@@ -208,7 +216,42 @@ export default function AlignItemsList() {
     }
   });
   const hospitals = [
-    "Cairo University Hospital", "Alexandria Medical Center", "Ain Shams University Hospital", "Dar El Fouad Hospital", "As-Salam International Hospital", "El Galaa Hospital", "Misr International Hospital", "Luxor International Hospital", "Aswan Heart Centre", "Al Salam Hospital", "Dar Al Fouad Hospital", "Dar Al-Maamoun Hospital", "Police Hospital", "Al Haram Hospital", "El Sahel Teaching Hospital", "El Safa Hospital", "Al Ahly Hospital", "El Salam International Hospital", "International Medical Center", "Saudi-German Hospital", "El Mounira General Hospital", "Dar El Mona", "El Nasr Hospital", "Hayat Hospital", "El Fayoum General Hospital", "Giza General Hospital", "Sohag Teaching Hospital", "Al-Zahra Hospital", "Dar Elhekma Hospital", "Assiut University Hospital", "Port Said General Hospital", "El Minya University Hospital", "El Qasr El Aini Hospital", "Nasser Institute Hospital", "Luxor General Hospital", "Assiut General Hospital"
+    "Cairo University Hospital",
+    "Alexandria Medical Center",
+    "Ain Shams University Hospital",
+    "Dar El Fouad Hospital",
+    "As-Salam International Hospital",
+    "El Galaa Hospital",
+    "Misr International Hospital",
+    "Luxor International Hospital",
+    "Aswan Heart Centre",
+    "Al Salam Hospital",
+    "Dar Al Fouad Hospital",
+    "Dar Al-Maamoun Hospital",
+    "Police Hospital",
+    "Al Haram Hospital",
+    "El Sahel Teaching Hospital",
+    "El Safa Hospital",
+    "Al Ahly Hospital",
+    "El Salam International Hospital",
+    "International Medical Center",
+    "Saudi-German Hospital",
+    "El Mounira General Hospital",
+    "Dar El Mona",
+    "El Nasr Hospital",
+    "Hayat Hospital",
+    "El Fayoum General Hospital",
+    "Giza General Hospital",
+    "Sohag Teaching Hospital",
+    "Al-Zahra Hospital",
+    "Dar Elhekma Hospital",
+    "Assiut University Hospital",
+    "Port Said General Hospital",
+    "El Minya University Hospital",
+    "El Qasr El Aini Hospital",
+    "Nasser Institute Hospital",
+    "Luxor General Hospital",
+    "Assiut General Hospital",
   ];
   const [hospital, setHospital] = React.useState([]);
   const handleHospitalChange = (event) => {
@@ -220,7 +263,18 @@ export default function AlignItemsList() {
       typeof value === "string" ? value.split(",") : value
     );
   };
-  const organizations = ["Egyptian Food Bank", "Misr El Kheir Foundation", "Resala Charity Organization", "Life Makers Foundation", "Tahya Misr Fund", "Basma Foundation for Comprehensive Development", "Al Orman Charity Association", "Ibrahim Badran Foundation for Development", "Kahk El-Sudan Association", "Baitak Zaka Association"];
+  const organizations = [
+    "Egyptian Food Bank",
+    "Misr El Kheir Foundation",
+    "Resala Charity Organization",
+    "Life Makers Foundation",
+    "Tahya Misr Fund",
+    "Basma Foundation for Comprehensive Development",
+    "Al Orman Charity Association",
+    "Ibrahim Badran Foundation for Development",
+    "Kahk El-Sudan Association",
+    "Baitak Zaka Association",
+  ];
   const [organization, setOrganization] = React.useState([]);
   const handleOrganizationChange = (event) => {
     const {
@@ -231,22 +285,49 @@ export default function AlignItemsList() {
       typeof value === "string" ? value.split(",") : value
     );
   };
-  const governorates = ["Cairo", "Alexandria", "Giza", "Luxor", "Aswan", "Red Sea", "South Sinai", "Matrouh", "Suez", "Qena", "Faiyum", "Beheira", "Sharqia", "Damietta", "Sohag", "Beni Suef", "Minya", "New Valley", "North Sinai", "Kafr El Sheikh"];
+  const governorates = [
+    "Cairo",
+    "Alexandria",
+    "Giza",
+    "Luxor",
+    "Aswan",
+    "Red Sea",
+    "South Sinai",
+    "Matrouh",
+    "Suez",
+    "Qena",
+    "Faiyum",
+    "Beheira",
+    "Sharqia",
+    "Damietta",
+    "Sohag",
+    "Beni Suef",
+    "Minya",
+    "New Valley",
+    "North Sinai",
+    "Kafr El Sheikh",
+  ];
   const [governorate, setGovernorate] = React.useState([]);
-  let govAreas = dummyData.egyptGovernorates.filter((item) =>
-    item.name === governorate[0]
+  let govAreas = dummyData.egyptGovernorates.filter(
+    (item) => item.name === governorate[0]
   );
-  let areas = (govAreas.length>0) ?govAreas[0].areas: [];
+  let areas = govAreas.length > 0 ? govAreas[0].areas : [];
   const [area, setArea] = React.useState([]);
   if (governorate.length > 0) {
-    filteredItems = filteredItems.filter((item) =>
-      governorate.includes(item.Governorate)  || (!vCategories.includes(item.Category) && category.includes(item.Category))
+    filteredItems = filteredItems.filter(
+      (item) =>
+        governorate.includes(item.Governorate) ||
+        (!vCategories.includes(item.Category) &&
+          category.includes(item.Category))
     );
   }
   if (area.length > 0) {
-    filteredItems = filteredItems.filter((item) =>
-      area.includes(item.Area) || (!vCategories.includes(item.Category) && category.includes(item.Category))
-  );
+    filteredItems = filteredItems.filter(
+      (item) =>
+        area.includes(item.Area) ||
+        (!vCategories.includes(item.Category) &&
+          category.includes(item.Category))
+    );
   }
   const handleGovChange = (event) => {
     const {
@@ -256,7 +337,7 @@ export default function AlignItemsList() {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    setArea([])
+    setArea([]);
   };
   const handleAreaChange = (event) => {
     const {
@@ -336,133 +417,148 @@ export default function AlignItemsList() {
             ))}
           </Select>
         </FormControl>
-        {(category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))
-         && (<FormControl
-          sx={{
-            m: 1,
-            minWidth: 130,
-            maxWidth: 200,
-            backgroundColor: "background.paper",
-            marginTop: "10px",
-            marginBottom: "10px",
-            marginLeft: "10px",
-          }}
-        >
-          <InputLabel id="demo-multiple-checkbox-label">Governorate</InputLabel>
-          <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            value={governorate}
-            onChange={handleGovChange}
-            input={<OutlinedInput label="Governorate" />}
-            renderValue={(selected) => selected.join(", ")}
-            MenuProps={MenuProps}
+        {(category.includes("Teaching Classes") ||
+          category.includes("Doctor Visits") ||
+          category.includes("Blood Donations")) && (
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 130,
+              maxWidth: 200,
+              backgroundColor: "background.paper",
+              marginTop: "10px",
+              marginBottom: "10px",
+              marginLeft: "10px",
+            }}
           >
-            {(governorates.length>0) && governorates.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={governorate.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>) 
-}
-        {(category.includes('Teaching Classes') || category.includes('Doctor Visits') || category.includes('Blood Donations'))
-        && (<FormControl
-          sx={{
-            m: 1,
-            minWidth: 100,
-            maxWidth: 200,
-            backgroundColor: "background.paper",
-            marginTop: "10px",
-            marginBottom: "10px",
-            marginLeft: "10px",
-          }}
-        >
-          <InputLabel id="demo-multiple-checkbox-label">Area</InputLabel>
-          <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            multiple
-            value={area}
-            onChange={handleAreaChange}
-            input={<OutlinedInput label="Area" />}
-            renderValue={(selected) => selected.join(", ")}
-            MenuProps={MenuProps}
+            <InputLabel id="demo-multiple-checkbox-label">
+              Governorate
+            </InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              value={governorate}
+              onChange={handleGovChange}
+              input={<OutlinedInput label="Governorate" />}
+              renderValue={(selected) => selected.join(", ")}
+              MenuProps={MenuProps}
+            >
+              {governorates.length > 0 &&
+                governorates.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={governorate.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        )}
+        {(category.includes("Teaching Classes") ||
+          category.includes("Doctor Visits") ||
+          category.includes("Blood Donations")) && (
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 100,
+              maxWidth: 200,
+              backgroundColor: "background.paper",
+              marginTop: "10px",
+              marginBottom: "10px",
+              marginLeft: "10px",
+            }}
           >
-            {(areas.length>0) && areas.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={area.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-            {areas.length===0 && (
-              <MenuItem disabled>Please Select a Governorate</MenuItem>
-          )}
-          </Select>
-        </FormControl>)}
-        {(category.includes('Blood Donations'))
-        && (<FormControl
-          sx={{
-            m: 1,
-            minWidth: 100,
-            maxWidth: 200,
-            backgroundColor: "background.paper",
-            marginTop: "10px",
-            marginBottom: "10px",
-            marginLeft: "10px",
-          }}
-        >
-          <InputLabel id="demo-multiple-checkbox-label">Hospital</InputLabel>
-          <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            multiple
-            value={hospital}
-            onChange={handleHospitalChange}
-            input={<OutlinedInput label="Hospital" />}
-            renderValue={(selected) => selected.join(", ")}
-            // MenuProps={MenuProps}
+            <InputLabel id="demo-multiple-checkbox-label">Area</InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              multiple
+              value={area}
+              onChange={handleAreaChange}
+              input={<OutlinedInput label="Area" />}
+              renderValue={(selected) => selected.join(", ")}
+              MenuProps={MenuProps}
+            >
+              {areas.length > 0 &&
+                areas.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={area.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              {areas.length === 0 && (
+                <MenuItem disabled>Please Select a Governorate</MenuItem>
+              )}
+            </Select>
+          </FormControl>
+        )}
+        {category.includes("Blood Donations") && (
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 100,
+              maxWidth: 200,
+              backgroundColor: "background.paper",
+              marginTop: "10px",
+              marginBottom: "10px",
+              marginLeft: "10px",
+            }}
           >
-            {(hospitals.length>0) && hospitals.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={hospital.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>)}
-        {(category.includes('Doctor Visits'))
-        && (<FormControl
-          sx={{
-            m: 1,
-            minWidth: 135,
-            maxWidth: 200,
-            backgroundColor: "background.paper",
-            marginTop: "10px",
-            marginBottom: "10px",
-            marginLeft: "10px",
-          }}
-        >
-          <InputLabel id="demo-multiple-checkbox-label">Organization</InputLabel>
-          <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            multiple
-            value={organization}
-            onChange={handleOrganizationChange}
-            input={<OutlinedInput label="Organization" />}
-            renderValue={(selected) => selected.join(", ")}
-            // MenuProps={MenuProps}
+            <InputLabel id="demo-multiple-checkbox-label">Hospital</InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              multiple
+              value={hospital}
+              onChange={handleHospitalChange}
+              input={<OutlinedInput label="Hospital" />}
+              renderValue={(selected) => selected.join(", ")}
+              // MenuProps={MenuProps}
+            >
+              {hospitals.length > 0 &&
+                hospitals.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={hospital.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        )}
+        {category.includes("Doctor Visits") && (
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 135,
+              maxWidth: 200,
+              backgroundColor: "background.paper",
+              marginTop: "10px",
+              marginBottom: "10px",
+              marginLeft: "10px",
+            }}
           >
-            {(organizations.length>0) && organizations.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={organization.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>)}
+            <InputLabel id="demo-multiple-checkbox-label">
+              Organization
+            </InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              multiple
+              value={organization}
+              onChange={handleOrganizationChange}
+              input={<OutlinedInput label="Organization" />}
+              renderValue={(selected) => selected.join(", ")}
+              // MenuProps={MenuProps}
+            >
+              {organizations.length > 0 &&
+                organizations.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={organization.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        )}
         <IconButton
           onClick={() => handleDrawerOpen(category[0])}
           sx={{ marginTop: "20px", marginBottom: "20px" }}
@@ -475,11 +571,10 @@ export default function AlignItemsList() {
               fontSize: "2rem",
             }}
           />
-          
         </IconButton>
       </Grid>
 
-          <Drawer
+      <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={handleDrawerClose}
@@ -490,68 +585,68 @@ export default function AlignItemsList() {
           top: "100px",
           zIndex: 1300,
           width: 300,
-          }}
+        }}
       >
-         {category.length === 0 && (
-                <MenuItem disabled>Please Select a Category</MenuItem>
-              )}
-              {category.includes("Clothes") && (
-                <ClothesFilters
-                  seasonChecked={seasonChecked}
-                  setSeasonChecked={setSeasonChecked}
-                  ageChecked={ageChecked}
-                  setAgeChecked={setAgeChecked}
-                  genderChecked={genderChecked}
-                  setGenderChecked={setGenderChecked}
-                />
-              )}
-              {category.includes("Toys") && (
-                <ToysFilters
-                  toyCategoryChecked={toyCategoryChecked}
-                  setToyCategoryChecked={setToyCategoryChecked}
-                  toyAgeChecked={toyAgeChecked}
-                  setToyAgeChecked={setToyAgeChecked}
-                  toyGenderChecked={toyGenderChecked}
-                  setToyGenderChecked={setToyGenderChecked}
-                />
-              )}
-              {category.includes("Medication") && (
-                <MedicationFilters
-                  medicationChecked={medicationChecked}
-                  setMedicationChecked={setMedicationChecked}
-                />
-              )}
-              {category.includes("Medical Supplies") && (
-                <MedicalSuppliesFilters
-                  medSuppliesChecked={medSuppliesChecked}
-                  setMedSuppliesChecked={setMedSuppliesChecked}
-                />
-              )}
-              {(category.includes("Books") ||
-                category.includes("School Supplies")) && (
-                <SchoolSuppliesFilters
-                  schoolSuppliesChecked={schoolSuppliesChecked}
-                  setSchoolSuppliesChecked={setSchoolSuppliesChecked}
-                />
-              )}
-              {category.includes("Food") && (
-                <FoodFilters
-                  foodChecked={foodChecked}
-                  setFoodChecked={setFoodChecked}
-                />
-              )}
-              {category.includes("Teaching Classes") && (
-                <TeachingFilters
-                  teachingChecked={teachingChecked}
-                  setTeachingChecked={setTeachingChecked}
-                />
-              )}
-              {category.includes("Doctor Visits") && (
-                <MedicalCaseFilters
-                  caseChecked={caseChecked}
-                  setCaseChecked={setCaseChecked}
-                />
-              )}
+        {category.length === 0 && (
+          <MenuItem disabled>Please Select a Category</MenuItem>
+        )}
+        {category.includes("Clothes") && (
+          <ClothesFilters
+            seasonChecked={seasonChecked}
+            setSeasonChecked={setSeasonChecked}
+            ageChecked={ageChecked}
+            setAgeChecked={setAgeChecked}
+            genderChecked={genderChecked}
+            setGenderChecked={setGenderChecked}
+          />
+        )}
+        {category.includes("Toys") && (
+          <ToysFilters
+            toyCategoryChecked={toyCategoryChecked}
+            setToyCategoryChecked={setToyCategoryChecked}
+            toyAgeChecked={toyAgeChecked}
+            setToyAgeChecked={setToyAgeChecked}
+            toyGenderChecked={toyGenderChecked}
+            setToyGenderChecked={setToyGenderChecked}
+          />
+        )}
+        {category.includes("Medication") && (
+          <MedicationFilters
+            medicationChecked={medicationChecked}
+            setMedicationChecked={setMedicationChecked}
+          />
+        )}
+        {category.includes("Medical Supplies") && (
+          <MedicalSuppliesFilters
+            medSuppliesChecked={medSuppliesChecked}
+            setMedSuppliesChecked={setMedSuppliesChecked}
+          />
+        )}
+        {(category.includes("Books") ||
+          category.includes("School Supplies")) && (
+          <SchoolSuppliesFilters
+            schoolSuppliesChecked={schoolSuppliesChecked}
+            setSchoolSuppliesChecked={setSchoolSuppliesChecked}
+          />
+        )}
+        {category.includes("Food") && (
+          <FoodFilters
+            foodChecked={foodChecked}
+            setFoodChecked={setFoodChecked}
+          />
+        )}
+        {category.includes("Teaching Classes") && (
+          <TeachingFilters
+            teachingChecked={teachingChecked}
+            setTeachingChecked={setTeachingChecked}
+          />
+        )}
+        {category.includes("Doctor Visits") && (
+          <MedicalCaseFilters
+            caseChecked={caseChecked}
+            setCaseChecked={setCaseChecked}
+          />
+        )}
       </Drawer>
 
       <div className="list-container">
@@ -567,19 +662,42 @@ export default function AlignItemsList() {
             .slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage)
             .map((item, index) => (
               <ListItem key={index} className="list-item">
-                {/* <ListItemAvatar>
-          <Avatar sx={{ bgcolor: blue[500] }} alt="" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar> */}
-                <CardActionArea className="card-action-area">
+                <CardActionArea
+                  className="card-action-area"
+                  sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "15px",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
                   <CardMedia
                     component="img"
                     image={item.ImageSrc}
                     alt="green iguana"
                     sx={{
-                      height: 200, // Set a fixed height for the image
-                      objectFit: "contain",
-                      backgroundColor: "background.paper",
+                      height: 300,
+                      objectFit: "cover",
+                      borderTopLeftRadius: "15px",
+                      borderTopRightRadius: "15px",
                       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                      transition: "transform .2s",
+                      border: "1px solid rgba(0, 0, 0, 0.1)",
+                      filter: "brightness(0.9)",
+                      position: "relative",
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
+                        backgroundImage:
+                          "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5))",
+                      },
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                      },
                     }}
                     className="card-media"
                   />
@@ -597,8 +715,9 @@ export default function AlignItemsList() {
                         </Typography>
                       </React.Fragment>
                     }
+                    sx={{ padding: "16px" }}
                   />
-                  <CardActions>
+                  <CardActions sx={{ padding: "0 16px 16px 16px" }}>
                     <Link to={`/Home/Requests/LearnMore/${item.ID}`}>
                       <Button
                         size="small"
@@ -611,7 +730,6 @@ export default function AlignItemsList() {
                       </Button>
                     </Link>
                   </CardActions>
-                  <Divider component="li" />
                 </CardActionArea>
               </ListItem>
             ))}
