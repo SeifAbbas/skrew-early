@@ -453,7 +453,6 @@
       "Current_Inventory": 1,
       "Backorder": 35,
       "Manufacturing": 5,
-<<<<<<< HEAD
       "Category": "Teaching Classes",
       "ImageSrc": "https://img.freepik.com/free-vector/colorful-science-objects-icons-vector-set_1308-131708.jpg"
     },
@@ -528,13 +527,6 @@
       "Manufacturing": 5,
       "Category": "Medical Visit",
       "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6lYQuu9lQx_Ky-q2rqnHGpKLPr8Hdaaj-BSlWN9c7Fg&s"
-=======
-      "Category": "Doctor Visits",
-      "Governorate": "Cairo",
-      "Area": "Zamalek",
-      "Specialty": "Pediatrician",
-      "ImageSrc": "https://plus.unsplash.com/premium_photo-1675686363399-91ad6111f82d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2xpbmljfGVufDB8fDB8fHww"
->>>>>>> e963a70bd0c1300be1d41338219b85ffefdeaae3
     }
     
   ],
