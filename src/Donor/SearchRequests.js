@@ -31,6 +31,7 @@ import FoodFilters from "./FoodFilters";
 import MedicationFilters from "./MedicationFilters";
 import SchoolSuppliesFilters from "./SchoolSuppliesFilters";
 import MedicalSuppliesFilters from "./MedicalSuppliesFilters";
+import TeachingFilters from "./TeachingFilters";
 import { Link } from "react-router-dom";
 
 export default function AlignItemsList() {
@@ -88,6 +89,12 @@ export default function AlignItemsList() {
     false,
     false,
   ]);
+  const [teachingChecked, setTeachingChecked] = React.useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
   const seasons = ["Winter", "Spring", "Summer", "Fall"];
   const ages = ["Infant", "Child", "Teenager", "Adult"];
   const genders = ["Male", "Female"];
@@ -102,6 +109,7 @@ export default function AlignItemsList() {
   const medSupplies = ["Class Is", "Class IIa", "Class IIb", "Class III"];
   const medications = ["Anti Biotic", "Vaccine", "Pain Reliever", "Prescribed"];
   const schoolSupplies = ["Books", "Stationary"];
+  const subjects = [ "English","Math", "Science", "Art"];
   const filters = [
     ["Clothes", "Age", ages, ageChecked],
     ["Clothes", "Season", seasons, seasonChecked],
@@ -113,6 +121,7 @@ export default function AlignItemsList() {
     ["School Supplies", "Type", schoolSupplies, schoolSuppliesChecked],
     ["Medication", "Type", medications, medicationChecked],
     ["Medical Supplies", "Type", medSupplies, medSuppliesChecked],
+    ["Teaching Classes", "Subject", subjects, teachingChecked],
   ];
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -429,6 +438,12 @@ export default function AlignItemsList() {
                 <FoodFilters
                   foodChecked={foodChecked}
                   setFoodChecked={setFoodChecked}
+                />
+              )}
+              {category.includes("Teaching Classes") && (
+                <TeachingFilters
+                  teachingChecked={teachingChecked}
+                  setTeachingChecked={setTeachingChecked}
                 />
               )}
       </Drawer>
