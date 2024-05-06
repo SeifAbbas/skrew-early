@@ -335,6 +335,48 @@
       "Manufacturing": 5,
       "Category": "Medication",
       "ImageSrc": "https://rathnewpharmacy.ie/wp-content/uploads/2023/05/panadol_extra_tablets_24_rathnew_pharmacy_wicklow_pain_headache_migraine-800.jpg"
+    },
+    {
+      "ID": 30,
+      "Name": "The Hunter",
+      "Price": 6700,
+      "Author": "Tana French",
+      "Language": "English",
+      "Edition": "First Edition",
+      "Summary": "It's a blazing summer when two men arrive in a small village in the West of Ireland. One of them is coming home. Both of them are coming to get rich. One of them is coming to die.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://m.media-amazon.com/images/I/41K1N+mt+qL._SY400_.jpg"
+    },
+    {
+      "ID": 31,
+      "Name": "Read & Think Spanish",
+      "Price": 6700,
+      "Author": "DEBOLSILLO",
+      "Language": "Spanish",
+      "Edition": "Third Edition",
+      "Summary": "This book gives you an insider's look at the enchanting diversity of Hispanic life and culture―from the art of eating tapas in Spain to a walk along Cuba’s white sand beaches.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://m.media-amazon.com/images/I/71jdKS4zZxL._SY522_.jpg"
+    },
+    {
+      "ID": 32,
+      "Name": "Al-Ayyam",
+      "Price": 6700,
+      "Author": "Taha Hussein",
+      "Language": "Arabic",
+      "Edition": "First Edition",
+      "Summary": "It deals with his childhood in a small village, then his studies in Egypt and France.",
+      "Current_Inventory": 90,
+      "Backorder": 35,
+      "Manufacturing": 5,
+      "Category": "Books",
+      "ImageSrc": "https://pictures.abebooks.com/isbn/9789770264119-us.jpg"
     }
   ],
   "FulfilledRequests": [
