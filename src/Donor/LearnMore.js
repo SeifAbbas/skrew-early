@@ -92,7 +92,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
                 {
                   (item.CaseDes && <h1>{item.CaseDes}</h1>)
                 }
-                {item.Category !== "Blood Donations" && (
+                {item.Category !== "Blood Donations" && item.Category !== "Teaching Classes" && item.Category !== "Medical Visit" && (
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <h1 style={{ marginRight: '10px' }}>How many will you donate ?</h1>
                 <input style={{ marginTop: '20px' }} type="number" placeholder="Number of donation items" />
