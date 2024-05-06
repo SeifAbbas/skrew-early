@@ -184,3 +184,9 @@
   align-self: center;
   margin-left: 33%;
 }
+.learn-more input{
+  text-align: center;
+}
+.learn-more :placeholder-shown {
+  text-align: center;
+}

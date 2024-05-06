@@ -60,6 +60,10 @@ const LearnMore = ({ setOrgNotificationList }) => {
                 (item.Type && <h1>{"Type: " + item.Type}</h1>)}
               {(item.Age && <h1>{item.Age}</h1>) ||
                 (item.Season && <h1>{item.Season}</h1>)}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h1 style={{ marginRight: '10px' }}>How many will you donate ?</h1>
+                <input style={{ marginTop: '20px' }} type="number" placeholder="Number of donation items" />
+              </div>
             </div>
           )
       )}
@@ -69,6 +73,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
             Back
           </Button>
         </Link>
+        <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
         <Button
           variant="contained"
           className="donate-button"
@@ -76,6 +81,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
         >
           Donate
         </Button>
+        </Link>
       </Box>
     </div>
   );
