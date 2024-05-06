@@ -1,6 +1,6 @@
 import dummyData from "../dummyData.json";
 import { Link, useParams } from "react-router-dom";
-import { Divider, Button, Box } from "@mui/material";
+import { Divider, Button, Box, ListItem } from "@mui/material";
 
 const LearnMore = ({ setOrgNotificationList }) => {
   const { id } = useParams();
@@ -101,13 +101,17 @@ const LearnMore = ({ setOrgNotificationList }) => {
             </div>
           )
       )}
+      {dummyData.requests.map(
+        (item) =>
+          item.ID === idNum && (
+            <div>
       <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
         <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
           <Button variant="contained" className="back-button">
             Back
           </Button>
         </Link>
-        {dummyData.requests.Category !== "Blood Donations" && dummyData.requests.Category !== "Teaching Classes" && dummyData.requests.Category !== "Medical Visit" &&(
+        {item.Category !== "Blood Donations" && item.Category !== "Teaching Classes" && item.Category !== "Medical Visit" &&(
         <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
         <Button
           variant="contained"
@@ -119,7 +123,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
         </Link>
         )}
 
-        {dummyData.requests.Category === "Blood Donations" || dummyData.requests.Category === "Teaching Classes" || dummyData.requests.Category === "Medical Visit" && (
+        {(item.Category === "Blood Donations" || item.Category === "Teaching Classes" || item.Category === "Medical Visit") &&(
         <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
         <Button
           variant="contained"
@@ -131,6 +135,9 @@ const LearnMore = ({ setOrgNotificationList }) => {
         </Link>
         )}
       </Box>
+      </div>
+          )
+      )}
     </div>
   );
 };
