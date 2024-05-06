@@ -44,7 +44,7 @@ const SchoolSuppliesFilters = ({schoolSuppliesChecked, setSchoolSuppliesChecked}
     {supplies}
 </div>
 
-            <Divider component="li" />
+            <Divider component="div" />
         </>
     );
 }

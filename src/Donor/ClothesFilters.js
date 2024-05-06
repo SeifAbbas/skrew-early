@@ -57,7 +57,7 @@ const ClothesFilters = ({ seasonChecked, setSeasonChecked, ageChecked, setAgeChe
                     ))}
                 </Box>
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Age"
@@ -82,7 +82,7 @@ const ClothesFilters = ({ seasonChecked, setSeasonChecked, ageChecked, setAgeChe
                     ))}
                 </Box>
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Gender"
@@ -105,7 +105,7 @@ const ClothesFilters = ({ seasonChecked, setSeasonChecked, ageChecked, setAgeChe
                     />
                 </Box>
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
         </>
     );
 }

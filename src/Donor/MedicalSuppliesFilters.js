@@ -54,7 +54,7 @@ const MedicalSuppliesFilters = ({medSuppliesChecked, setMedSuppliesChecked}) => 
                 />
                 {medicalSupplies}
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
         </>
     );
 };

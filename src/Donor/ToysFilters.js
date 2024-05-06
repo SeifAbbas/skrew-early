@@ -102,7 +102,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                 />
                 {categories}
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Toy Age"
@@ -119,7 +119,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                 />
                 {toyAges}
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'right' }}>
                 <FormControlLabel
                     label="Toy Gender"
@@ -136,7 +136,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                 />
                 {toyGenders}
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
         </>
     );
 }

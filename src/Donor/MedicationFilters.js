@@ -52,7 +52,7 @@ const MedicationFilters = ({medicationChecked, setMedicationChecked}) => {
                 />
                 {medications}
             </div>
-            <Divider component="li" />
+            <Divider component="div" />
         </>
     );
 }

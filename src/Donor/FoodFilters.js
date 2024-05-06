@@ -54,7 +54,7 @@ const FoodFilters = ({foodChecked, setFoodChecked}) => {
             />
             {foods}
         </div>
-        <Divider component="li" />
+        <Divider component="div" />
         </>
     );
 };
