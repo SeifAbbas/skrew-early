@@ -17,6 +17,7 @@ import {
   InputLabel,
   MenuItem,
   FormControl,
+  Drawer,
   Select,
   Checkbox,
   Pagination,
@@ -139,6 +140,15 @@ export default function AlignItemsList() {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  const [drawerOpen, setDrawerOpen] = React.useState(false); // State for drawer
+
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
   const handleFilterChange = (event) => {
     const {
       target: { value },
@@ -258,7 +268,7 @@ export default function AlignItemsList() {
           </Select>
         </FormControl>
         <IconButton
-          onClick={handleFilterIconClick}
+          onClick={() => handleDrawerOpen(category[0])}
           sx={{ marginTop: "20px", marginBottom: "20px" }}
         >
           {" "}
@@ -269,18 +279,24 @@ export default function AlignItemsList() {
               fontSize: "2rem",
             }}
           />
-          <div className="filtersmenu">
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleCloseMenu}
-              MenuProps={{ MenuProps }}
-              sx={{
-                marginTop: "25 px",
-                right: "0",
-              }}
-            >
-              {category.length === 0 && (
+          
+        </IconButton>
+      </Grid>
+
+          <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={handleDrawerClose}
+        sx={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          top: "100px",
+          zIndex: 1300,
+          width: 300,
+          }}
+      >
+         {category.length === 0 && (
                 <MenuItem disabled>Please Select a Category</MenuItem>
               )}
               {category.includes("Clothes") && (
@@ -328,10 +344,8 @@ export default function AlignItemsList() {
                   setFoodChecked={setFoodChecked}
                 />
               )}
-            </Menu>
-          </div>
-        </IconButton>
-      </Grid>
+      </Drawer>
+
       <div className="list-container">
         <List
           sx={{

@@ -95,7 +95,7 @@ const ToysFilters = ({toyCategoryChecked, setToyCategoryChecked, toyAgeChecked, 
                             indeterminate={toyCategoryChecked.some((isChecked) => isChecked) && !toyCategoryChecked.every((isChecked) => isChecked)}
                             onChange={() => {
                                 const allChecked = !toyCategoryChecked.every((isChecked) => isChecked);
-                                setToyCategoryChecked([allChecked, allChecked, allChecked, allChecked]);
+                                setToyCategoryChecked([allChecked, allChecked, allChecked, allChecked, allChecked]);
                             }}
                         />
                     }
