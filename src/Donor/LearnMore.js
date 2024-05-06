@@ -57,9 +57,13 @@ const LearnMore = ({ setOrgNotificationList }) => {
                 <h1>{"Quantity Needed: " + item.Current_Inventory}</h1>
               )}
               {(item.Gender && <h1>{item.Gender}</h1>) ||
-                (item.Type && <h1>{"Type: " + item.Type}</h1>)}
+                (item.Type && <h1>{"Type: " + item.Type}</h1>) ||
+                (item.Author && <h1>{item.Author}</h1>)}
               {(item.Age && <h1>{item.Age}</h1>) ||
-                (item.Season && <h1>{item.Season}</h1>)}
+                (item.Season && <h1>{item.Season}</h1>) ||
+                (item.Language && <h1>{item.Language}</h1>) &&
+                (item.Edition && <h1>{item.Edition}</h1>) &&
+                (item.Summary && <h1>{item.Summary}</h1>)}
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <h1 style={{ marginRight: '10px' }}>How many will you donate ?</h1>
                 <input style={{ marginTop: '20px' }} type="number" placeholder="Number of donation items" />
