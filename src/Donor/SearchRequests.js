@@ -32,6 +32,7 @@ import MedicationFilters from "./MedicationFilters";
 import SchoolSuppliesFilters from "./SchoolSuppliesFilters";
 import MedicalSuppliesFilters from "./MedicalSuppliesFilters";
 import TeachingFilters from "./TeachingFilters";
+import MedicalCaseFilters from "./MedicalCaseFilters";
 import { Link } from "react-router-dom";
 
 export default function AlignItemsList() {
@@ -95,6 +96,13 @@ export default function AlignItemsList() {
     false,
     false,
   ]);
+  const [caseChecked, setCaseChecked] = React.useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const seasons = ["Winter", "Spring", "Summer", "Fall"];
   const ages = ["Infant", "Child", "Teenager", "Adult"];
   const genders = ["Male", "Female"];
@@ -110,6 +118,7 @@ export default function AlignItemsList() {
   const medications = ["Anti Biotic", "Vaccine", "Pain Reliever", "Prescribed"];
   const schoolSupplies = ["Books", "Stationary"];
   const subjects = [ "English","Math", "Science", "Art"];
+  const specialities = ["General", "Dentist", "Pediatrician", "Cardiologist", "Surgeon"];
   const filters = [
     ["Clothes", "Age", ages, ageChecked],
     ["Clothes", "Season", seasons, seasonChecked],
@@ -122,6 +131,7 @@ export default function AlignItemsList() {
     ["Medication", "Type", medications, medicationChecked],
     ["Medical Supplies", "Type", medSupplies, medSuppliesChecked],
     ["Teaching Classes", "Subject", subjects, teachingChecked],
+    ["Doctor Visits", "Specialty", specialities, caseChecked],
   ];
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -197,6 +207,30 @@ export default function AlignItemsList() {
       });
     }
   });
+  const hospitals = [
+    "Cairo University Hospital", "Alexandria Medical Center", "Ain Shams University Hospital", "Dar El Fouad Hospital", "As-Salam International Hospital", "El Galaa Hospital", "Misr International Hospital", "Luxor International Hospital", "Aswan Heart Centre", "Al Salam Hospital", "Dar Al Fouad Hospital", "Dar Al-Maamoun Hospital", "Police Hospital", "Al Haram Hospital", "El Sahel Teaching Hospital", "El Safa Hospital", "Al Ahly Hospital", "El Salam International Hospital", "International Medical Center", "Saudi-German Hospital", "El Mounira General Hospital", "Dar El Mona", "El Nasr Hospital", "Hayat Hospital", "El Fayoum General Hospital", "Giza General Hospital", "Sohag Teaching Hospital", "Al-Zahra Hospital", "Dar Elhekma Hospital", "Assiut University Hospital", "Port Said General Hospital", "El Minya University Hospital", "El Qasr El Aini Hospital", "Nasser Institute Hospital", "Luxor General Hospital", "Assiut General Hospital"
+  ];
+  const [hospital, setHospital] = React.useState([]);
+  const handleHospitalChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setHospital(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+  const organizations = ["Egyptian Food Bank", "Misr El Kheir Foundation", "Resala Charity Organization", "Life Makers Foundation", "Tahya Misr Fund", "Basma Foundation for Comprehensive Development", "Al Orman Charity Association", "Ibrahim Badran Foundation for Development", "Kahk El-Sudan Association", "Baitak Zaka Association"];
+  const [organization, setOrganization] = React.useState([]);
+  const handleOrganizationChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setOrganization(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   const governorates = ["Cairo", "Alexandria", "Giza", "Luxor", "Aswan", "Red Sea", "South Sinai", "Matrouh", "Suez", "Qena", "Faiyum", "Beheira", "Sharqia", "Damietta", "Sohag", "Beni Suef", "Minya", "New Valley", "North Sinai", "Kafr El Sheikh"];
   const [governorate, setGovernorate] = React.useState([]);
   let govAreas = dummyData.egyptGovernorates.filter((item) =>
@@ -269,12 +303,14 @@ export default function AlignItemsList() {
             marginBottom: "10px",
             marginLeft: "10px",
             backgroundColor: "background.paper",
+            width: 150,
           }}
         />
         <FormControl
           sx={{
             m: 1,
-            width: 200,
+            minWidth: 110,
+            maxWidth: 200,
             backgroundColor: "background.paper",
             marginTop: "10px",
             marginBottom: "10px",
@@ -304,7 +340,8 @@ export default function AlignItemsList() {
          && (<FormControl
           sx={{
             m: 1,
-            width: 200,
+            minWidth: 130,
+            maxWidth: 200,
             backgroundColor: "background.paper",
             marginTop: "10px",
             marginBottom: "10px",
@@ -334,7 +371,8 @@ export default function AlignItemsList() {
         && (<FormControl
           sx={{
             m: 1,
-            width: 200,
+            minWidth: 100,
+            maxWidth: 200,
             backgroundColor: "background.paper",
             marginTop: "10px",
             marginBottom: "10px",
@@ -361,6 +399,68 @@ export default function AlignItemsList() {
             {areas.length===0 && (
               <MenuItem disabled>Please Select a Governorate</MenuItem>
           )}
+          </Select>
+        </FormControl>)}
+        {(category.includes('Blood Donations'))
+        && (<FormControl
+          sx={{
+            m: 1,
+            minWidth: 100,
+            maxWidth: 200,
+            backgroundColor: "background.paper",
+            marginTop: "10px",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
+          <InputLabel id="demo-multiple-checkbox-label">Hospital</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={hospital}
+            onChange={handleHospitalChange}
+            input={<OutlinedInput label="Hospital" />}
+            renderValue={(selected) => selected.join(", ")}
+            // MenuProps={MenuProps}
+          >
+            {(hospitals.length>0) && hospitals.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={hospital.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>)}
+        {(category.includes('Doctor Visits'))
+        && (<FormControl
+          sx={{
+            m: 1,
+            minWidth: 135,
+            maxWidth: 200,
+            backgroundColor: "background.paper",
+            marginTop: "10px",
+            marginBottom: "10px",
+            marginLeft: "10px",
+          }}
+        >
+          <InputLabel id="demo-multiple-checkbox-label">Organization</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={organization}
+            onChange={handleOrganizationChange}
+            input={<OutlinedInput label="Organization" />}
+            renderValue={(selected) => selected.join(", ")}
+            // MenuProps={MenuProps}
+          >
+            {(organizations.length>0) && organizations.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={organization.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>)}
         <IconButton
@@ -444,6 +544,12 @@ export default function AlignItemsList() {
                 <TeachingFilters
                   teachingChecked={teachingChecked}
                   setTeachingChecked={setTeachingChecked}
+                />
+              )}
+              {category.includes("Doctor Visits") && (
+                <MedicalCaseFilters
+                  caseChecked={caseChecked}
+                  setCaseChecked={setCaseChecked}
                 />
               )}
       </Drawer>
