@@ -58,12 +58,35 @@ const LearnMore = ({ setOrgNotificationList }) => {
               )}
               {(item.Gender && <h1>{item.Gender}</h1>) ||
                 (item.Type && <h1>{"Type: " + item.Type}</h1>) ||
-                (item.Author && <h1>{item.Author}</h1>)}
+                (item.Author && <h1>{item.Author}</h1>) ||
+                (item.Subject && <h1>{item.Subject}</h1>)}
               {(item.Age && <h1>{item.Age}</h1>) ||
                 (item.Season && <h1>{item.Season}</h1>) ||
                 (item.Language && <h1>{item.Language}</h1>) &&
                 (item.Edition && <h1>{item.Edition}</h1>) &&
-                (item.Summary && <h1>{item.Summary}</h1>)}
+                (item.Summary && <h1>{item.Summary}</h1>) ||
+                (item.PatientName && <h1>{item.PatientName}</h1>) ||
+                (item.NumberofStudents && <h1>{"Number Of Students: " + item.NumberofStudents}</h1>)
+                }
+                {
+                  (item.HospitalGovernorate && <h1>{item.HospitalGovernorate}</h1>)||
+                  (item.TechGovernorate && <h1>{item.TechGovernorate}</h1>)
+                }
+                {
+                  (item.HospitalArea && <h1>{item.HospitalArea}</h1>)||
+                  (item.TechArea && <h1>{item.TechArea}</h1>)
+                }
+                {
+                  (item.HospitalAddress && <h1>{item.HospitalAddress}</h1>)||
+                  (item.TechAddress && <h1>{item.TechAddress}</h1>)
+                }
+                {
+                  (item.Weight && <h1>{"Weight: " +item.Weight}</h1>)
+                }
+                {
+                  (item.CaseDes && <h1>{item.CaseDes}</h1>)
+                }
+
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <h1 style={{ marginRight: '10px' }}>How many will you donate ?</h1>
                 <input style={{ marginTop: '20px' }} type="number" placeholder="Number of donation items" />
