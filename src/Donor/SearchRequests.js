@@ -363,22 +363,7 @@ export default function AlignItemsList() {
     setAnchorEl(null);
     setSelectedItemId(0); // Reset the selected item ID when closing
   };
-  React.useEffect(() => {
-    // Function to close Popper when clicking outside
-    const handleClickOutside = (event) => {
-      if (anchorEl && !anchorEl.contains(event.target)) {
-        handleClose();
-      }
-    };
-  
-    // Add event listener
-    document.addEventListener("mousedown", handleClickOutside);
-  
-    // Remove event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [anchorEl]);
+
   
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
@@ -767,6 +752,14 @@ export default function AlignItemsList() {
   anchorOrigin={{
     vertical: 'bottom',
     horizontal: 'left',
+  }}
+  PaperProps={{
+    sx: {
+      backgroundColor: "#ffffff", // Background color
+      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Box shadow
+      borderRadius: "8px", // Border radius
+      padding: "16px", // Padding
+    }
   }}
 >
   <LearnMore idNum={selectedItemId} /> {/* Pass the selected item's ID as a prop */}
