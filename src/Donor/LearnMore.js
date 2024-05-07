@@ -2,10 +2,10 @@ import dummyData from "../dummyData.json";
 import { Link, useParams } from "react-router-dom";
 import { Divider, Button, Box, ListItem } from "@mui/material";
 
-const LearnMore = ({ setOrgNotificationList }) => {
-  const { id } = useParams();
-  const idNum = Number(id);
-
+const LearnMore = ({ setOrgNotificationList, idNum }) => {
+  // const { id } = useParams();
+  // const idNum = card.ID;
+  console.log(idNum);
   const handleDonate = () => {
     setOrgNotificationList((prevNotifications) => {
       // Find the max ID in the current list

@@ -21,6 +21,9 @@ import {
   Select,
   Checkbox,
   Pagination,
+  Modal,
+  Popper,
+  Popover,
 } from "@mui/material";
 
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -34,6 +37,7 @@ import MedicalSuppliesFilters from "./MedicalSuppliesFilters";
 import TeachingFilters from "./TeachingFilters";
 import MedicalCaseFilters from "./MedicalCaseFilters";
 import { Link } from "react-router-dom";
+import LearnMore from "./LearnMore";
 
 export default function AlignItemsList() {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -347,6 +351,35 @@ export default function AlignItemsList() {
       typeof value === "string" ? value.split(",") : value
     );
   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedItemId, setSelectedItemId] = React.useState(null); // State to store the ID of the selected item
+
+  const handleClick = (itemId, event) => {
+    setSelectedItemId(itemId); // Set the selected item's ID in the state
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setSelectedItemId(0); // Reset the selected item ID when closing
+  };
+  React.useEffect(() => {
+    // Function to close Popper when clicking outside
+    const handleClickOutside = (event) => {
+      if (anchorEl && !anchorEl.contains(event.target)) {
+        handleClose();
+      }
+    };
+  
+    // Add event listener
+    document.addEventListener("mousedown", handleClickOutside);
+  
+    // Remove event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [anchorEl]);
+  
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
   const [noOfPages] = React.useState(
@@ -356,7 +389,6 @@ export default function AlignItemsList() {
   const handlePageChange = (event, value) => {
     setPage(value - 1);
   };
-  const id = dummyData.requests.id;
   return (
     <div>
       <Grid
@@ -716,18 +748,33 @@ export default function AlignItemsList() {
                     sx={{ padding: "16px" }}
                   />
                   <CardActions sx={{ padding: "0 16px 16px 16px" }}>
-                    <Link to={`/Home/Requests/LearnMore/${item.ID}`}>
-                      <Button
-                        size="small"
-                        color="primary"
-                        variant="contained"
-                        sx={{ display: "inline", marginLeft: -1 }}
-                        className="learn-more-button"
-                      >
-                        Learn More
-                      </Button>
-                    </Link>
+                    {/* <Link to={`/Home/Requests/LearnMore/${item.ID}`}> */}
+                    <Button
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                  sx={{ display: "inline", marginLeft: -1 }}
+                  className="learn-more-button"
+                  onClick={(event) => handleClick(item.ID, event)} // Pass the item's ID to handleClick
+                >
+                  Learn More
+                </Button>
+                {/* Popper to display the LearnMore component */}
+                <Popover 
+  open={Boolean(anchorEl)}
+  anchorEl={anchorEl}
+  onClose={handleClose}
+  anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'left',
+  }}
+>
+  <LearnMore idNum={selectedItemId} /> {/* Pass the selected item's ID as a prop */}
+</Popover>
+
+                    {/* </Link> */}
                   </CardActions>
+      
                 </CardActionArea>
               </ListItem>
             ))}
