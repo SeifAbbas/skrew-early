@@ -8,10 +8,11 @@
   gap: 20px; /* Add spacing between buttons */
 }
 
+
 .donor-what-to-donate h1 {
   color: #1976d2;
   font-size: 20px;
-  margin-bottom: 0px;
+  margin-top: 20px;
   text-align: center;
   background-color: blanchedalmond;
 }
@@ -22,9 +23,7 @@
   margin-bottom: 0px;
   transition: transform 0.3s ease; /* Add smooth transition for scaling */
 }
-.button-text {
-  color: #1976d2; /* Change text color */
-}
+
 /* .button-with-image1:hover img {
   transform: scale(2) translateY(37px) translateX(50px);
   opacity: 0.8;
@@ -189,4 +188,51 @@
 }
 .learn-more :placeholder-shown {
   text-align: center;
+}
+
+/* CSS */
+.donor-what-to-donate {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow buttons to wrap if they exceed the container width */
+}
+
+.donor-what-to-donate h1 {
+  color: #1976d2;
+  font-size: 24px;
+  margin-bottom: -40px; /* Add space between heading and buttons */
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Adjust the gap between buttons */
+}
+
+.button-with-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.button-with-image:hover {
+  transform: scale(1.05);
+}
+
+.button-image {
+  width: 450px; /* Set image width */
+  height: 450px; /* Set image height */
+  margin-bottom: -35px; /* Adjust spacing between image and text */
+  object-fit: contain; /* Ensure the entire image covers the container */
+}
+
+.button-text {
+  font-size: 20px;
+  color: #1976d2;
 }
