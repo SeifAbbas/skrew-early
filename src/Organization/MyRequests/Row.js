@@ -12,6 +12,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteIcon from "@mui/icons-material/Delete";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 import DonorDetailsSubTable from "./DonorDetailsSubTable";
 import EditRequest from "./EditRequestPopup";
@@ -47,15 +49,26 @@ export default function Row(props) {
               </IconButton>
 
               {open ? (
-                <Typography variant="body2">Hide Donor Details</Typography>
+                <Typography variant="body2" style={{ marginRight: "5px" }}>
+                  Hide Donor Details
+                </Typography>
               ) : (
-                <Typography variant="body2">Show Donor Details</Typography>
+                <Typography variant="body2" style={{ marginRight: "5px" }}>
+                  Show Donor Details
+                </Typography>
               )}
+              <TaskAltIcon style={{ color: "green" }} />
             </Box>
           ) : (
-            <Typography variant="body2" style={{ marginLeft: "30px" }}>
-              Not fulfilled yet
-            </Typography>
+            <Box display="flex" alignItems="center">
+              <Typography
+                variant="body2"
+                style={{ marginLeft: "30px", marginRight: "5px" }}
+              >
+                Not fulfilled yet
+              </Typography>
+              <HighlightOffIcon style={{ color: "red" }} />
+            </Box>
           )}
         </TableCell>
 
