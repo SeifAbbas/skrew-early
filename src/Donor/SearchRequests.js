@@ -208,7 +208,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     if (category.includes(filtering[0])) {
       filteredItems = filteredItems.filter((item) => {
         return filtering[3].every((isChecked, index) => {
-          if (isChecked) {
+          if (isChecked && item.Category===filtering[0]) {
             const cat = filtering[1];
             console.log(cat);
             return item[cat] === filtering[2][index];
