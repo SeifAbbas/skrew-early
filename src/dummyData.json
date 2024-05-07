@@ -529,14 +529,7 @@
       "Type": "Toy",
       "Quantity": "1",
       "Date": "12 - 5 - 2024",
-      "Donor": [
-        {
-          "Name": "Yousef Yasser",
-          "Role": "Doctor",
-          "Mobile": "0123456789",
-          "Email": "name@student.guc.edu.eg"
-        }
-      ]
+      "Donor": []
     },
     {
       "Name": "item 2",
