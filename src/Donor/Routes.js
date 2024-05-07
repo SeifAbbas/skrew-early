@@ -5,7 +5,7 @@ import SearchRequests from "./SearchRequests";
 
 import { Routes, Route } from "react-router-dom";
 import ClinicVisits from "./ClinicVisits";
-import LearnMore from "./LearnMore";
+// import LearnMore from "./LearnMore";
 import WhatToDonate from "./WhatToDonate";
 
 const DonorRoutes = ({ setOrgNotificationList }) => {
@@ -13,10 +13,10 @@ const DonorRoutes = ({ setOrgNotificationList }) => {
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
       <Route path="Requests" element={<SearchRequests setOrgNotificationList={setOrgNotificationList}/>} />
-      <Route
+      {/* <Route
         path="Requests/LearnMore/:id"
         element={<LearnMore setOrgNotificationList={setOrgNotificationList} />}
-      />
+      /> */}
       <Route path="VolunteerActivity" element={<WhatToDonate />} />
       <Route
         path="VolunteerActivity/TeachingClasses"
