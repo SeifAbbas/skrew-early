@@ -110,7 +110,7 @@ export default function Row(props) {
         </TableCell>
       </TableRow>
 
-      <DonorDetailsSubTable row={row} open={open} />
+      <DonorDetailsSubTable row={row} open={open} title={"Donor Details"} />
       {openEditMode && (
         <EditRequest
           row={row}
