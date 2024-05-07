@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   Box,
-  CssBaseline,
   Toolbar,
   Container,
   Grid,
@@ -9,6 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import { LineChart, PieChart } from "@mui/x-charts";
+import DonorDetailsSubTable from "./MyRequests/DonorDetailsSubTable";
+import dummyData from "../dummyData.json";
 
 const Chart = () => {
   const xAxis = [
@@ -90,52 +91,74 @@ const CategoryChart = () => {
 
 const OrganizationDashboard = () => {
   return (
-    <>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="xl" sx={{ mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item lg={6} md={12}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
-              <Grid item lg={5} md={12}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <CategoryChart />
-                </Paper>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </Box>
-    </>
+    <Box
+      component="main"
+      sx={{
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.grey[200]
+            : theme.palette.grey[900],
+        flexGrow: 1,
+        height: "100vh",
+        overflow: "auto",
+      }}
+    >
+      <Toolbar />
+      <Container maxWidth="xl" sx={{ mb: 4 }}>
+        <Grid container spacing={2} justifyContent={"center"}>
+          {/** LINE CHART */}
+          <Grid item lg={6} md={12} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <Chart />
+            </Paper>
+          </Grid>
+
+          {/** PIE CHART */}
+          <Grid item lg={5} md={12} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <CategoryChart />
+            </Paper>
+          </Grid>
+
+          {/** TOP DONORS TABLE */}
+          <Grid item lg={6} md={12} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <DonorDetailsSubTable
+                row={dummyData.FulfilledRequests[4]}
+                open={true}
+                title={"Top Contributing Donors"}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
