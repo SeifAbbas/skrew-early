@@ -153,7 +153,6 @@ export default function AlignItemsList() {
   const categories = [
     "Clothes",
     "Toys",
-    "Books",
     "Medication",
     "Medical Supplies",
     "School Supplies",
@@ -622,8 +621,7 @@ export default function AlignItemsList() {
             setMedSuppliesChecked={setMedSuppliesChecked}
           />
         )}
-        {(category.includes("Books") ||
-          category.includes("School Supplies")) && (
+        {(category.includes("School Supplies")) && (
           <SchoolSuppliesFilters
             schoolSuppliesChecked={schoolSuppliesChecked}
             setSchoolSuppliesChecked={setSchoolSuppliesChecked}
