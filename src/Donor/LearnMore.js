@@ -80,7 +80,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
               {(item.HospitalAddress && <h1>{item.HospitalAddress}</h1>) ||
                 (item.TechAddress && <h1>{item.TechAddress}</h1>)}
               {item.Weight && <h1>{"Weight: " + item.Weight}</h1>}
-              {item.CaseDes && <h1>{item.CaseDes}</h1>}
+              {item.CaseDes && <h1>Case Description: {item.CaseDes}</h1>}
               {item.Category !== "Blood Donations" &&
                 item.Category !== "Teaching Classes" &&
                 item.Category !== "Medical Visit" && (
@@ -134,7 +134,7 @@ const LearnMore = ({ setOrgNotificationList }) => {
                       className="donate-button"
                       onClick={handleDonate}
                     >
-                      Fulfil
+                      Fulfill
                     </Button>
                   </Link>
                 )}
