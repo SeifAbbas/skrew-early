@@ -2,10 +2,10 @@ import dummyData from "../dummyData.json";
 import { Link, useParams } from "react-router-dom";
 import { Divider, Button, Box, ListItem } from "@mui/material";
 
-const LearnMore = ({ setOrgNotificationList }) => {
-  const { id } = useParams();
-  const idNum = Number(id);
-
+const LearnMore = ({ setOrgNotificationList, idNum }) => {
+  // const { id } = useParams();
+  // const idNum = card.ID;
+  console.log(idNum);
   const handleDonate = () => {
     setOrgNotificationList((prevNotifications) => {
       // Find the max ID in the current list
@@ -103,11 +103,11 @@ const LearnMore = ({ setOrgNotificationList }) => {
           item.ID === idNum && (
             <div>
               <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
+                {/* <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="back-button">
                     Back
                   </Button>
-                </Link>
+                </Link> */}
                 {item.Category !== "Blood Donations" &&
                   item.Category !== "Teaching Classes" &&
                   item.Category !== "Medical Visit" && (
