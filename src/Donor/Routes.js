@@ -12,7 +12,7 @@ const DonorRoutes = ({ setOrgNotificationList }) => {
   return (
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
-      <Route path="Requests" element={<SearchRequests />} />
+      <Route path="Requests" element={<SearchRequests setOrgNotificationList={setOrgNotificationList}/>} />
       <Route
         path="Requests/LearnMore/:id"
         element={<LearnMore setOrgNotificationList={setOrgNotificationList} />}

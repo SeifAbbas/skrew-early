@@ -39,7 +39,7 @@ import MedicalCaseFilters from "./MedicalCaseFilters";
 import { Link } from "react-router-dom";
 import LearnMore from "./LearnMore";
 
-export default function AlignItemsList() {
+export default function AlignItemsList({ setOrgNotificationList}) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [category, setCategory] = React.useState([]);
   const [seasonChecked, setSeasonChecked] = React.useState([
@@ -762,7 +762,7 @@ export default function AlignItemsList() {
     }
   }}
 >
-  <LearnMore idNum={selectedItemId} /> {/* Pass the selected item's ID as a prop */}
+  <LearnMore setOrgNotificationList={setOrgNotificationList} idNum={selectedItemId} /> {/* Pass the selected item's ID as a prop */}
 </Popover>
 
                     {/* </Link> */}

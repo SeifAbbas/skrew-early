@@ -103,11 +103,11 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
           item.ID === idNum && (
             <div>
               <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
+                {/* <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="back-button">
                     Back
                   </Button>
-                </Link>
+                </Link> */}
                 {item.Category !== "Blood Donations" &&
                   item.Category !== "Teaching Classes" &&
                   item.Category !== "Medical Visit" && (
