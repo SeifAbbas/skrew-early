@@ -367,9 +367,11 @@ export default function AlignItemsList({ setOrgNotificationList}) {
   
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
-  const [noOfPages] = React.useState(
-    Math.ceil(filteredItems.length / itemsPerPage)
-  );
+  let [noOfPages, setNoOfPages] = React.useState(1);
+
+  React.useEffect(() => {
+    setNoOfPages(Math.ceil(filteredItems.length / itemsPerPage));
+  }, [filteredItems.length, itemsPerPage]);
 
   const handlePageChange = (event, value) => {
     setPage(value - 1);
@@ -665,6 +667,11 @@ export default function AlignItemsList({ setOrgNotificationList}) {
       </Drawer>
 
       <div className="list-container">
+      {filteredItems.length === 0 && (
+  <Typography variant="body1" align="center" sx={{ mt: 4, color: "text.secondary", ml:10 }}>
+  No items to display
+</Typography>
+)}
         <List
           sx={{
             width: "100%",
