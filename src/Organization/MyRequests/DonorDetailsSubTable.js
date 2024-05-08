@@ -8,10 +8,16 @@ import {
   TableHead,
   TableRow,
   Avatar,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const DonorDetailsSubTable = ({ row, open, title }) => {
+import DownloadIcon from "@mui/icons-material/Download";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear";
+
+const DonorDetailsSubTable = ({ row, open, title, isAdmin }) => {
   const [randomAvatarIndex, setRandomAvatarIndex] = useState([]);
 
   useEffect(() => {
@@ -38,6 +44,7 @@ const DonorDetailsSubTable = ({ row, open, title }) => {
                   <TableCell align="center">Role</TableCell>
                   <TableCell align="center">Contact Number</TableCell>
                   <TableCell align="center">Email</TableCell>
+                  {isAdmin && <TableCell />}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -56,6 +63,27 @@ const DonorDetailsSubTable = ({ row, open, title }) => {
                     <TableCell align="center">{detailsRow.Role}</TableCell>
                     <TableCell align="center">{detailsRow.Mobile}</TableCell>
                     <TableCell align="center">{detailsRow.Email}</TableCell>
+                    {isAdmin && (
+                      <TableCell align="center">
+                        <Tooltip title="Download proof" placement="top">
+                          <IconButton>
+                            <DownloadIcon />
+                          </IconButton>
+                        </Tooltip>
+
+                        <Tooltip title="Approve" placement="top">
+                          <IconButton>
+                            <CheckIcon className="text-green-600" />
+                          </IconButton>
+                        </Tooltip>
+
+                        <Tooltip title="Reject" placement="top">
+                          <IconButton>
+                            <ClearIcon className="text-red-600" />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    )}
                   </TableRow>
                 ))}
               </TableBody>

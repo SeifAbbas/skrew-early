@@ -21,7 +21,7 @@ const AdminDashboard = () => {
       <Container maxWidth="xl" sx={{ mb: 4 }}>
         <Grid container spacing={2} justifyContent={"center"}>
           {/** DONORS SUBMISSIONS TABLE */}
-          <Grid item lg={6} md={12} sx={{ p: 2 }}>
+          <Grid item lg={8} md={12} sx={{ p: 2 }}>
             <Paper
               sx={{
                 p: 2,
@@ -37,6 +37,7 @@ const AdminDashboard = () => {
                 row={dummyData.FulfilledRequests[3]}
                 open={true}
                 title={"Review Donor Submissions"}
+                isAdmin={true}
               />
             </Paper>
           </Grid>
