@@ -779,6 +779,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
               </ListItem>
             ))}
         </List>
+        {filteredItems.length > 0 && (
         <Pagination
           count={noOfPages}
           page={page + 1}
@@ -788,6 +789,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
           showLastButton
           sx={{ marginTop: "20px", marginBottom: "20px" }}
         />
+        )}
       </div>
     </div>
   );
