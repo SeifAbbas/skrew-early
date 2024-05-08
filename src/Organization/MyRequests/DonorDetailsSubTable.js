@@ -17,8 +17,29 @@ import DownloadIcon from "@mui/icons-material/Download";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const DonorDetailsSubTable = ({ row, open, title, isAdmin }) => {
+import { jsPDF } from "jspdf";
+
+const DonorDetailsSubTable = ({ row, setRow, open, title, isAdmin }) => {
   const [randomAvatarIndex, setRandomAvatarIndex] = useState([]);
+
+  const handleDownload = () => {
+    const doc = new jsPDF();
+    doc.text(
+      "Copy of donor proof document (Medical License / School Staff ID card)",
+      10,
+      10
+    );
+    doc.save("proof.pdf");
+  };
+
+  const handleAccept = (index) => {
+    handleReject(index);
+  };
+
+  const handleReject = (index) => {
+    const newDonorArray = row.Donor.filter((_, i) => i !== index);
+    setRow({ ...row, Donor: newDonorArray });
+  };
 
   useEffect(() => {
     const array = Array.from(
@@ -66,19 +87,19 @@ const DonorDetailsSubTable = ({ row, open, title, isAdmin }) => {
                     {isAdmin && (
                       <TableCell align="center">
                         <Tooltip title="Download proof" placement="top">
-                          <IconButton>
+                          <IconButton onClick={handleDownload}>
                             <DownloadIcon />
                           </IconButton>
                         </Tooltip>
 
                         <Tooltip title="Approve" placement="top">
-                          <IconButton>
+                          <IconButton onClick={() => handleAccept(index)}>
                             <CheckIcon className="text-green-600" />
                           </IconButton>
                         </Tooltip>
 
                         <Tooltip title="Reject" placement="top">
-                          <IconButton>
+                          <IconButton onClick={() => handleReject(index)}>
                             <ClearIcon className="text-red-600" />
                           </IconButton>
                         </Tooltip>

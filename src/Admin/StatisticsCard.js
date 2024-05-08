@@ -4,12 +4,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { ArrowDown as ArrowDownIcon } from "@phosphor-icons/react/dist/ssr/ArrowDown";
-import { ArrowUp as ArrowUpIcon } from "@phosphor-icons/react/dist/ssr/ArrowUp";
+
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 export default function StatisticsCard(props) {
   const { diff, trend, sx, value, text, icon, backgroundColor } = props;
-  const TrendIcon = trend === "up" ? ArrowUpIcon : ArrowDownIcon;
+  const TrendIcon = trend === "up" ? ArrowUpwardIcon : ArrowDownwardIcon;
   const trendColor = trend === "up" ? "green" : "red";
 
   return (
@@ -44,7 +45,7 @@ export default function StatisticsCard(props) {
                 direction="row"
                 spacing={0.5}
               >
-                <TrendIcon color={trendColor} fontSize="16px" />
+                <TrendIcon sx={{ color: trendColor, fontSize: "16px" }} />
                 <Typography color={trendColor} variant="body2">
                   {diff}%
                 </Typography>

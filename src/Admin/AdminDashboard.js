@@ -7,8 +7,11 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import dummyData from "../dummyData.json";
 import DonorDetailsSubTable from "../Organization/MyRequests/DonorDetailsSubTable";
 import StatisticsCard from "./StatisticsCard";
+import { useState } from "react";
 
 const AdminDashboard = () => {
+  const [row, setRow] = useState(dummyData.FulfilledRequests[3]);
+
   return (
     <Box
       component="main"
@@ -99,7 +102,8 @@ const AdminDashboard = () => {
               }}
             >
               <DonorDetailsSubTable
-                row={dummyData.FulfilledRequests[3]}
+                row={row}
+                setRow={setRow}
                 open={true}
                 title={"Review Donor Submissions"}
                 isAdmin={true}
