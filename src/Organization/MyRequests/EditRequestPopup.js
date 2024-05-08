@@ -11,7 +11,13 @@ import {
 import NewRequest from "../NewRequest";
 import dummyData from "../../dummyData.json";
 
-const EditRequest = ({ row, setRows, openEditMode, setOpenEditMode }) => {
+const EditRequest = ({
+  row,
+  setRows,
+  openEditMode,
+  setOpenEditMode,
+  setAlertState,
+}) => {
   const [formFields, setFormFields] = useState(
     dummyData.organizationNewRequest
   );
@@ -32,6 +38,7 @@ const EditRequest = ({ row, setRows, openEditMode, setOpenEditMode }) => {
       return updatedRows;
     });
 
+    setAlertState("Updated Post");
     handleClose();
   };
 

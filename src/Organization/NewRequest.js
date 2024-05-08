@@ -18,6 +18,7 @@ const NewRequest = ({
   setFormFields,
   chosenCategory,
   setChosenCategory,
+  setAlertState,
 }) => {
   const handleInputChange = (event, index) => {
     setFormFields((prevState) => {
@@ -26,6 +27,15 @@ const NewRequest = ({
       categoryFields[index].value = event.target.value;
       return newFormFields;
     });
+  };
+
+  const handleSubmit = (event) => {
+    const areAllFieldsFilled = formFields[chosenCategory].every(
+      (field) => field.value !== ""
+    );
+    if (areAllFieldsFilled) {
+      setAlertState("New donation posted");
+    }
   };
 
   return (
@@ -65,6 +75,7 @@ const NewRequest = ({
 
       <Box
         component="form"
+        action="javascript:void(0)"
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === "light"
@@ -94,7 +105,13 @@ const NewRequest = ({
           ))}
 
           {!showInPopup && (
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3 }}
+            >
               Post
             </Button>
           )}

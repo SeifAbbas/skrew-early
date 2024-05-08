@@ -7,7 +7,12 @@ import {
   TextField,
 } from "@mui/material";
 
-const DropoffSchedule = ({ open, setOpen }) => {
+const DropoffSchedule = ({ open, setOpen, setAlertState }) => {
+  const handleSchedule = () => {
+    handleClose();
+    setAlertState("Scheduled");
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -27,7 +32,7 @@ const DropoffSchedule = ({ open, setOpen }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="inherit">
+          <Button onClick={handleSchedule} color="inherit">
             Schedule
           </Button>
           <Button

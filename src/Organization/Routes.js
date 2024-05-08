@@ -8,7 +8,7 @@ import Account from "./Account";
 
 import dummyData from "../dummyData.json";
 
-const OrganizationRoutes = () => {
+const OrganizationRoutes = ({ setAlertState }) => {
   const [formFields, setFormFields] = React.useState(
     dummyData.organizationNewRequest
   );
@@ -27,11 +27,18 @@ const OrganizationRoutes = () => {
             setFormFields={setFormFields}
             chosenCategory={chosenCategory}
             setChosenCategory={setChosenCategory}
+            setAlertState={setAlertState}
           />
         }
       />
-      <Route path="MyRequests" element={<MyRequests />} />
-      <Route path="Account" element={<Account />} />
+      <Route
+        path="MyRequests"
+        element={<MyRequests setAlertState={setAlertState} />}
+      />
+      <Route
+        path="Account"
+        element={<Account setAlertState={setAlertState} />}
+      />
     </Routes>
   );
 };

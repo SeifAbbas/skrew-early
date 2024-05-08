@@ -14,7 +14,7 @@ import {
 import dummyData from "../../dummyData.json";
 import Row from "./Row";
 
-export default function MyRequests() {
+export default function MyRequests({ setAlertState }) {
   const [rows, setRows] = useState(dummyData.FulfilledRequests);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -48,14 +48,19 @@ export default function MyRequests() {
                 Date of Donation
               </TableCell>
               <TableCell />
-              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => (
-                <Row key={index} row={row} rows={rows} setRows={setRows} />
+                <Row
+                  key={index}
+                  row={row}
+                  rows={rows}
+                  setRows={setRows}
+                  setAlertState={setAlertState}
+                />
               ))}
           </TableBody>
         </Table>

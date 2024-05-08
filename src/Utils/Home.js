@@ -27,6 +27,7 @@ import AdminRoutes from "../Admin/Routes";
 import DonorRoutes from "../Donor/Routes";
 import OrganizationRoutes from "../Organization/Routes";
 import OrganizationNotification from "../Organization/Notifications/Notification";
+import Alerts from "./Alerts";
 
 const drawerWidth = 240;
 
@@ -92,6 +93,8 @@ export default function Home({
   const [notificationPanelOpen, setNotificationPanelOpen] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const [alertState, setAlertState] = useState("off");
 
   const theme = createTheme({
     typography: {
@@ -202,6 +205,7 @@ export default function Home({
           <OrganizationNotification
             orgNotificationList={orgNotificationList}
             setOrgNotificationList={setOrgNotificationList}
+            setAlertState={setAlertState}
           />
         )}
 
@@ -239,12 +243,15 @@ export default function Home({
           <Toolbar />
 
           {activeUser === "Admin" && <AdminRoutes />}
-          {activeUser === "Organization" && <OrganizationRoutes />}
+          {activeUser === "Organization" && (
+            <OrganizationRoutes setAlertState={setAlertState} />
+          )}
           {activeUser === "Donor" && (
             <DonorRoutes setOrgNotificationList={setOrgNotificationList} />
           )}
         </Box>
       </Box>
+      <Alerts alertState={alertState} setAlertState={setAlertState} />
     </ThemeProvider>
   );
 }

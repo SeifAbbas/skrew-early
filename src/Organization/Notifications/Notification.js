@@ -6,6 +6,7 @@ import DropoffSchedule from "./DropoffSchedule";
 const OrganizationNotification = ({
   orgNotificationList,
   setOrgNotificationList,
+  setAlertState,
 }) => {
   const theme = useTheme();
   const panelRef = useRef();
@@ -88,7 +89,13 @@ const OrganizationNotification = ({
           />
         ))}
       </div>
-      {open && <DropoffSchedule open={open} setOpen={setOpen} />}
+      {open && (
+        <DropoffSchedule
+          open={open}
+          setOpen={setOpen}
+          setAlertState={setAlertState}
+        />
+      )}
     </>
   );
 };

@@ -5,7 +5,7 @@ import dummyData from "../dummyData.json";
 import Fields from "../Utils/Fields";
 import SimpleMap from "../Utils/Maps";
 
-const Account = () => {
+const Account = ({ setAlertState }) => {
   const [formErrors, setFormErrors] = useState({});
   const [showMap, setShowMap] = useState(false);
 
@@ -22,7 +22,6 @@ const Account = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(accountDetails);
 
     // Validate form fields
     const errors = {};
@@ -36,6 +35,8 @@ const Account = () => {
       setFormErrors(errors);
       return;
     }
+
+    setAlertState("Updated Profile Info");
   };
 
   return (

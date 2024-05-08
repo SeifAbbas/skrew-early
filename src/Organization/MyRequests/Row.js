@@ -19,7 +19,7 @@ import DonorDetailsSubTable from "./DonorDetailsSubTable";
 import EditRequest from "./EditRequestPopup";
 
 export default function Row(props) {
-  const { row, setRows } = props;
+  const { row, setRows, setAlertState } = props;
   const [open, setOpen] = useState(false);
   const [openEditMode, setOpenEditMode] = useState(false);
 
@@ -32,6 +32,7 @@ export default function Row(props) {
       const updatedRows = rows.filter((r) => r.Name !== row.Name);
       return updatedRows;
     });
+    setAlertState("Deleted");
   };
 
   return (
@@ -79,34 +80,13 @@ export default function Row(props) {
 
         <TableCell align="center" sx={{ maxWidth: 90 }}>
           {row.Donor.length === 0 && (
-            <Button
-              onClick={handleEditRow}
-              sx={{
-                backgroundColor: "steelblue",
-                color: "inherit",
-                fontSize: "12px",
-                padding: "10px",
-              }}
-            >
-              <EditNoteIcon color="inherit" style={{ marginRight: "5px" }} />
-              Edit post
-            </Button>
+            <IconButton onClick={handleEditRow}>
+              <EditNoteIcon style={{ color: "steelblue" }} />
+            </IconButton>
           )}
-        </TableCell>
-
-        <TableCell align="center" sx={{ maxWidth: 90 }}>
-          <Button
-            onClick={handleDeleteRow}
-            sx={{
-              backgroundColor: "red",
-              color: "inherit",
-              fontSize: "12px",
-              padding: "10px",
-            }}
-          >
-            <DeleteIcon color="inherit" style={{ marginRight: "5px" }} />
-            Delete post
-          </Button>
+          <IconButton onClick={handleDeleteRow}>
+            <DeleteIcon style={{ color: "red" }} />
+          </IconButton>
         </TableCell>
       </TableRow>
 
@@ -117,6 +97,7 @@ export default function Row(props) {
           setRows={setRows}
           openEditMode={openEditMode}
           setOpenEditMode={setOpenEditMode}
+          setAlertState={setAlertState}
         />
       )}
     </>
