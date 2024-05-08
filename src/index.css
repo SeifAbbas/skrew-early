@@ -236,3 +236,9 @@
   font-size: 20px;
   color: #1976d2;
 }
+.popover {
+  position: relative;
+  cursor: pointer;
+  color: green;
+  text-align: center;
+}

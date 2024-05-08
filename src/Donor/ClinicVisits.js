@@ -21,7 +21,7 @@ const ClinicVisits = () => {
 
             <input type="time" placeholder=" Time" />
 
-            <Link to="/Home/VolunteerActivity">
+            <Link to="/Home/Dashboard">
             <button>Submit</button>
             </Link>
             </div>

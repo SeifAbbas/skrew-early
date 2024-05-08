@@ -1,12 +1,16 @@
 import dummyData from "../dummyData.json";
 import { Link, useParams } from "react-router-dom";
 import { Divider, Button, Box, ListItem } from "@mui/material";
+import { useState } from "react";
+
 
 const LearnMore = ({ setOrgNotificationList, idNum }) => {
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   // const { id } = useParams();
   // const idNum = card.ID;
   console.log(idNum);
   const handleDonate = () => {
+    setIsPopoverVisible(!isPopoverVisible);
     setOrgNotificationList((prevNotifications) => {
       // Find the max ID in the current list
       const maxId = Math.max(
@@ -92,6 +96,8 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       style={{ marginTop: "20px" }}
                       type="number"
                       placeholder="Number of donation items"
+                      min={1}
+                      max={item.Current_Inventory}
                     />
                   </div>
                 )}
@@ -122,6 +128,11 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       >
                         Donate
                       </Button>
+                      {isPopoverVisible && (
+        <div className="popover">
+          Done!
+        </div>
+      )}
                     </Link>
                   )}
 
@@ -136,6 +147,11 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                     >
                       Fulfill
                     </Button>
+                    {isPopoverVisible && (
+        <div className="popover">
+          Done!
+        </div>
+      )}
                   </Link>
                 )}
               </Box>

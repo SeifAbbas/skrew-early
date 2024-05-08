@@ -19,7 +19,7 @@ const TeachingClasses = () => {
 
             <input type="time" placeholder="Class Time" />
 
-            <Link to="/Home/VolunteerActivity">
+            <Link to="/Home/Dashboard">
             <button>Submit</button>
             </Link>
             
