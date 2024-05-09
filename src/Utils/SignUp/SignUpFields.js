@@ -10,10 +10,10 @@ const SignUpFields = ({
 }) => {
   const val = () => {
     if (activeUser === "Donor") {
-      return inputFields.find((field) => field.name === "Role").value;
+      return inputFields.find((field) => field.name === "Role")?.value;
     } else {
       return inputFields.find((field) => field.name === "Organization Type")
-        .value;
+        ?.value;
     }
   };
 

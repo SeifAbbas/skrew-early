@@ -22,7 +22,6 @@ const Fields = ({
   const handleInputChange = (event, index) => {
     let newInputFields = [...inputFields];
     newInputFields[index].value = event.target.value;
-    console.table(newInputFields);
     setInputFields([...newInputFields]);
   };
 
@@ -80,15 +79,14 @@ const Fields = ({
         </FormControl>
       ) : (
         <TextField
-          required
           fullWidth
           label={field.name}
           name={field.name}
           key={index}
           type={field.name === "Password" ? "password" : "text"}
           className="mb-2"
-          error={!!formErrors[field.name]}
-          helperText={formErrors[field.name]}
+          error={formErrors && !!formErrors[field.name]}
+          helperText={formErrors && formErrors[field.name]}
           value={field.value || ""}
           onChange={(event) => handleInputChange(event, index)}
           onFocus={() =>

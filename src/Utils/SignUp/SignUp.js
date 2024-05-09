@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Avatar,
@@ -64,6 +64,11 @@ export default function SignUp({
 
     navigate("/");
   };
+
+  useEffect(() => {
+    setActiveUser("Donor");
+    setInputFields(dummyData.donorRegFields);
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>

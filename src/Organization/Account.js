@@ -6,7 +6,6 @@ import Fields from "../Utils/Fields";
 import SimpleMap from "../Utils/Maps";
 
 const Account = ({ setAlertState }) => {
-  const [formErrors, setFormErrors] = useState({});
   const [showMap, setShowMap] = useState(false);
 
   // fill all fields with User's current information
@@ -21,20 +20,6 @@ const Account = ({ setAlertState }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-
-    // Validate form fields
-    const errors = {};
-    for (let field of data.keys()) {
-      if (!data.get(field)) {
-        errors[field] = "This field is required";
-      }
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
 
     setAlertState("Updated Profile Info");
   };
@@ -43,7 +28,7 @@ const Account = ({ setAlertState }) => {
     <>
       <Box
         component="form"
-        onClick={handleSubmit}
+        onSubmit={handleSubmit}
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === "light"
@@ -69,7 +54,6 @@ const Account = ({ setAlertState }) => {
               <Fields
                 inputFields={accountDetails}
                 setInputFields={setAccountDetails}
-                formErrors={formErrors}
                 setShowMap={setShowMap}
                 field={field}
                 index={index}
