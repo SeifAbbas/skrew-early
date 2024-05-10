@@ -19,7 +19,14 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 import { jsPDF } from "jspdf";
 
-const DonorDetailsSubTable = ({ row, setRow, open, title, isAdmin }) => {
+const DonorDetailsSubTable = ({
+  row,
+  setRow,
+  open,
+  title,
+  isAdmin,
+  setAlertState,
+}) => {
   const [randomAvatarIndex, setRandomAvatarIndex] = useState([]);
 
   const handleDownload = () => {
@@ -30,15 +37,18 @@ const DonorDetailsSubTable = ({ row, setRow, open, title, isAdmin }) => {
       10
     );
     doc.save("proof.pdf");
+    setAlertState("Proof downloaded Successfully!");
   };
 
   const handleAccept = (index) => {
     handleReject(index);
+    setAlertState("Approved");
   };
 
   const handleReject = (index) => {
     const newDonorArray = row.Donor.filter((_, i) => i !== index);
     setRow({ ...row, Donor: newDonorArray });
+    setAlertState("Rejected");
   };
 
   useEffect(() => {

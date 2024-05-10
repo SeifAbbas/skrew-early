@@ -175,16 +175,18 @@ export default function Home({
               Dashboard
             </Typography>
 
-            <IconButton
-              onClick={() => setNotificationPanelOpen(!notificationPanelOpen)}
-            >
-              <Badge
-                badgeContent={orgNotificationList.length}
-                color="secondary"
+            {activeUser !== "Admin" && (
+              <IconButton
+                onClick={() => setNotificationPanelOpen(!notificationPanelOpen)}
               >
-                <NotificationsIcon color="inherit" />
-              </Badge>
-            </IconButton>
+                <Badge
+                  badgeContent={orgNotificationList.length}
+                  color="secondary"
+                >
+                  <NotificationsIcon color="inherit" />
+                </Badge>
+              </IconButton>
+            )}
             <IconButton onClick={() => setIsDarkMode(!isDarkMode)}>
               {isDarkMode ? (
                 <DarkMode color="inherit" />
@@ -242,7 +244,9 @@ export default function Home({
         >
           <Toolbar />
 
-          {activeUser === "Admin" && <AdminRoutes />}
+          {activeUser === "Admin" && (
+            <AdminRoutes setAlertState={setAlertState} />
+          )}
           {activeUser === "Organization" && (
             <OrganizationRoutes setAlertState={setAlertState} />
           )}

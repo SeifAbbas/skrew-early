@@ -3,10 +3,13 @@ import AdminDashboard from "./AdminDashboard";
 
 import { Routes, Route } from "react-router-dom";
 
-const AdminRoutes = () => {
+const AdminRoutes = ({ setAlertState }) => {
   return (
     <Routes>
-      <Route path="Dashboard" element={<AdminDashboard />} />
+      <Route
+        path="Dashboard"
+        element={<AdminDashboard setAlertState={setAlertState} />}
+      />
     </Routes>
   );
 };

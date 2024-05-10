@@ -11,7 +11,22 @@ const Account = ({ setAlertState }) => {
   // fill all fields with User's current information
   const [accountDetails, setAccountDetails] = useState(
     dummyData.organizationRegFields.map((field) => {
-      if (dummyData.OrganizationSignIn.hasOwnProperty(field.name)) {
+      if (
+        field.name === "Contact Number" &&
+        dummyData.OrganizationSignIn.hasOwnProperty("Mobile")
+      ) {
+        return { ...field, value: dummyData.OrganizationSignIn["Mobile"] };
+      } else if (
+        field.name === "Organization Name" &&
+        dummyData.OrganizationSignIn.hasOwnProperty("Name")
+      ) {
+        return { ...field, value: dummyData.OrganizationSignIn["Name"] };
+      } else if (
+        field.name === "Organization Type" &&
+        dummyData.OrganizationSignIn.hasOwnProperty("Role")
+      ) {
+        return { ...field, value: dummyData.OrganizationSignIn["Role"] };
+      } else if (dummyData.OrganizationSignIn.hasOwnProperty(field.name)) {
         return { ...field, value: dummyData.OrganizationSignIn[field.name] };
       }
       return field;

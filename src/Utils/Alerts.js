@@ -8,7 +8,7 @@ const Alerts = ({ alertState, setAlertState }) => {
       onClose={() => setAlertState("off")}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
-      {(alertState === "Deleted" && (
+      {((alertState === "Deleted" || alertState === "Rejected") && (
         <Alert severity="error">
           <AlertTitle>{alertState}</AlertTitle>
         </Alert>

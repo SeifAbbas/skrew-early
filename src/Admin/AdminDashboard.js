@@ -9,7 +9,7 @@ import DonorDetailsSubTable from "../Organization/MyRequests/DonorDetailsSubTabl
 import StatisticsCard from "./StatisticsCard";
 import { useState } from "react";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ setAlertState }) => {
   const [row, setRow] = useState(dummyData.FulfilledRequests[3]);
   const [orgRow, setOrgRow] = useState({
     Donor: Array(4).fill(dummyData.OrganizationSignIn),
@@ -110,6 +110,7 @@ const AdminDashboard = () => {
                 open={true}
                 title={"Review Donor Submissions"}
                 isAdmin={true}
+                setAlertState={setAlertState}
               />
             </Paper>
           </Grid>
@@ -133,6 +134,7 @@ const AdminDashboard = () => {
                 open={true}
                 title={"Review Organization Submissions"}
                 isAdmin={true}
+                setAlertState={setAlertState}
               />
             </Paper>
           </Grid>
