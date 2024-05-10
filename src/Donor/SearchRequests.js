@@ -39,7 +39,7 @@ import MedicalCaseFilters from "./MedicalCaseFilters";
 import { Link } from "react-router-dom";
 import LearnMore from "./LearnMore";
 
-export default function AlignItemsList({ setOrgNotificationList}) {
+export default function AlignItemsList({ setOrgNotificationList }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [category, setCategory] = React.useState([]);
   const [seasonChecked, setSeasonChecked] = React.useState([
@@ -141,7 +141,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     ["Medication", "Type", medications, medicationChecked],
     ["Medical Supplies", "Type", medSupplies, medSuppliesChecked],
     ["Teaching Classes", "Subject", subjects, teachingChecked],
-    ["Doctor Visits", "Specialty", specialities, caseChecked],
+    ["Medical Visit", "Specialty", specialities, caseChecked],
   ];
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -163,9 +163,9 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     "Food",
     "Blood Donations",
     "Teaching Classes",
-    "Doctor Visits",
+    "Medical Visit",
   ];
-  const vCategories = ["Blood Donations", "Teaching Classes", "Doctor Visits"];
+  const vCategories = ["Blood Donations", "Teaching Classes", "Medical Visit"];
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -188,7 +188,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     );
     if (
       category.includes("Teaching Classes") ||
-      category.includes("Doctor Visits") ||
+      category.includes("Medical Visit") ||
       category.includes("Blood Donations")
     ) {
       setGovernorate([]);
@@ -208,7 +208,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     if (category.includes(filtering[0])) {
       filteredItems = filteredItems.filter((item) => {
         return filtering[3].every((isChecked, index) => {
-          if (isChecked && item.Category===filtering[0]) {
+          if (isChecked && item.Category === filtering[0]) {
             const cat = filtering[1];
             console.log(cat);
             return item[cat] === filtering[2][index];
@@ -364,7 +364,6 @@ export default function AlignItemsList({ setOrgNotificationList}) {
     setSelectedItemId(0); // Reset the selected item ID when closing
   };
 
-  
   const itemsPerPage = 10;
   const [page, setPage] = React.useState(0);
   let [noOfPages, setNoOfPages] = React.useState(1);
@@ -436,7 +435,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
           </Select>
         </FormControl>
         {(category.includes("Teaching Classes") ||
-          category.includes("Doctor Visits") ||
+          category.includes("Medical Visit") ||
           category.includes("Blood Donations")) && (
           <FormControl
             sx={{
@@ -472,7 +471,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
           </FormControl>
         )}
         {(category.includes("Teaching Classes") ||
-          category.includes("Doctor Visits") ||
+          category.includes("Medical Visit") ||
           category.includes("Blood Donations")) && (
           <FormControl
             sx={{
@@ -542,7 +541,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
             </Select>
           </FormControl>
         )}
-        {category.includes("Doctor Visits") && (
+        {category.includes("Medical Visit") && (
           <FormControl
             sx={{
               m: 1,
@@ -640,7 +639,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
             setMedSuppliesChecked={setMedSuppliesChecked}
           />
         )}
-        {(category.includes("School Supplies")) && (
+        {category.includes("School Supplies") && (
           <SchoolSuppliesFilters
             schoolSuppliesChecked={schoolSuppliesChecked}
             setSchoolSuppliesChecked={setSchoolSuppliesChecked}
@@ -658,7 +657,7 @@ export default function AlignItemsList({ setOrgNotificationList}) {
             setTeachingChecked={setTeachingChecked}
           />
         )}
-        {category.includes("Doctor Visits") && (
+        {category.includes("Medical Visit") && (
           <MedicalCaseFilters
             caseChecked={caseChecked}
             setCaseChecked={setCaseChecked}
@@ -667,11 +666,15 @@ export default function AlignItemsList({ setOrgNotificationList}) {
       </Drawer>
 
       <div className="list-container">
-      {filteredItems.length === 0 && (
-  <Typography variant="body1" align="center" sx={{ mt: 4, color: "text.secondary", ml:10 }}>
-  No items to display
-</Typography>
-)}
+        {filteredItems.length === 0 && (
+          <Typography
+            variant="body1"
+            align="center"
+            sx={{ mt: 4, color: "text.secondary", ml: 10 }}
+          >
+            No items to display
+          </Typography>
+        )}
         <List
           sx={{
             width: "100%",
@@ -742,53 +745,56 @@ export default function AlignItemsList({ setOrgNotificationList}) {
                   <CardActions sx={{ padding: "0 16px 16px 16px" }}>
                     {/* <Link to={`/Home/Requests/LearnMore/${item.ID}`}> */}
                     <Button
-                  size="small"
-                  color="primary"
-                  variant="contained"
-                  sx={{ display: "inline", marginLeft: -1 }}
-                  className="learn-more-button"
-                  onClick={(event) => handleClick(item.ID, event)} // Pass the item's ID to handleClick
-                >
-                  Learn More
-                </Button>
-                {/* Popper to display the LearnMore component */}
-                <Popover 
-  open={Boolean(anchorEl)}
-  anchorEl={anchorEl}
-  onClose={handleClose}
-  anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'left',
-  }}
-  PaperProps={{
-    sx: {
-      backgroundColor: "#ffffff", // Background color
-      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Box shadow
-      borderRadius: "8px", // Border radius
-      padding: "16px", // Padding
-    }
-  }}
->
-  <LearnMore setOrgNotificationList={setOrgNotificationList} idNum={selectedItemId} /> {/* Pass the selected item's ID as a prop */}
-</Popover>
+                      size="small"
+                      color="primary"
+                      variant="contained"
+                      sx={{ display: "inline", marginLeft: -1 }}
+                      className="learn-more-button"
+                      onClick={(event) => handleClick(item.ID, event)} // Pass the item's ID to handleClick
+                    >
+                      Learn More
+                    </Button>
+                    {/* Popper to display the LearnMore component */}
+                    <Popover
+                      open={Boolean(anchorEl)}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      PaperProps={{
+                        sx: {
+                          backgroundColor: "#ffffff", // Background color
+                          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Box shadow
+                          borderRadius: "8px", // Border radius
+                          padding: "16px", // Padding
+                        },
+                      }}
+                    >
+                      <LearnMore
+                        setOrgNotificationList={setOrgNotificationList}
+                        idNum={selectedItemId}
+                      />{" "}
+                      {/* Pass the selected item's ID as a prop */}
+                    </Popover>
 
                     {/* </Link> */}
                   </CardActions>
-      
                 </CardActionArea>
               </ListItem>
             ))}
         </List>
         {filteredItems.length > 0 && (
-        <Pagination
-          count={noOfPages}
-          page={page + 1}
-          onChange={handlePageChange}
-          color="primary"
-          showFirstButton
-          showLastButton
-          sx={{ marginTop: "20px", marginBottom: "20px" }}
-        />
+          <Pagination
+            count={noOfPages}
+            page={page + 1}
+            onChange={handlePageChange}
+            color="primary"
+            showFirstButton
+            showLastButton
+            sx={{ marginTop: "20px", marginBottom: "20px" }}
+          />
         )}
       </div>
     </div>

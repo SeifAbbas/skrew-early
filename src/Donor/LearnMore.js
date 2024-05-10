@@ -3,9 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { Divider, Button, Box, ListItem } from "@mui/material";
 import { useState } from "react";
 
-
 const LearnMore = ({ setOrgNotificationList, idNum }) => {
-  const [inputValue, setInputValue] = useState(''); // State to manage input value
+  const [inputValue, setInputValue] = useState(""); // State to manage input value
   const handleInputChange = (event) => {
     const value = event.target.value; // Get the input value
     setInputValue(value); // Update the input value in state
@@ -126,8 +125,10 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                 {item.Category !== "Blood Donations" &&
                   item.Category !== "Teaching Classes" &&
                   item.Category !== "Medical Visit" &&
-                  inputValue > 0 && inputValue <= item.Current_Inventory && (
-
+                  (!item.Current_Inventory ||
+                    (item.Current_Inventory &&
+                      inputValue > 0 &&
+                      inputValue <= item.Current_Inventory)) && (
                     <Link
                       to="/Home/Requests"
                       style={{ textDecoration: "none" }}
@@ -139,30 +140,30 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       >
                         Donate
                       </Button>
-                      {isPopoverVisible && (
-        <div className="popover">
-          Done!
-        </div>
-      )}
+                      {isPopoverVisible && <div className="popover">Done!</div>}
                     </Link>
-    )}
-                {(item.Category === "Blood Donations" ||
-                  item.Category === "Teaching Classes" ||
-                  item.Category === "Medical Visit") &&
-                  inputValue > 0 && inputValue <= item.Current_Inventory && (
+                  )}
+
+                {[
+                  "Blood Donations",
+                  "Teaching Classes",
+                  "Medical Visit",
+                ].includes(item.Category) && (
                   <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
                     <Button
+                      disabled={
+                        (item.Category === "Medical Visit" &&
+                          dummyData.DonorSignIn.role === "Teacher") ||
+                        (item.Category === "Teaching Classes" &&
+                          dummyData.DonorSignIn.role === "Doctor")
+                      }
                       variant="contained"
                       className="donate-button"
                       onClick={handleDonate}
                     >
                       Fulfill
                     </Button>
-                    {isPopoverVisible && (
-        <div className="popover">
-          Done!
-        </div>
-      )}
+                    {isPopoverVisible && <div className="popover">Done!</div>}
                   </Link>
                 )}
               </Box>
