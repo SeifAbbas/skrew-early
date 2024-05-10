@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const LearnMore = ({ setOrgNotificationList, idNum }) => {
   const [inputValue, setInputValue] = useState(""); // State to manage input value
+  const[inventory, setInventory] = useState(0);
   const handleInputChange = (event) => {
     const value = event.target.value; // Get the input value
     setInputValue(value); // Update the input value in state
@@ -15,6 +16,7 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
   console.log(idNum);
   const handleDonate = () => {
     setIsPopoverVisible(!isPopoverVisible);
+    setInventory(inputValue);
     setOrgNotificationList((prevNotifications) => {
       // Find the max ID in the current list
       const maxId = Math.max(
@@ -63,9 +65,7 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
               />
               <h1>{item.Name}</h1>
               {item.Category && <h1>{item.Category}</h1>}
-              {item.Current_Inventory && (
-                <h1>{"Quantity Needed: " + item.Current_Inventory}</h1>
-              )}
+              {(item.Current_Inventory && <h1>{"Quantity Needed: " + parseInt(item.Current_Inventory + (-inventory))} </h1>)}
               {item.PatientName && <h1>{item.PatientName}</h1>}
               {(item.Gender && <h1>{item.Gender}</h1>) ||
                 (item.Type && <h1>{"Type: " + item.Type}</h1>) ||
