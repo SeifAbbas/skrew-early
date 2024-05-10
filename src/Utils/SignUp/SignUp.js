@@ -74,6 +74,13 @@ export default function SignUp({
     <ThemeProvider theme={defaultTheme}>
       <div className="flex items-center flex-col space-x-0 xl:flex-row xl:space-x-[-430px]">
         <Container component="main" maxWidth="sm">
+          <style>
+            {`
+            a:hover {
+              text-decoration: underline;
+            }
+          }`}
+          </style>
           <CssBaseline />
           <Box
             sx={{
@@ -102,26 +109,56 @@ export default function SignUp({
                 formErrors={formErrors}
                 setShowMap={setShowMap}
               />
-
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor: "#c51aff", color: "#fff" }} // Changed button color & text color
+                onMouseOver={(e) => (
+                  (e.target.style.opacity = "0.8"),
+                  (e.target.style.backgroundColor = "#4CAB50")
+                )} // Added hover effect
+                onMouseOut={(e) => (
+                  (e.target.style.opacity = "1"),
+                  (e.target.style.backgroundColor = "#c51aff")
+                )} // Reset hover effect
               >
                 Sign Up
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item xs={12} sm={7}>
-                  <Button onClick={handleSwitchForms} variant="body2">
+                  <Typography variant="body2" fontSize={15.4}>
                     Are you
                     {activeUser === "Donor" ? " an organization " : " a donor "}
-                    ? Register here
-                  </Button>
+                    ?{" "}
+                  </Typography>
+                  <Link
+                    onClick={handleSwitchForms}
+                    variant="body2"
+                    style={{
+                      color: "blue",
+                      cursor: "pointer",
+                      fontSize: "15.4px",
+                    }}
+                  >
+                    Register here
+                  </Link>
                 </Grid>
-                <Grid item xs={12} sm={5}>
-                  <Link to="/" variant="body2">
-                    Already have an account? Sign in
+                <Grid item xs={12} sm={4}>
+                  <Typography variant="body2" fontSize={15.4}>
+                    Already have an account?{" "}
+                  </Typography>
+                  <Link
+                    to="/"
+                    variant="body2"
+                    underline="none"
+                    style={{
+                      color: "blue",
+                      cursor: "pointer",
+                      fontSize: "15.4px",
+                    }}
+                  >
+                    Sign in
                   </Link>
                 </Grid>
               </Grid>

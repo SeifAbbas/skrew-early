@@ -11,6 +11,15 @@ import {
   Select,
 } from "@mui/material";
 
+import { styled } from "@mui/system";
+
+const PurpleRadio = styled(Radio)({
+  color: "#c51aff",
+  "&.Mui-checked": {
+    color: "#c51aff",
+  },
+});
+
 const Fields = ({
   inputFields,
   setInputFields,
@@ -39,10 +48,14 @@ const Fields = ({
           >
             <FormControlLabel
               value="female"
-              control={<Radio />}
+              control={<PurpleRadio />}
               label="Female"
             />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel
+              value="male"
+              control={<PurpleRadio />}
+              label="Male"
+            />
           </RadioGroup>
         </FormControl>
       ) : field.name === "Organization Type" ? (
