@@ -132,9 +132,12 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
     } else {
       // Handle invalid credentials
       if (
-        !["a", donorSignInData.email, donorSignInData.password].includes(
-          data.get("email")
-        )
+        ![
+          "a",
+          orgSignInData.Email,
+          donorSignInData.email,
+          donorSignInData.password,
+        ].includes(data.get("email"))
       ) {
         setErrorMsg("Invalid Email");
       } else {
@@ -147,125 +150,190 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main">
-        <CssBaseline />
-        <Grid
-          container
-          spacing={5}
+    <>
+      <ThemeProvider theme={defaultTheme}>
+        <Container
           style={{
+            background: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)", // Gradient background
+            backgroundRepeat: "no-repeat",
+            height: "100vh",
+            width: "100vw",
+            padding: "20px",
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
-            marginTop: "100px",
+            justifyContent: "center",
+            color: "#000", // Added black color
           }}
         >
-          <Grid item xs={12} sm={5}>
-            <Paper
-              sx={{
-                padding: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
+          <style>
+            {`body { 
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            a:hover {
+              text-decoration: underline;
+            }
+          }`}
+          </style>
+          <CssBaseline />
+          <img
+            src={process.env.PUBLIC_URL + "/logo.png"}
+            alt="logo"
+            object-fit="contain"
+            style={{
+              width: "150px",
+              height: "120px",
+              marginBottom: "20px",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          />
+          <Typography
+            variant="h4"
+            component="h2"
+            style={{
+              marginBottom: "15px",
+              color: "#333",
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "40px",
+              lineHeight: "1.6",
+              fontFamily: "Funny Munkey, cursive",
+            }}
+          >
+            Welcome to Fa3el 5eir
+          </Typography>
+          <Typography
+            style={{
+              margin: "0 20px",
+              fontSize: "20px",
+              lineHeight: "1.6",
+              textAlign: "center",
+              color: "#333",
+              fontFamily: "Funny Munkey, cursive",
+            }}
+          >
+            We offer ease of communication between donors and organizations to
+            facilitate the donation process and helping out those in need by
+            fulfilling their requests either through clothes, food, toys,
+            medications, and so on ...
+          </Typography>
+
+          <Paper
+            style={{
+              padding: "20px",
+              margin: "20px auto 30px",
+              borderRadius: "10px",
+              boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              maxWidth: "400px", // Reduced max-width for the sign-in section
+              backgroundColor: "#f4f4f4",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography
+              component="h1"
+              variant="h5"
+              style={{ textAlign: "center" }}
             >
-              <img
-                src={process.env.PUBLIC_URL + "/logo.png"}
-                alt="logo"
-                style={{ width: "100px", height: "auto" }}
+              Sign in
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                error={errorMsg === "Invalid Email"}
               />
-              <Typography variant="h5" component="h2">
-                Welcome to Fa3el 5eir
-              </Typography>
-              <Typography style={{ marginTop: "10px" }}>
-                We offer ease of communication between donors and organizations
-                to facilitate the donation process and helping out those in need
-                by fulfilling their requests either through clothes, food, toys,
-                medications, and so on ...
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={5}>
-            <Paper
-              sx={{
-                padding: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <Box
-                component="form"
-                onSubmit={handleSubmit}
-                noValidate
-                sx={{ mt: 1 }}
-              >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  error={errorMsg === "Invalid Email"}
-                />
-                {errorMsg === "Invalid Email" && (
+              {errorMsg === "Invalid Email" && (
+                <span className="text-red-500">{errorMsg}</span>
+              )}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                error={errorMsg === "Invalid Password"}
+              />
+              {errorMsg === "Invalid Password" && (
+                <>
                   <span className="text-red-500">{errorMsg}</span>
-                )}
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  error={errorMsg === "Invalid Password"}
-                />
-                {errorMsg === "Invalid Password" && (
-                  <>
-                    <span className="text-red-500">{errorMsg}</span>
-                    <br />
-                  </>
-                )}
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link to="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to="/Register" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
+                  <br />
+                </>
+              )}
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: "#c51aff",
+                  color: "#fff",
+                }} // Changed button color & text color
+                onMouseOver={(e) => (
+                  (e.target.style.opacity = "0.8"),
+                  (e.target.style.backgroundColor = "#4CAB50")
+                )} // Added hover effect
+                onMouseOut={(e) => (
+                  (e.target.style.opacity = "1"),
+                  (e.target.style.backgroundColor = "#c51aff")
+                )} // Reset hover effect
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link to="#" variant="body2">
+                    <span style={{ color: "blue" }}>Forgot password?</span>
+                  </Link>
                 </Grid>
-              </Box>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-    </ThemeProvider>
+                <Grid item>
+                  <Typography variant="body2" style={{ display: "inline" }}>
+                    Don't have an account?{" "}
+                  </Typography>
+                  <Link
+                    to="/Register"
+                    variant="body2"
+                    underline="none"
+                    style={{
+                      display: "inline",
+                      color: "blue",
+                    }}
+                  >
+                    Sign Up
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Paper>
+        </Container>
+      </ThemeProvider>
+    </>
   );
 }
