@@ -5,6 +5,11 @@ import { useState } from "react";
 
 
 const LearnMore = ({ setOrgNotificationList, idNum }) => {
+  const [inputValue, setInputValue] = useState(''); // State to manage input value
+  const handleInputChange = (event) => {
+    const value = event.target.value; // Get the input value
+    setInputValue(value); // Update the input value in state
+  };
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   // const { id } = useParams();
   // const idNum = card.ID;
@@ -27,6 +32,8 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
       ];
     });
   };
+
+  // I want to display the donate button only if the input value is greater than 0 and less than the current inventory
 
   return (
     <div
@@ -98,6 +105,8 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       placeholder="Number of donation items"
                       min={1}
                       max={item.Current_Inventory}
+                      value={inputValue}
+                      onChange={handleInputChange}
                     />
                   </div>
                 )}
@@ -116,7 +125,9 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                 </Link> */}
                 {item.Category !== "Blood Donations" &&
                   item.Category !== "Teaching Classes" &&
-                  item.Category !== "Medical Visit" && (
+                  item.Category !== "Medical Visit" &&
+                  inputValue > 0 && inputValue <= item.Current_Inventory && (
+
                     <Link
                       to="/Home/Requests"
                       style={{ textDecoration: "none" }}
@@ -134,11 +145,11 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
         </div>
       )}
                     </Link>
-                  )}
-
+    )}
                 {(item.Category === "Blood Donations" ||
                   item.Category === "Teaching Classes" ||
-                  item.Category === "Medical Visit") && (
+                  item.Category === "Medical Visit") &&
+                  inputValue > 0 && inputValue <= item.Current_Inventory && (
                   <Link to="/Home/Requests" style={{ textDecoration: "none" }}>
                     <Button
                       variant="contained"
