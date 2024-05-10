@@ -12,6 +12,8 @@ import {
   Select,
   MenuItem,
   Box,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 
 import { useTheme } from "@mui/material/styles";
@@ -122,7 +124,12 @@ const DonorDashboard = () => {
           My Donations
         </Typography>
         <Typography
-          style={{ color: "rgba(128, 128, 128, 0.7)", fontWeight: "bold" }}
+          style={{
+            color: "rgba(128, 128, 128, 0.7)",
+            fontWeight: "bold",
+            marginTop: "10px",
+            marginBottom: "20px",
+          }}
         >
           Please select schedule and transportation for donation pick-up
         </Typography>
@@ -235,30 +242,32 @@ const DonorDashboard = () => {
                   </IconButton>
                 </TableCell>
                 <TableCell>
-                  <Select
-                    value={item.pickUpTime}
-                    onChange={(e) =>
-                      setData((prevData) =>
-                        prevData.map((dataItem, dataIndex) =>
-                          dataIndex === index
-                            ? { ...dataItem, pickUpTime: e.target.value }
-                            : dataItem
+                  <FormControl variant="outlined" style={{ minWidth: 120 }}>
+                    <InputLabel id="time-slot-label">Time Slot</InputLabel>
+                    <Select
+                      labelId="time-slot-label"
+                      value={item.pickUpTime}
+                      onChange={(e) =>
+                        setData((prevData) =>
+                          prevData.map((dataItem, dataIndex) =>
+                            dataIndex === index
+                              ? { ...dataItem, pickUpTime: e.target.value }
+                              : dataItem
+                          )
                         )
-                      )
-                    }
-                    style={{
-                      color: item.pickUpTime ? "green" : iconColor,
-                    }}
-                  >
-                    <MenuItem value="" disabled>
-                      Choose time slot
-                    </MenuItem>
-                    {timeSlots.map((timeSlot) => (
-                      <MenuItem key={timeSlot} value={timeSlot}>
-                        {timeSlot}
-                      </MenuItem>
-                    ))}
-                  </Select>
+                      }
+                      style={{
+                        color: item.pickUpTime ? "green" : iconColor,
+                      }}
+                      label="Time Slot"
+                    >
+                      {timeSlots.map((timeSlot) => (
+                        <MenuItem key={timeSlot} value={timeSlot}>
+                          {timeSlot}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </TableCell>
                 <TableCell>
                   <Button
