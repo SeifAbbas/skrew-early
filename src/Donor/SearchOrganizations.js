@@ -27,7 +27,6 @@ const SearchOrganizations = () => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
   const organizations = [
     {
       name: "Egyptian Food Bank",
@@ -37,6 +36,7 @@ const SearchOrganizations = () => {
       area: "Bab El Louk",
       governorate: "Cairo",
       location: { latitude: 30.046091, longitude: 31.235764 },
+      phoneNumber: "+20 2 23932216", // Example phone number
     },
     {
       name: "Misr El Kheir Foundation",
@@ -46,6 +46,7 @@ const SearchOrganizations = () => {
       area: "Nasr City",
       governorate: "Cairo",
       location: { latitude: 30.056315, longitude: 31.326267 },
+      phoneNumber: "+20 2 24040014", // Example phone number
     },
     {
       name: "Resala Charity Organization",
@@ -55,6 +56,7 @@ const SearchOrganizations = () => {
       area: "Manshiyat Al Bakri",
       governorate: "Cairo",
       location: { latitude: 30.042087, longitude: 31.262544 },
+      phoneNumber: "+20 2 23638949", // Example phone number
     },
     {
       name: "Life Makers Foundation",
@@ -63,8 +65,8 @@ const SearchOrganizations = () => {
       area: "Almaza",
       governorate: "Cairo",
       location: { latitude: 30.097455, longitude: 31.326282 },
+      phoneNumber: "+20 2 24553846", // Example phone number
     },
-    // { name: "Tahya Misr Fund", type: "Hospital", address: "N/A", area: "N/A", governorate: "N/A", location: { latitude: 30.0458, longitude: 31.2357 } },
     {
       name: "Basma Foundation for Comprehensive Development",
       type: "Hospital",
@@ -72,6 +74,7 @@ const SearchOrganizations = () => {
       area: "Almaza",
       governorate: "Cairo",
       location: { latitude: 30.097455, longitude: 31.326282 },
+      phoneNumber: "+20 2 24142124", // Example phone number
     },
     {
       name: "Al Orman Charity Association",
@@ -80,8 +83,8 @@ const SearchOrganizations = () => {
       area: "Mohandessin",
       governorate: "Giza",
       location: { latitude: 30.060726, longitude: 31.203669 },
+      phoneNumber: "+20 2 37491111", // Example phone number
     },
-    // { name: "Ibrahim Badran Foundation for Development", type: "Non-profit", address: "N/A", area: "N/A", governorate: "N/A", location: { latitude: 30.0458, longitude: 31.2357 } },
     {
       name: "Kahk El-Sudan Association",
       type: "Non-profit",
@@ -89,6 +92,7 @@ const SearchOrganizations = () => {
       area: "Dokki",
       governorate: "Giza",
       location: { latitude: 30.044796, longitude: 31.212153 },
+      phoneNumber: "+20 2 33388022", // Example phone number
     },
     {
       name: "Baitak Zaka Association",
@@ -97,8 +101,10 @@ const SearchOrganizations = () => {
       area: "Agouza",
       governorate: "Giza",
       location: { latitude: 30.044796, longitude: 31.212153 },
+      phoneNumber: "+20 2 33388022", // Example phone number
     },
   ];
+  
   let filteredItems = organizations.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -395,6 +401,8 @@ const SearchOrganizations = () => {
                           color="text.primary"
                         >
                           {item.type}
+                          <br />
+                          {item.phoneNumber}
                           <br />
                           {item.area}
                           <br />
