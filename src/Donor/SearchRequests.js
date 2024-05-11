@@ -224,7 +224,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     "Ain Shams University Hospital",
     "Dar El Fouad Hospital",
     "As-Salam International Hospital",
-    "El Galaa Hospital",
+    "Andalusia Hospital Smouha",
     "Misr International Hospital",
     "Luxor International Hospital",
     "Aswan Heart Centre",
@@ -234,27 +234,20 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     "Police Hospital",
     "Al Haram Hospital",
     "El Sahel Teaching Hospital",
-    "El Safa Hospital",
+    "Cleopatra Hospital",
     "Al Ahly Hospital",
     "El Salam International Hospital",
     "International Medical Center",
     "Saudi-German Hospital",
     "El Mounira General Hospital",
     "Dar El Mona",
-    "El Nasr Hospital",
+    "Om El Masryyen",
     "Hayat Hospital",
     "El Fayoum General Hospital",
     "Giza General Hospital",
     "Sohag Teaching Hospital",
     "Al-Zahra Hospital",
     "Dar Elhekma Hospital",
-    "Assiut University Hospital",
-    "Port Said General Hospital",
-    "El Minya University Hospital",
-    "El Qasr El Aini Hospital",
-    "Nasser Institute Hospital",
-    "Luxor General Hospital",
-    "Assiut General Hospital",
   ];
   const [hospital, setHospital] = React.useState([]);
   const handleHospitalChange = (event) => {
@@ -332,16 +325,40 @@ export default function AlignItemsList({ setOrgNotificationList }) {
           category.includes(item.Category))
     );
   }
+  if (hospital.length > 0) {
+    filteredItems = filteredItems.filter(
+      (item) =>
+        hospital.includes(item.HospitalName) ||
+        (!vCategories.includes(item.Category) &&
+          category.includes(item.Category))
+    );
+  } if (organization.length > 0) {
+    filteredItems = filteredItems.filter(
+      (item) =>
+        (organization.includes(item.HospitalName)) ||
+        (!vCategories.includes(item.Category) &&
+          category.includes(item.Category))
+    );
+  }
   const handleGovChange = (event) => {
     const {
       target: { value },
     } = event;
-    setGovernorate(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-    setArea([]);
+  
+    // If the clicked governorate is already selected, deselect it
+    if (governorate.includes(value)) {
+      setGovernorate([]);
+      setArea([]);
+    } else {
+      // Otherwise, select the clicked governorate
+      setGovernorate(
+        // On autofill we get a stringified value.
+        typeof value === "string" ? value.split(",") : value
+      );
+            setArea([]);
+    }
   };
+  
   const handleAreaChange = (event) => {
     const {
       target: { value },
