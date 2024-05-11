@@ -25,7 +25,6 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 import SearchIcon from "@mui/icons-material/Search";
 import BusinessIcon from "@mui/icons-material/Business";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import RateReviewIcon from "@mui/icons-material/RateReview";
 
 import dummyData from "../dummyData.json";
 
@@ -51,24 +50,9 @@ export default function SignIn({ setActiveUser, setNavbarContent }) {
           route: "/Home/Dashboard",
         },
         {
-          text: "Donors",
-          icon: <VolunteerActivismIcon />,
-          route: "/Home/Donors",
-        },
-        {
           text: "Organizations",
           icon: <BusinessIcon />,
           route: "/Home/Organizations",
-        },
-        {
-          text: "Review Submissions",
-          icon: <RateReviewIcon />,
-          route: "/Home/ReviewSubmissions",
-        },
-        {
-          text: "Account",
-          icon: <AccountCircleIcon />,
-          route: "/Home/Account",
         },
         { text: "Logout", icon: <LogoutIcon />, route: "/" },
       ]);
