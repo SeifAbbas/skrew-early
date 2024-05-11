@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import ClinicVisits from "./ClinicVisits";
 // import LearnMore from "./LearnMore";
 import WhatToDonate from "./WhatToDonate";
+import SearchOrganizations from "./SearchOrganizations";
 
 const DonorRoutes = ({ setOrgNotificationList }) => {
   return (
@@ -23,6 +24,8 @@ const DonorRoutes = ({ setOrgNotificationList }) => {
         element={<TeachingClasses />}
       />
       <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits />} />
+      <Route path="Organizations" element={<SearchOrganizations />} />
+
     </Routes>
   );
 };
