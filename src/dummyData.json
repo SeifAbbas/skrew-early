@@ -403,7 +403,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Blood Donations",
-      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5awFHmOoTxB02inDxg0brH9qj_5WG-WI_j4un1qxFug&s"
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5awFHmOoTxB02inDxg0brH9qj_5WG-WI_j4un1qxFug&s",
+      "Location": { "latitude": 30.055529, "longitude": 31.208798 }
     },
     {
       "ID": 33,
@@ -418,7 +419,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Blood Donations",
-      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AecFtrnNu_rHMAv5qimzwOz9eCfk64ee6e6XTC0-Fw&s"
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1AecFtrnNu_rHMAv5qimzwOz9eCfk64ee6e6XTC0-Fw&s",
+      "Location": { "latitude": 30.090058, "longitude": 31.316144 }
     },
     {
       "ID": 34,
@@ -433,7 +435,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Blood Donations",
-      "ImageSrc": "https://www.blood.ca/sites/default/files/icon/blood-types_b-negative_blood-drop.jpg"
+      "ImageSrc": "https://www.blood.ca/sites/default/files/icon/blood-types_b-negative_blood-drop.jpg",
+      "Location": { "latitude": 31.214691, "longitude": 29.944908 }
     },
     {
       "ID": 36,
@@ -448,7 +451,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Teaching Classes",
-      "ImageSrc": "https://www.shutterstock.com/shutterstock/photos/1859813464/display_1500/stock-vector-math-horizontal-banner-presentation-website-isolated-lettering-typography-idea-with-icons-1859813464.jpg"
+      "ImageSrc": "https://www.shutterstock.com/shutterstock/photos/1859813464/display_1500/stock-vector-math-horizontal-banner-presentation-website-isolated-lettering-typography-idea-with-icons-1859813464.jpg",
+      "Location": { "latitude": 30.042798, "longitude": 31.225508 }
     },
     {
       "ID": 37,
@@ -463,7 +467,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Teaching Classes",
-      "ImageSrc": "https://img.freepik.com/free-vector/colorful-science-objects-icons-vector-set_1308-131708.jpg"
+      "ImageSrc": "https://img.freepik.com/free-vector/colorful-science-objects-icons-vector-set_1308-131708.jpg",
+      "Location": { "latitude": 25.719242, "longitude": 32.657349 }
     },
     {
       "ID": 38,
@@ -478,7 +483,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Teaching Classes",
-      "ImageSrc": "https://static.vecteezy.com/system/resources/previews/017/300/766/non_2x/learning-english-doodle-set-language-school-in-sketch-style-online-language-education-course-hand-drawn-illustration-isolated-on-white-background-vector.jpg"
+      "ImageSrc": "https://static.vecteezy.com/system/resources/previews/017/300/766/non_2x/learning-english-doodle-set-language-school-in-sketch-style-online-language-education-course-hand-drawn-illustration-isolated-on-white-background-vector.jpg",
+      "Location": { "latitude": 24.092571, "longitude": 32.899373 }
     },
     {
       "ID": 39,
@@ -496,7 +502,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Medical Visit",
-      "ImageSrc": "https://thedentistsdorridge.co.uk/wp-content/uploads/2019/11/be_a_denist.jpg"
+      "ImageSrc": "https://thedentistsdorridge.co.uk/wp-content/uploads/2019/11/be_a_denist.jpg",
+      "Location": { "latitude": 29.984131, "longitude": 31.169359 }
     },
     {
       "ID": 40,
@@ -514,7 +521,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Medical Visit",
-      "ImageSrc": "https://c8.alamy.com/comp/GB8DX6/young-asian-nutritionist-doctor-using-digital-tablet-diet-plan-GB8DX6.jpg"
+      "ImageSrc": "https://c8.alamy.com/comp/GB8DX6/young-asian-nutritionist-doctor-using-digital-tablet-diet-plan-GB8DX6.jpg",
+      "Location": { "latitude": 31.215635, "longitude": 29.955786 }
     },
     {
       "ID": 41,
@@ -532,7 +540,8 @@
       "Backorder": 35,
       "Manufacturing": 5,
       "Category": "Medical Visit",
-      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6lYQuu9lQx_Ky-q2rqnHGpKLPr8Hdaaj-BSlWN9c7Fg&s"
+      "ImageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6lYQuu9lQx_Ky-q2rqnHGpKLPr8Hdaaj-BSlWN9c7Fg&s",
+      "Location": { "latitude": 30.057832, "longitude": 31.347246 }
     }
   ],
   "FulfilledRequests": [

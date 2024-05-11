@@ -1,11 +1,13 @@
 import dummyData from "../dummyData.json";
-import { Link, useParams } from "react-router-dom";
-import { Divider, Button, Box, ListItem } from "@mui/material";
+import SimpleMap from "../Utils/Maps";
+
+import { Link } from "react-router-dom";
+import { Button, Box } from "@mui/material";
 import { useState } from "react";
 
 const LearnMore = ({ setOrgNotificationList, idNum }) => {
   const [inputValue, setInputValue] = useState(""); // State to manage input value
-  const[inventory, setInventory] = useState(0);
+  const [inventory, setInventory] = useState(0);
   const handleInputChange = (event) => {
     const value = event.target.value; // Get the input value
     setInputValue(value); // Update the input value in state
@@ -53,19 +55,38 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                 alignItems: "center",
               }}
             >
-              <img
-                src={item.ImageSrc}
-                alt=""
-                style={{
-                  width: "100%",
-                  maxWidth: "300px",
-                  height: "auto",
-                  marginLeft: "10px",
-                }}
-              />
+              {![
+                "Blood Donations",
+                "Medical Visit",
+                "Teaching Classes",
+              ].includes(item.Category) ? (
+                <img
+                  src={item.ImageSrc}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    maxWidth: "300px",
+                    height: "auto",
+                    marginLeft: "10px",
+                  }}
+                />
+              ) : (
+                <SimpleMap
+                  activeUser={"Donor"}
+                  center={{
+                    lat: item.Location.latitude,
+                    lng: item.Location.longitude,
+                  }}
+                />
+              )}
               <h1>{item.Name}</h1>
               {item.Category && <h1>{item.Category}</h1>}
-              {(item.Current_Inventory && <h1>{"Quantity Needed: " + parseInt(item.Current_Inventory + (-inventory))} </h1>)}
+              {item.Current_Inventory && (
+                <h1>
+                  {"Quantity Needed: " +
+                    parseInt(item.Current_Inventory + -inventory)}{" "}
+                </h1>
+              )}
               {item.PatientName && <h1>{item.PatientName}</h1>}
               {(item.Gender && <h1>{item.Gender}</h1>) ||
                 (item.Type && <h1>{"Type: " + item.Type}</h1>) ||
