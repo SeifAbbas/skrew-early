@@ -1,31 +1,54 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import SimpleMap from "../Utils/Maps";
+import dummyData from "../dummyData.json";
 
 const ClinicVisits = () => {
-    return ( 
-        <div className="clinic-visits">
-            <input type="text" placeholder="Address" />
+  const [inputFields, setInputFields] = useState(dummyData.donorRegFields);
 
-            <input type="text" placeholder="Area" />
+  // 5 is the index of field with name "Address" within dummyData.donorRegFields
+  const handleAddressChange = (event) => {
+    let newInputFields = [...inputFields];
+    newInputFields[5].value = event.target.value;
+    setInputFields([...newInputFields]);
+  };
 
-            <input type="text" placeholder="Governorate" />
+  return (
+    <div className="clinic-visits">
+      <input
+        name="Address"
+        value={inputFields[5].value}
+        type="text"
+        placeholder="Address"
+        onChange={(event) => handleAddressChange(event)}
+        style={{ marginBottom: "10px" }}
+      />
 
-            <input type="text" placeholder="Specialty" />
+      <input type="text" placeholder="Area" />
 
-            <input type="number" placeholder="Number of casses" />
+      <input type="text" placeholder="Governorate" />
 
-            <input type="date" placeholder="Date" />
+      <input type="text" placeholder="Specialty" />
 
-            <input type="time" placeholder=" Time" />
+      <input type="number" placeholder="Number of cases" />
 
-            <input type="time" placeholder=" Time" />
+      <input type="date" placeholder="Date" />
 
-            <Link to="/Home/Dashboard">
-            <button>Submit</button>
-            </Link>
-            </div>
-     );
-}
- 
+      <input type="time" placeholder=" Time" />
+
+      <input type="time" placeholder=" Time" />
+
+      <Link to="/Home/Dashboard" className="mb-5">
+        <button>Submit</button>
+      </Link>
+
+      <SimpleMap
+        activeUser="Donor"
+        inputFields={inputFields}
+        setInputFields={setInputFields}
+      />
+    </div>
+  );
+};
+
 export default ClinicVisits;

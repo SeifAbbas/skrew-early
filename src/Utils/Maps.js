@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 
-const Marker = ({ maps, map, lat, lng, onDrag }) => {
+const Marker = ({ maps, map, lat, lng, onDrag, draggable }) => {
   useEffect(() => {
     const marker = new maps.Marker({
       position: { lat, lng },
       map,
-      draggable: true,
+      draggable: draggable,
     });
 
-    marker.addListener("dragend", (event) => {
-      onDrag(event.latLng.lat(), event.latLng.lng());
-    });
+    {
+      draggable &&
+        marker.addListener("dragend", (event) => {
+          onDrag(event.latLng.lat(), event.latLng.lng());
+        });
+    }
 
     return () => {
       marker.setMap(null);
     };
-  }, [maps, map, lat, lng, onDrag]);
+  }, [maps, map, lat, lng, onDrag, draggable]);
 
   return null;
 };
 
-const SimpleMap = ({ activeUser, inputFields, setInputFields }) => {
+const SimpleMap = ({ activeUser, inputFields, setInputFields, center }) => {
   const [mapsLoaded, setMapsLoaded] = useState(false);
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
-
+  console.log(center);
   const defaultProps = {
     center: {
       lat: 29.9867332476986,
@@ -65,7 +68,7 @@ const SimpleMap = ({ activeUser, inputFields, setInputFields }) => {
         bootstrapURLKeys={{
           key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
         }}
-        defaultCenter={defaultProps.center}
+        center={center || defaultProps.center}
         defaultZoom={defaultProps.zoom}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
@@ -74,9 +77,10 @@ const SimpleMap = ({ activeUser, inputFields, setInputFields }) => {
           <Marker
             maps={maps}
             map={map}
-            lat={defaultProps.center.lat}
-            lng={defaultProps.center.lng}
+            lat={center?.lat || defaultProps.center.lat}
+            lng={center?.lng || defaultProps.center.lng}
             onDrag={handleMarkerDrag}
+            draggable={center ? false : true}
           />
         ) : null}
       </GoogleMapReact>
