@@ -8,8 +8,9 @@ import ClinicVisits from "./ClinicVisits";
 // import LearnMore from "./LearnMore";
 import WhatToDonate from "./WhatToDonate";
 import SearchOrganizations from "./SearchOrganizations";
+import Account from "./Account";
 
-const DonorRoutes = ({ setOrgNotificationList }) => {
+const DonorRoutes = ({ setOrgNotificationList, setAlertState }) => {
   return (
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
@@ -25,7 +26,10 @@ const DonorRoutes = ({ setOrgNotificationList }) => {
       />
       <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits />} />
       <Route path="Organizations" element={<SearchOrganizations />} />
-
+      <Route
+        path="Account"
+        element={<Account setAlertState={setAlertState} />}
+      />
     </Routes>
   );
 };

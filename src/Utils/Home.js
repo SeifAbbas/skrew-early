@@ -251,7 +251,7 @@ export default function Home({
             <OrganizationRoutes setAlertState={setAlertState} />
           )}
           {activeUser === "Donor" && (
-            <DonorRoutes setOrgNotificationList={setOrgNotificationList} />
+            <DonorRoutes setOrgNotificationList={setOrgNotificationList} setAlertState={setAlertState}/>
           )}
         </Box>
       </Box>

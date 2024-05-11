@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import dummyData from "../dummyData.json";
 const WhatToDonate = () => {
   return (
-    <div className="donor-what-to-donate">
-      <h1>What do you want to donate</h1>
-
+   
       <div className="button-container">
         {dummyData.DonorSignIn.role !== "Doctor" && (
           <Link
@@ -37,7 +35,6 @@ const WhatToDonate = () => {
             </button>
           </Link>
         )}
-      </div>
     </div>
   );
 };

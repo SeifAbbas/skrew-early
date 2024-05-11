@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.donor-what-to-donate- {
+/* .donor-what-to-donate- {
   display: flex;
   justify-content: center; /* Center buttons horizontally */
-  gap: 20px; /* Add spacing between buttons */
-}
-
+  /* gap: 20px; Add spacing between buttons */
+/* } */
+/* 
 
 .donor-what-to-donate h1 {
   color: #1976d2;
@@ -15,7 +15,7 @@
   margin-top: 20px;
   text-align: center;
   background-color: blanchedalmond;
-}
+} */ */
 .button-with-image1 img {
   width: 400px;
   height: 150px;
@@ -191,24 +191,24 @@
 }
 
 /* CSS */
-.donor-what-to-donate {
+/* .donor-what-to-donate {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap; /* Allow buttons to wrap if they exceed the container width */
-}
-
+/* } */
+/* 
 .donor-what-to-donate h1 {
   color: #1976d2;
   font-size: 24px;
   margin-bottom: -40px; /* Add space between heading and buttons */
-  text-align: center;
-}
+  /* text-align: center;
+} */ 
 
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Adjust the gap between buttons */
+  gap: 100px; /* Adjust the gap between buttons */
 }
 
 .button-with-image {

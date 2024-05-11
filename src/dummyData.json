@@ -11,6 +11,18 @@
     "role": "Regular Donor",
     "gender": "male"
   },
+  "DonorAccount": {
+    "First Name": "Yousef",
+    "Last Name": "Yasser",
+    "Email": "d",
+    "Password": "d",
+    "Mobile": "0123456789",
+    "Address": "New Cairo",
+    "Area": "New Cairo",
+    "Governorate": "Cairo",
+    "Role": "Regular Donor",
+    "Gender": "male"
+  },
   "OrganizationSignIn": {
     "First Name": "Yousef",
     "Last Name": "Yasser",
