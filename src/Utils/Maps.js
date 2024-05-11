@@ -63,7 +63,7 @@ const SimpleMap = ({ activeUser, inputFields, setInputFields, center }) => {
   };
 
   return (
-    <div style={{ height: "400px", width: "400px", marginRight: "30px" }}>
+    <div style={{ height: "400px", width: "436px" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
           key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,

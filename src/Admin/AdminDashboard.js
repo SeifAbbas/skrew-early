@@ -1,4 +1,13 @@
-import { Box, Toolbar, Container, Grid, Paper } from "@mui/material";
+import {
+  Box,
+  Toolbar,
+  Container,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  Button,
+} from "@mui/material";
 
 import GroupIcon from "@mui/icons-material/Group";
 import BusinessIcon from "@mui/icons-material/Business";
@@ -115,6 +124,32 @@ const AdminDashboard = ({ setAlertState }) => {
             </Paper>
           </Grid>
 
+          {/** DELETE DONOR */}
+          <Grid item lg={4} md={4} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+                Delete donor account by name
+              </Typography>
+              <TextField
+                fullWidth
+                label="Donor name"
+                type="text"
+                sx={{ marginBottom: "20px" }}
+              />
+              <Button variant="contained">Delete Donor</Button>
+            </Paper>
+          </Grid>
+
           {/** ORGANIZATION SUBMISSIONS TABLE */}
           <Grid item lg={6} md={9} sm={12} sx={{ p: 2 }}>
             <Paper
@@ -136,6 +171,44 @@ const AdminDashboard = ({ setAlertState }) => {
                 isAdmin={true}
                 setAlertState={setAlertState}
               />
+            </Paper>
+          </Grid>
+
+          {/** CHANGE PASSWORD */}
+          <Grid item lg={4} md={4} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+                Change Password
+              </Typography>
+              <TextField
+                fullWidth
+                label="Old Password"
+                type="password"
+                sx={{ marginBottom: "20px" }}
+              />
+              <TextField
+                fullWidth
+                label="New Password"
+                type="password"
+                sx={{ marginBottom: "20px" }}
+              />
+              <TextField
+                fullWidth
+                label="Confirm New Password"
+                type="password"
+                sx={{ marginBottom: "20px" }}
+              />
+              <Button variant="contained">Change</Button>
             </Paper>
           </Grid>
         </Grid>

@@ -1,7 +1,6 @@
-import { CheckBox } from "@mui/icons-material";
 import {
   CardActionArea,
-  CardMedia,
+  CardActions,
   Checkbox,
   FormControl,
   Grid,
@@ -15,19 +14,22 @@ import {
   Select,
   TextField,
   Typography,
+  Button,
 } from "@mui/material";
 import dummyData from "../dummyData.json";
 import SimpleMap from "../Utils/Maps";
 import * as React from "react";
 
-const SearchOrganizations = () => {
+const SearchOrganizations = ({ isAdmin }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [type, setType] = React.useState([]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  const organizations = [
+
+  const [organizations, setOrganizations] = React.useState([
+
     {
       name: "Egyptian Food Bank",
       type: "Mosque",
@@ -103,8 +105,8 @@ const SearchOrganizations = () => {
       location: { latitude: 30.044796, longitude: 31.212153 },
       phoneNumber: "+20 2 33388022", // Example phone number
     },
-  ];
-  
+  ]);
+
   let filteredItems = organizations.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -198,6 +200,11 @@ const SearchOrganizations = () => {
   const handlePageChange = (event, value) => {
     setPage(value - 1);
   };
+
+  const handleDeleteOrg = (name) => {
+    setOrganizations(organizations.filter((item) => item.name !== name));
+  };
+
   return (
     <div>
       <Grid
@@ -342,8 +349,8 @@ const SearchOrganizations = () => {
         >
           {filteredItems
             .slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage)
-            .map((item, index) => (
-              <ListItem key={index} className="list-item">
+            .map((item) => (
+              <ListItem key={item.name} className="list-item">
                 <CardActionArea
                   className="card-action-area"
                   sx={{
@@ -352,37 +359,6 @@ const SearchOrganizations = () => {
                     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  {/* <CardMedia
-                    component="img"
-                    image="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg"
-                    alt="green iguana"
-                    sx={{
-                      height: 300,
-                      objectFit: "contain",
-                      borderTopLeftRadius: "15px",
-                      borderTopRightRadius: "15px",
-                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                      transition: "transform .2s",
-                      border: "1px solid rgba(0, 0, 0, 0.1)",
-                      filter: "brightness(0.9)",
-                      position: "relative",
-                      "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        left: 0,
-                        backgroundImage:
-                          "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5))",
-                      },
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                    }}
-                    className="card-media"
-                  /> */}
                   <SimpleMap
                     activeUser={"Donor"}
                     center={{
@@ -414,6 +390,19 @@ const SearchOrganizations = () => {
                     }
                     sx={{ padding: "16px" }}
                   />
+                  {isAdmin && (
+                    <CardActions sx={{ padding: "0 16px 16px 16px" }}>
+                      <Button
+                        size="small"
+                        color="primary"
+                        variant="contained"
+                        sx={{ display: "inline", marginLeft: -1 }}
+                        onClick={() => handleDeleteOrg(item.name)}
+                      >
+                        Delete Organization
+                      </Button>
+                    </CardActions>
+                  )}
                 </CardActionArea>
               </ListItem>
             ))}
