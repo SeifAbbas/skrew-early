@@ -57,15 +57,14 @@ const SearchOrganizations = () => {
       if (governorate.length > 0) {
         filteredItems = filteredItems.filter(
           (item) =>
-            governorate.includes(item.Governorate)
+            governorate.includes(item.governorate)
 
         );
       }
       if (area.length > 0) {
         filteredItems = filteredItems.filter(
           (item) =>
-            area.includes(item.Area)
-
+            area.includes(item.area)
         );
       }
       const handleGovChange = (event) => {
@@ -177,7 +176,7 @@ return (
           >
             {types.map((name) => (
               <MenuItem key={name} value={name}>
-      <Checkbox checked={type.includes(name)} /> {/* Use includes to check if the type is selected */}
+                <Checkbox checked={type.includes(name)} /> {/* Use includes to check if the type is selected */}
                 <ListItemText primary={name} />
               </MenuItem>
             ))}
@@ -208,7 +207,7 @@ return (
               {governorates.length > 0 &&
                 governorates.map((name) => (
                   <MenuItem key={name} value={name}>
-                    <Checkbox checked={governorate.indexOf(name) > -1} />
+                    <Checkbox checked={governorate.includes(name)} /> {/* Use includes to check if the type is selected */}
                     <ListItemText primary={name} />
                   </MenuItem>
                 ))}
@@ -238,7 +237,7 @@ return (
               {areas.length > 0 &&
                 areas.map((name) => (
                   <MenuItem key={name} value={name}>
-                    <Checkbox checked={area.indexOf(name) > -1} />
+                    <Checkbox checked={area.includes(name)} /> {/* Use includes to check if the type is selected */}
                     <ListItemText primary={name} />
                   </MenuItem>
                 ))}
