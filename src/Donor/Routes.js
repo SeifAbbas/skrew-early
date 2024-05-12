@@ -22,9 +22,9 @@ const DonorRoutes = ({ setOrgNotificationList, setAlertState }) => {
       <Route path="VolunteerActivity" element={<WhatToDonate />} />
       <Route
         path="VolunteerActivity/TeachingClasses"
-        element={<TeachingClasses />}
+        element={<TeachingClasses setAlertState={setAlertState}/>}
       />
-      <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits />} />
+      <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits setAlertState={setAlertState}/>} />
       <Route path="Organizations" element={<SearchOrganizations />} />
       <Route
         path="Account"

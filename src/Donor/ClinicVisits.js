@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "../Utils/Maps";
 import dummyData from "../dummyData.json";
 
-const ClinicVisits = () => {
+const ClinicVisits = ({setAlertState}) => {
   const [inputFields, setInputFields] = useState(dummyData.donorRegFields);
   const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ const ClinicVisits = () => {
       <button onClick={() => navigate(-1)}>Back</button>
 
       <Link to="/Home/Dashboard" className="mb-5">
-        <button>Submit</button>
+      <button onClick={() => setAlertState("Submitted Clinic Details successfully")}>Submit</button>
       </Link>
 
     </div>

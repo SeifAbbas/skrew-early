@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const TeachingClasses = () => {
+const TeachingClasses = ({setAlertState}) => {
   const navigate = useNavigate();
 
   return (
@@ -51,7 +51,7 @@ const TeachingClasses = () => {
       <button onClick={() => navigate(-1)}>Back</button>
 
       <Link to="/Home/Dashboard">
-        <button>Submit</button>
+      <button onClick={() => setAlertState("Submitted Teaching Class successfully")}>Submit</button>
       </Link>
     </div>
   );
