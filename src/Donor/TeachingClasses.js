@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 const TeachingClasses = ({ setAlertState }) => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const TeachingClasses = ({ setAlertState }) => {
     if (!minStudents.trim() || minStudents <= 0) {
       newErrors.minStudents = true;
     }
-    if (!maxStudents.trim()|| maxStudents <= 0) {
+    if (!maxStudents.trim() || maxStudents <= 0) {
       newErrors.maxStudents = true;
     }
     if (!classDuration.trim() || classDuration <= 0) {
@@ -43,10 +44,12 @@ const TeachingClasses = ({ setAlertState }) => {
     if (!date.trim() || isNaN(new Date(date))) {
       newErrors.date = true;
     }
-    if (!classTime.trim() || !/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime)) {
+    if (
+      !classTime.trim() ||
+      !/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime)
+    ) {
       newErrors.classTime = true;
     }
-    
 
     // Set errors and display alert if any
     if (Object.values(newErrors).includes(true)) {
@@ -61,73 +64,151 @@ const TeachingClasses = ({ setAlertState }) => {
 
   return (
     <div className="teaching-class">
-      <input
+      <TextField
         type="text"
-        placeholder="Subject"
+        label="Subject"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.subject ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginTop: "30px",
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.subject && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.subject && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          Field is required
+        </div>
+      )}
 
-      <input
+      <TextField
         type="text"
-        placeholder="Study Year"
+        label="Study Year"
         value={studyYear}
         onChange={(e) => setStudyYear(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.studyYear ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.studyYear && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.studyYear && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          Field is required
+        </div>
+      )}
 
-      <input
+      <TextField
         type="number"
-        placeholder="Minimum number of students to attend"
+        label="Minimum number of students to attend"
         value={minStudents}
         min={1}
         onChange={(e) => setMinStudents(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.minStudents ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.minStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.minStudents && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          Field is required
+        </div>
+      )}
 
-      <input
+      <TextField
         type="number"
-        placeholder="Maximum number of students to attend"
+        label="Maximum number of students to attend"
         value={maxStudents}
         min={minStudents}
         onChange={(e) => setMaxStudents(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.maxStudents ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.maxStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.maxStudents && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          Field is required
+        </div>
+      )}
 
-      <input
+      <TextField
         type="number"
-        placeholder="Class Duration in hours"
+        label="Class Duration in hours"
         value={classDuration}
         min={1}
         onChange={(e) => setClassDuration(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.classDuration ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.classDuration && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.classDuration && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          Field is required
+        </div>
+      )}
 
-      <input
+      <h5>Class date</h5>
+      <TextField
         type="date"
-        placeholder="Date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.date ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{isNaN(new Date(date)) ? "Invalid date format" : "Field is required"}</div>}
+      {errors.date && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          {isNaN(new Date(date)) ? "Invalid date format" : "Field is required"}
+        </div>
+      )}
 
-      <input
+      <h5>Class time</h5>
+      <TextField
         type="time"
-        placeholder="Class Time"
         value={classTime}
         onChange={(e) => setClassTime(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: errors.classTime ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        error={errors.subject}
+        style={{
+          marginBottom: "10px",
+          padding: "8px",
+          borderRadius: "4px",
+          fontSize: "16px",
+          width: "30%",
+        }}
       />
-      {errors.classTime && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{!/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime) ? "Invalid time format (HH:MM AM/PM)" : "Field is required"}</div>}
-
-      <button onClick={() => navigate(-1)}>Back</button>
+      {errors.classTime && (
+        <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>
+          {!/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime)
+            ? "Invalid time format (HH:MM AM/PM)"
+            : "Field is required"}
+        </div>
+      )}
       <button onClick={handleClick}>Submit</button>
     </div>
   );

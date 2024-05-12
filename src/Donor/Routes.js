@@ -14,7 +14,12 @@ const DonorRoutes = ({ setOrgNotificationList, setAlertState }) => {
   return (
     <Routes>
       <Route path="Dashboard" element={<DonorDashboard />} />
-      <Route path="Requests" element={<SearchRequests setOrgNotificationList={setOrgNotificationList}/>} />
+      <Route
+        path="Requests"
+        element={
+          <SearchRequests setOrgNotificationList={setOrgNotificationList} />
+        }
+      />
       {/* <Route
         path="Requests/LearnMore/:id"
         element={<LearnMore setOrgNotificationList={setOrgNotificationList} />}
@@ -22,10 +27,16 @@ const DonorRoutes = ({ setOrgNotificationList, setAlertState }) => {
       <Route path="VolunteerActivity" element={<WhatToDonate />} />
       <Route
         path="VolunteerActivity/TeachingClasses"
-        element={<TeachingClasses setAlertState={setAlertState}/>}
+        element={<TeachingClasses setAlertState={setAlertState} />}
       />
-      <Route path="VolunteerActivity/ClinicVisits" element={<ClinicVisits setAlertState={setAlertState}/>} />
-      <Route path="Organizations" element={<SearchOrganizations />} />
+      <Route
+        path="VolunteerActivity/ClinicVisits"
+        element={<ClinicVisits setAlertState={setAlertState} />}
+      />
+      <Route
+        path="Organizations"
+        element={<SearchOrganizations setAlertState={setAlertState} />}
+      />
       <Route
         path="Account"
         element={<Account setAlertState={setAlertState} />}

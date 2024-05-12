@@ -13,7 +13,9 @@ const AdminRoutes = ({ setAlertState }) => {
       />
       <Route
         path="Organizations"
-        element={<SearchOrganizations isAdmin={true} />}
+        element={
+          <SearchOrganizations isAdmin={true} setAlertState={setAlertState} />
+        }
       />
     </Routes>
   );

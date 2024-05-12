@@ -20,7 +20,7 @@ import dummyData from "../dummyData.json";
 import SimpleMap from "../Utils/Maps";
 import * as React from "react";
 
-const SearchOrganizations = ({ isAdmin }) => {
+const SearchOrganizations = ({ isAdmin, setAlertState }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [type, setType] = React.useState([]);
 
@@ -202,6 +202,7 @@ const SearchOrganizations = ({ isAdmin }) => {
 
   const handleDeleteOrg = (name) => {
     setOrganizations(organizations.filter((item) => item.name !== name));
+    setAlertState("Deleted");
   };
 
   return (

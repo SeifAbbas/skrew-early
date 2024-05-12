@@ -25,6 +25,20 @@ const AdminDashboard = ({ setAlertState }) => {
   });
   const [donorRow, setDonorRow] = useState(dummyData.FulfilledRequests[3]);
 
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+
+  const handleChangePassword = (event) => {
+    event.preventDefault();
+    if (!oldPassword || !newPassword || !confirmNewPassword) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    setAlertState("Changed password successfully !");
+  };
+
   return (
     <Box
       component="main"
@@ -143,24 +157,39 @@ const AdminDashboard = ({ setAlertState }) => {
                 Change Password
               </Typography>
               <TextField
+                required
                 fullWidth
                 label="Old Password"
                 type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
                 sx={{ marginBottom: "20px" }}
               />
               <TextField
+                required
                 fullWidth
                 label="New Password"
                 type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
                 sx={{ marginBottom: "20px" }}
               />
               <TextField
+                required
                 fullWidth
                 label="Confirm New Password"
                 type="password"
+                value={confirmNewPassword}
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
                 sx={{ marginBottom: "20px" }}
               />
-              <Button variant="contained">Change</Button>
+              <Button
+                type="submit"
+                onClick={handleChangePassword}
+                variant="contained"
+              >
+                Change
+              </Button>
             </Paper>
           </Grid>
 

@@ -5,7 +5,7 @@
 /* .donor-what-to-donate- {
   display: flex;
   justify-content: center; /* Center buttons horizontally */
-  /* gap: 20px; Add spacing between buttons */
+/* gap: 20px; Add spacing between buttons */
 /* } */
 /* 
 
@@ -15,8 +15,8 @@
   margin-top: 20px;
   text-align: center;
   background-color: blanchedalmond;
-} */ */
-.button-with-image1 img {
+} */
+*/ .button-with-image1 img {
   width: 400px;
   height: 150px;
   border-radius: 0;
@@ -79,13 +79,6 @@
   flex-direction: column;
   align-items: center;
 }
-.clinic-visits input {
-  width: 40%;
-  margin-top: 10px; /* Optional margin between text boxes */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
 
 .teaching-class h1 {
   color: #1976d2;
@@ -116,19 +109,11 @@
   flex-direction: column;
   align-items: center;
 }
-.teaching-class input {
-  width: 40%;
-  margin-top: 10px; /* Optional margin between text boxes */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
 
 .dx-list-item-content > div {
   padding: 5px;
   font-size: 15px;
 }
-
 
 .list-container {
   display: flex;
@@ -137,9 +122,11 @@
 }
 
 .list-item {
-  flex-basis: calc(33.33% - 20px); /* Adjust this to control the width of each item */
+  flex-basis: calc(
+    33.33% - 20px
+  ); /* Adjust this to control the width of each item */
   margin-bottom: 20px; /* Adjust margin between items */
-} 
+}
 .learn-more-container {
   flex-direction: column;
   align-items: center;
@@ -153,7 +140,7 @@
   color: #1976d2;
   font-size: 20px;
   margin-top: 20px;
-  text-align:center;
+  text-align: center;
 }
 .learn-more-container button {
   background: #1976d2;
@@ -183,7 +170,7 @@
   align-self: center;
   margin-left: 33%;
 }
-.learn-more input{
+.learn-more input {
   text-align: center;
 }
 .learn-more :placeholder-shown {
@@ -202,8 +189,8 @@
   color: #1976d2;
   font-size: 24px;
   margin-bottom: -40px; /* Add space between heading and buttons */
-  /* text-align: center;
-} */ 
+/* text-align: center;
+} */
 
 .button-container {
   display: flex;

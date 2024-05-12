@@ -28,6 +28,18 @@ const NewRequest = ({
       return newFormFields;
     });
   };
+  const resetFormFields = () => {
+    setFormFields((prevState) => {
+      const newFormFields = { ...prevState };
+      for (let category in newFormFields) {
+        newFormFields[category] = newFormFields[category].map((field) => ({
+          ...field,
+          value: "",
+        }));
+      }
+      return newFormFields;
+    });
+  };
 
   const handleSubmit = (event) => {
     const areAllFieldsFilled = formFields[chosenCategory].every(
@@ -35,6 +47,7 @@ const NewRequest = ({
     );
     if (areAllFieldsFilled) {
       setAlertState("New donation posted");
+      resetFormFields();
     }
   };
 
