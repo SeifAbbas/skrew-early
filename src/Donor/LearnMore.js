@@ -120,9 +120,15 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       How many will you donate ?
                     </h1>
                     <input
-                      style={{ marginTop: "20px" }}
+                      style={{ marginTop: "20px",padding: "5px",
+                      border: "1px solid #ccc",
+                      borderRadius: "4px",
+                      width: "90px",
+                      // fontSize: "16px",
+                      // outline: "none", 
+                    }}
                       type="number"
-                      placeholder="Number of donation items"
+                      placeholder="Quantity"
                       min={1}
                       max={item.Current_Inventory}
                       value={inputValue}
@@ -161,7 +167,7 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                       >
                         Donate
                       </Button>
-                      {isPopoverVisible && <div className="popover">Done!</div>}
+                      {isPopoverVisible && <div className="popover">Donation Completed</div>}
                     </Link>
                   )}
 
@@ -184,7 +190,7 @@ const LearnMore = ({ setOrgNotificationList, idNum }) => {
                     >
                       Fulfill
                     </Button>
-                    {isPopoverVisible && <div className="popover">Done!</div>}
+                    {isPopoverVisible && <div className="popover">Case Fulfilled</div>}
                   </Link>
                 )}
               </Box>

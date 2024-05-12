@@ -22,32 +22,61 @@ const ClinicVisits = () => {
         type="text"
         placeholder="Address"
         onChange={(event) => handleAddressChange(event)}
-        style={{ marginBottom: "10px" }}
+        style={{ marginTop: "30px",
+          marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }}
       />
 
-      <input type="text" placeholder="Area" />
+      <input type="text" placeholder="Area"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }} />
 
-      <input type="text" placeholder="Governorate" />
+      <input type="text" placeholder="Governorate"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }} />
 
-      <input type="text" placeholder="Specialty" />
+      <input type="text" placeholder="Specialty"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }}/>
 
-      <input type="number" placeholder="Number of cases" />
+      <input type="number" placeholder="Number of cases"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }}/>
 
-      <input type="date" placeholder="Date" />
+      <input type="date" placeholder="Date"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }}/>
 
-      <input type="time" placeholder=" Time" />
-
-      <button onClick={() => navigate(-1)}>Back</button>
-
-      <Link to="/Home/Dashboard" className="mb-5">
-        <button>Submit</button>
-      </Link>
+      <input type="time" placeholder=" Time"  style={{ marginBottom: "10px", padding: "8px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "16px",
+          boxSizing: "border-box", }}/>
 
       <SimpleMap
         activeUser="Donor"
         inputFields={inputFields}
         setInputFields={setInputFields}
       />
+      <button onClick={() => navigate(-1)}>Back</button>
+
+      <Link to="/Home/Dashboard" className="mb-5">
+        <button>Submit</button>
+      </Link>
+
     </div>
   );
 };
