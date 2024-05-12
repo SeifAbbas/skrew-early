@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "../Utils/Maps";
 import dummyData from "../dummyData.json";
 
 const ClinicVisits = () => {
   const [inputFields, setInputFields] = useState(dummyData.donorRegFields);
+  const navigate = useNavigate();
 
   // 5 is the index of field with name "Address" within dummyData.donorRegFields
   const handleAddressChange = (event) => {
@@ -36,7 +37,7 @@ const ClinicVisits = () => {
 
       <input type="time" placeholder=" Time" />
 
-      <input type="time" placeholder=" Time" />
+      <button onClick={() => navigate(-1)}>Back</button>
 
       <Link to="/Home/Dashboard" className="mb-5">
         <button>Submit</button>

@@ -1,30 +1,32 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const TeachingClasses = () => {
-    return ( 
-        <div className="teaching-class">
-            <input type="text" placeholder="Subject" />
+  const navigate = useNavigate();
 
-            <input type="text" placeholder="Study Year" />
+  return (
+    <div className="teaching-class">
+      <input type="text" placeholder="Subject" />
 
-            <input type="number" placeholder="Minimum number of students to attend" />
+      <input type="text" placeholder="Study Year" />
 
-            <input type="number" placeholder="Maximum number of students to attend" />
+      <input type="number" placeholder="Minimum number of students to attend" />
 
-            <input type="number" placeholder="Class Duration" />
+      <input type="number" placeholder="Maximum number of students to attend" />
 
-            <input type="date" placeholder="Date" />
+      <input type="number" placeholder="Class Duration" />
 
-            <input type="time" placeholder="Class Time" />
+      <input type="date" placeholder="Date" />
 
-            <Link to="/Home/Dashboard">
-            <button>Submit</button>
-            </Link>
-            
-        </div>
-     );
-}
- 
+      <input type="time" placeholder="Class Time" />
+
+      <button onClick={() => navigate(-1)}>Back</button>
+
+      <Link to="/Home/Dashboard">
+        <button>Submit</button>
+      </Link>
+    </div>
+  );
+};
+
 export default TeachingClasses;

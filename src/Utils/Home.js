@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   styled,
@@ -123,6 +124,15 @@ export default function Home({
     setOpen(!open);
   };
 
+  const navigate = useNavigate();
+
+  const handleAvatarClick = () => {
+    if (activeUser === "Organization") {
+      navigate("/Home/Account");
+    } else if (activeUser === "Donor") {
+      navigate("/Home/Account");
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
@@ -175,7 +185,7 @@ export default function Home({
               Dashboard
             </Typography>
 
-            {activeUser !== "Admin" && (
+            {activeUser !== "Admin" && activeUser !== "Donor" && (
               <IconButton
                 onClick={() => setNotificationPanelOpen(!notificationPanelOpen)}
               >
@@ -194,7 +204,7 @@ export default function Home({
                 <LightMode color="inherit" />
               )}
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleAvatarClick}>
               <Avatar
                 alt="Account Avatar"
                 src={process.env.PUBLIC_URL + "/Avatars/avatar2.png"}
@@ -251,7 +261,10 @@ export default function Home({
             <OrganizationRoutes setAlertState={setAlertState} />
           )}
           {activeUser === "Donor" && (
-            <DonorRoutes setOrgNotificationList={setOrgNotificationList} setAlertState={setAlertState}/>
+            <DonorRoutes
+              setOrgNotificationList={setOrgNotificationList}
+              setAlertState={setAlertState}
+            />
           )}
         </Box>
       </Box>
