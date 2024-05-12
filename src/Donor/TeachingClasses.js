@@ -74,6 +74,7 @@ const TeachingClasses = ({ setAlertState }) => {
         type="number"
         placeholder="Minimum number of students to attend"
         value={minStudents}
+        min={1}
         onChange={(e) => setMinStudents(e.target.value)}
         style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
@@ -83,6 +84,7 @@ const TeachingClasses = ({ setAlertState }) => {
         type="number"
         placeholder="Maximum number of students to attend"
         value={maxStudents}
+        min={minStudents}
         onChange={(e) => setMaxStudents(e.target.value)}
         style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
@@ -90,8 +92,9 @@ const TeachingClasses = ({ setAlertState }) => {
 
       <input
         type="number"
-        placeholder="Class Duration"
+        placeholder="Class Duration in hours"
         value={classDuration}
+        min={1}
         onChange={(e) => setClassDuration(e.target.value)}
         style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
