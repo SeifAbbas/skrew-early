@@ -149,11 +149,19 @@ const SearchOrganizations = ({ isAdmin, setAlertState }) => {
     const {
       target: { value },
     } = event;
-    setGovernorate(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-    setArea([]);
+
+    // If the clicked governorate is already selected, deselect it
+    if (governorate.includes(value)) {
+      setGovernorate([]);
+      setArea([]);
+    } else {
+      // Otherwise, select the clicked governorate
+      setGovernorate(
+        // On autofill we get a stringified value.
+        typeof value === "string" ? value.split(",") : value
+      );
+      setArea([]);
+    }
   };
   const handleAreaChange = (event) => {
     const {
