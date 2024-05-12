@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const TeachingClasses = ({ setAlertState }) => {
   const navigate = useNavigate();
@@ -11,36 +11,44 @@ const TeachingClasses = ({ setAlertState }) => {
   const [classDuration, setClassDuration] = useState("");
   const [date, setDate] = useState("");
   const [classTime, setClassTime] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    subject: false,
+    studyYear: false,
+    minStudents: false,
+    maxStudents: false,
+    classDuration: false,
+    date: false,
+    classTime: false,
+  });
 
   const handleClick = () => {
     const newErrors = {};
 
     // Validate each field
     if (!subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = true;
     }
     if (!studyYear.trim()) {
-      newErrors.studyYear = "Study Year is required";
+      newErrors.studyYear = true;
     }
     if (!minStudents.trim()) {
-      newErrors.minStudents = "Minimum number of students is required";
+      newErrors.minStudents = true;
     }
     if (!maxStudents.trim()) {
-      newErrors.maxStudents = "Maximum number of students is required";
+      newErrors.maxStudents = true;
     }
     if (!classDuration.trim()) {
-      newErrors.classDuration = "Class Duration is required";
+      newErrors.classDuration = true;
     }
     if (!date.trim()) {
-      newErrors.date = "Date is required";
+      newErrors.date = true;
     }
     if (!classTime.trim()) {
-      newErrors.classTime = "Class Time is required";
+      newErrors.classTime = true;
     }
 
     // Set errors and display alert if any
-    if (Object.keys(newErrors).length > 0) {
+    if (Object.values(newErrors).includes(true)) {
       setErrors(newErrors);
       setAlertState("Rejected");
     } else {
@@ -57,18 +65,18 @@ const TeachingClasses = ({ setAlertState }) => {
         placeholder="Subject"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.subject ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.subject && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.subject}</div>}
+      {errors.subject && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="text"
         placeholder="Study Year"
         value={studyYear}
         onChange={(e) => setStudyYear(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.studyYear ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.studyYear && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.studyYear}</div>}
+      {errors.studyYear && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="number"
@@ -76,9 +84,9 @@ const TeachingClasses = ({ setAlertState }) => {
         value={minStudents}
         min={1}
         onChange={(e) => setMinStudents(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.minStudents ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.minStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.minStudents}</div>}
+      {errors.minStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="number"
@@ -86,9 +94,9 @@ const TeachingClasses = ({ setAlertState }) => {
         value={maxStudents}
         min={minStudents}
         onChange={(e) => setMaxStudents(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.maxStudents ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.maxStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.maxStudents}</div>}
+      {errors.maxStudents && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="number"
@@ -96,31 +104,30 @@ const TeachingClasses = ({ setAlertState }) => {
         value={classDuration}
         min={1}
         onChange={(e) => setClassDuration(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.classDuration ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.classDuration && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.classDuration}</div>}
+      {errors.classDuration && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="date"
         placeholder="Date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.date ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.date}</div>}
+      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <input
         type="time"
         placeholder="Class Time"
         value={classTime}
         onChange={(e) => setClassTime(e.target.value)}
-        style={{ marginBottom: "10px", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
+        style={{ marginBottom: "10px", padding: "8px", border: errors.classTime ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.classTime && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{errors.classTime}</div>}
+      {errors.classTime && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
 
       <button onClick={() => navigate(-1)}>Back</button>
-
-        <button onClick={handleClick}>Submit</button>
+      <button onClick={handleClick}>Submit</button>
     </div>
   );
 };
