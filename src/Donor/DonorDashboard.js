@@ -99,14 +99,6 @@ const DonorDashboard = () => {
       transportationType: "",
       pickUpTime: "",
     },
-    {
-      itemName: "O+ Blood",
-      category: "Blood Donation",
-      itemQuantity: 7,
-      donationDate: "2024-05-21",
-      transportationType: "",
-      pickUpTime: "",
-    },
   ]);
 
   const [eta, setEta] = useState(Array(data.length).fill(null));
