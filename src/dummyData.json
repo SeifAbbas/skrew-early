@@ -686,12 +686,6 @@
           "Role": "Doctor",
           "Mobile": "0123456789",
           "Email": "name@student.guc.edu.eg"
-        },
-        {
-          "Name": "Ahmed Yehia",
-          "Role": "Doctor",
-          "Mobile": "0123456789",
-          "Email": "name@student.guc.edu.eg"
         }
       ]
     }

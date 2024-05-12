@@ -25,6 +25,7 @@ const DonorDetailsSubTable = ({
   open,
   title,
   isAdmin,
+  isDeleteOnly,
   setAlertState,
 }) => {
   const [randomAvatarIndex, setRandomAvatarIndex] = useState([]);
@@ -94,7 +95,7 @@ const DonorDetailsSubTable = ({
                     <TableCell align="center">{detailsRow.Role}</TableCell>
                     <TableCell align="center">{detailsRow.Mobile}</TableCell>
                     <TableCell align="center">{detailsRow.Email}</TableCell>
-                    {isAdmin && (
+                    {isAdmin && !isDeleteOnly && (
                       <TableCell align="center">
                         <Tooltip title="Download proof" placement="top">
                           <IconButton onClick={handleDownload}>
@@ -108,6 +109,16 @@ const DonorDetailsSubTable = ({
                           </IconButton>
                         </Tooltip>
 
+                        <Tooltip title="Reject" placement="top">
+                          <IconButton onClick={() => handleReject(index)}>
+                            <ClearIcon className="text-red-600" />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    )}
+
+                    {isAdmin && isDeleteOnly && (
+                      <TableCell align="center">
                         <Tooltip title="Reject" placement="top">
                           <IconButton onClick={() => handleReject(index)}>
                             <ClearIcon className="text-red-600" />

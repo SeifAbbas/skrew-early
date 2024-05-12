@@ -23,6 +23,7 @@ const AdminDashboard = ({ setAlertState }) => {
   const [orgRow, setOrgRow] = useState({
     Donor: Array(4).fill(dummyData.OrganizationSignIn),
   });
+  const [donorRow, setDonorRow] = useState(dummyData.FulfilledRequests[5]);
 
   return (
     <Box
@@ -39,7 +40,7 @@ const AdminDashboard = ({ setAlertState }) => {
     >
       <Toolbar />
       <Container maxWidth="xl" sx={{ mb: 4 }}>
-        <Grid container spacing={2} justifyContent={"center"}>
+        <Grid container spacing={2}>
           {/** DONORS STATISTICS */}
           <Grid item lg={2} md={3} sx={{ p: 2 }}>
             <StatisticsCard
@@ -100,6 +101,41 @@ const AdminDashboard = ({ setAlertState }) => {
             />
           </Grid>
 
+          {/** DELETE DONOR */}
+          <Grid item lg={5} md={5} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              {/* <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+                Delete donor account by name
+              </Typography>
+              <TextField
+                fullWidth
+                label="Donor name"
+                type="text"
+                sx={{ marginBottom: "20px" }}
+              />
+              <Button variant="contained">Delete Donor</Button> */}
+              <DonorDetailsSubTable
+                row={donorRow}
+                setRow={setDonorRow}
+                open={true}
+                title={"View Donors"}
+                isAdmin={true}
+                isDeleteOnly={true}
+                setAlertState={setAlertState}
+              />
+            </Paper>
+          </Grid>
+
           {/** DONORS SUBMISSIONS TABLE */}
           <Grid item lg={7} md={9} sm={12} sx={{ p: 2 }}>
             <Paper
@@ -124,34 +160,8 @@ const AdminDashboard = ({ setAlertState }) => {
             </Paper>
           </Grid>
 
-          {/** DELETE DONOR */}
-          <Grid item lg={4} md={4} sx={{ p: 2 }}>
-            <Paper
-              sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: 3,
-                borderRadius: "25px",
-              }}
-            >
-              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
-                Delete donor account by name
-              </Typography>
-              <TextField
-                fullWidth
-                label="Donor name"
-                type="text"
-                sx={{ marginBottom: "20px" }}
-              />
-              <Button variant="contained">Delete Donor</Button>
-            </Paper>
-          </Grid>
-
           {/** ORGANIZATION SUBMISSIONS TABLE */}
-          <Grid item lg={6} md={9} sm={12} sx={{ p: 2 }}>
+          <Grid item lg={5} md={9} sm={12} sx={{ p: 2 }}>
             <Paper
               sx={{
                 p: 2,
