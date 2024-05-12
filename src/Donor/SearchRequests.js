@@ -118,7 +118,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     "Board Games",
   ];
   const foods = ["Canned", "Baked", "Fruits", "Fresh"];
-  const medSupplies = ["Class Is", "Class IIa", "Class IIb", "Class III"];
+  const medSupplies = ["Medical Devices", "Medical Equipment", "Medication"];
   const medications = ["Anti Biotic", "Vaccine", "Pain Reliever", "Prescribed"];
   const schoolSupplies = ["Books", "Stationary"];
   const subjects = ["English", "Math", "Science", "Art"];
@@ -138,7 +138,6 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     ["Toys", "Gender", genders, genderChecked],
     ["Food", "Type", foods, foodChecked],
     ["School Supplies", "Type", schoolSupplies, schoolSuppliesChecked],
-    ["Medication", "Type", medications, medicationChecked],
     ["Medical Supplies", "Type", medSupplies, medSuppliesChecked],
     ["Teaching Classes", "Subject", subjects, teachingChecked],
     ["Medical Visit", "Specialty", specialities, caseChecked],
@@ -157,7 +156,6 @@ export default function AlignItemsList({ setOrgNotificationList }) {
   const categories = [
     "Clothes",
     "Toys",
-    "Medication",
     "Medical Supplies",
     "School Supplies",
     "Food",
@@ -218,6 +216,19 @@ export default function AlignItemsList({ setOrgNotificationList }) {
       });
     }
   });
+  const meds = ["Medication", "type", medications, medicationChecked]
+  if (category.includes("Medical Supplies")) {
+    filteredItems = filteredItems.filter((item) => {
+      return meds[3].every((isChecked, index) => {
+        if (isChecked && item.Type === meds[0]) {
+          const cat = meds[1];
+          console.log(cat);
+          return item[cat] === meds[2][index];
+        }
+        return true;
+      });
+    });
+  }
   const hospitals = [
     "Cairo University Hospital",
     "Alexandria Medical Center",
@@ -644,16 +655,16 @@ export default function AlignItemsList({ setOrgNotificationList }) {
             setToyGenderChecked={setToyGenderChecked}
           />
         )}
-        {category.includes("Medication") && (
+        {category.includes("Medical Supplies") && (
+          <MedicalSuppliesFilters
+          medSuppliesChecked={medSuppliesChecked}
+          setMedSuppliesChecked={setMedSuppliesChecked}
+          />
+        )}
+        {category.includes("Medical Supplies") && (medSuppliesChecked[2]===true) && (
           <MedicationFilters
             medicationChecked={medicationChecked}
             setMedicationChecked={setMedicationChecked}
-          />
-        )}
-        {category.includes("Medical Supplies") && (
-          <MedicalSuppliesFilters
-            medSuppliesChecked={medSuppliesChecked}
-            setMedSuppliesChecked={setMedSuppliesChecked}
           />
         )}
         {category.includes("School Supplies") && (

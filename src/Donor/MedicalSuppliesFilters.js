@@ -18,21 +18,18 @@ const MedicalSuppliesFilters = ({medSuppliesChecked, setMedSuppliesChecked}) => 
     const medicalSupplies = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 1, mr:1.5 }}>
           <FormControlLabel
-            label="Class Is"
+            label="Medical Devices"
             control={<Checkbox checked={medSuppliesChecked[0]} onChange={handleChange(0)} />}
           />
           <FormControlLabel
-            label="Class IIa"
+            label="Medical Equipment"
             control={<Checkbox checked={medSuppliesChecked[1]} onChange={handleChange(1)} />}
           />
           <FormControlLabel
-            label="Class IIb"
+            label="Medication"
             control={<Checkbox checked={medSuppliesChecked[2]} onChange={handleChange(2)} />}
           />
-          <FormControlLabel
-            label="Class III"
-            control={<Checkbox checked={medSuppliesChecked[3]} onChange={handleChange(3)} />}
-          />
+          
         </Box>
     );
 
