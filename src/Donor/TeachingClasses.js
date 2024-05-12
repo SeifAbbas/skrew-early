@@ -31,21 +31,22 @@ const TeachingClasses = ({ setAlertState }) => {
     if (!studyYear.trim()) {
       newErrors.studyYear = true;
     }
-    if (!minStudents.trim()) {
+    if (!minStudents.trim() || minStudents <= 0) {
       newErrors.minStudents = true;
     }
-    if (!maxStudents.trim()) {
+    if (!maxStudents.trim()|| maxStudents <= 0) {
       newErrors.maxStudents = true;
     }
-    if (!classDuration.trim()) {
+    if (!classDuration.trim() || classDuration <= 0) {
       newErrors.classDuration = true;
     }
-    if (!date.trim()) {
+    if (!date.trim() || isNaN(new Date(date))) {
       newErrors.date = true;
     }
-    if (!classTime.trim()) {
+    if (!classTime.trim() || !/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime)) {
       newErrors.classTime = true;
     }
+    
 
     // Set errors and display alert if any
     if (Object.values(newErrors).includes(true)) {
@@ -115,7 +116,7 @@ const TeachingClasses = ({ setAlertState }) => {
         onChange={(e) => setDate(e.target.value)}
         style={{ marginBottom: "10px", padding: "8px", border: errors.date ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{isNaN(new Date(date)) ? "Invalid date format" : "Field is required"}</div>}
 
       <input
         type="time"
@@ -124,7 +125,7 @@ const TeachingClasses = ({ setAlertState }) => {
         onChange={(e) => setClassTime(e.target.value)}
         style={{ marginBottom: "10px", padding: "8px", border: errors.classTime ? "1px solid red" : "1px solid #ccc", borderRadius: "4px", fontSize: "16px", boxSizing: "border-box" }}
       />
-      {errors.classTime && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.classTime && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{!/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(classTime) ? "Invalid time format (HH:MM AM/PM)" : "Field is required"}</div>}
 
       <button onClick={() => navigate(-1)}>Back</button>
       <button onClick={handleClick}>Submit</button>

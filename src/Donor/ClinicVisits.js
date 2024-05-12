@@ -38,16 +38,16 @@ const ClinicVisits = ({setAlertState}) => {
       newErrors.governorate = true;
     }
    
-    if (!cases.trim()) {
+    if (!cases.trim() || cases <= 0) {
       newErrors.cases = true;
     }
     if (!specialty.trim()) {
       newErrors.specialty = true;
     }
-    if (!date.trim()) {
+    if (!date.trim() || isNaN(new Date(date))) {
       newErrors.date = true;
     }
-    if (!visitDuration.trim()) {
+    if (!visitDuration.trim()|| !/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(visitDuration)) {
       newErrors.visitDuration = true;
     }
 
@@ -108,14 +108,14 @@ const ClinicVisits = ({setAlertState}) => {
           borderRadius: "4px",
           fontSize: "16px",
           boxSizing: "border-box", }}/>
-      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>Field is required</div>}
+      {errors.date && <div style={{ color: "red", fontSize: "12px", marginTop: "5px" }}>{isNaN(new Date(date)) ? "Invalid date format" : "Field is required"}</div>}
 
       <input type="time" placeholder="Visit Duration"  style={{ marginBottom: "10px", padding: "8px",
           border: errors.visitDuration ? "1px solid red" : "1px solid #ccc",
           borderRadius: "4px",
           fontSize: "16px",
           boxSizing: "border-box", }}/>
-      {errors.visitDuration && <div style={{ color: "red", fontSize: "12px", marginTop: "5px", marginBottom: "30px" }}>Field is required</div>}
+      {errors.visitDuration && <div style={{ color: "red", fontSize: "12px", marginTop: "5px", marginBottom: "30px" }}>{!/^([0]?[1-9]|1[0-2]):[0-5][0-9]\s?[APap][mM]$/.test(visitDuration) ? "Invalid time format (HH:MM AM/PM)" : "Field is required"}</div>}
 
       <SimpleMap
         activeUser="Donor"
