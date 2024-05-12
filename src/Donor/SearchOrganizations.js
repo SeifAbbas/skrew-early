@@ -29,7 +29,6 @@ const SearchOrganizations = ({ isAdmin }) => {
   };
 
   const [organizations, setOrganizations] = React.useState([
-
     {
       name: "Egyptian Food Bank",
       type: "Mosque",
@@ -189,7 +188,7 @@ const SearchOrganizations = ({ isAdmin }) => {
   if (type.length > 0) {
     filteredItems = filteredItems.filter((item) => type.includes(item.type));
   }
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
   const [page, setPage] = React.useState(0);
   let [noOfPages, setNoOfPages] = React.useState(1);
 
@@ -343,7 +342,7 @@ const SearchOrganizations = ({ isAdmin }) => {
           sx={{
             width: "100%",
             display: "flex",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             flexWrap: "wrap",
           }}
         >

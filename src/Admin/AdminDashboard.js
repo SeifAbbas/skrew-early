@@ -23,7 +23,7 @@ const AdminDashboard = ({ setAlertState }) => {
   const [orgRow, setOrgRow] = useState({
     Donor: Array(4).fill(dummyData.OrganizationSignIn),
   });
-  const [donorRow, setDonorRow] = useState(dummyData.FulfilledRequests[5]);
+  const [donorRow, setDonorRow] = useState(dummyData.FulfilledRequests[3]);
 
   return (
     <Box
@@ -40,7 +40,7 @@ const AdminDashboard = ({ setAlertState }) => {
     >
       <Toolbar />
       <Container maxWidth="xl" sx={{ mb: 4 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} justifyContent="center">
           {/** DONORS STATISTICS */}
           <Grid item lg={2} md={3} sx={{ p: 2 }}>
             <StatisticsCard
@@ -102,7 +102,7 @@ const AdminDashboard = ({ setAlertState }) => {
           </Grid>
 
           {/** DELETE DONOR */}
-          <Grid item lg={5} md={5} sx={{ p: 2 }}>
+          <Grid item lg={7} md={5} sx={{ p: 2 }}>
             <Paper
               sx={{
                 p: 2,
@@ -114,16 +114,6 @@ const AdminDashboard = ({ setAlertState }) => {
                 borderRadius: "25px",
               }}
             >
-              {/* <Typography variant="h5" sx={{ marginBottom: "20px" }}>
-                Delete donor account by name
-              </Typography>
-              <TextField
-                fullWidth
-                label="Donor name"
-                type="text"
-                sx={{ marginBottom: "20px" }}
-              />
-              <Button variant="contained">Delete Donor</Button> */}
               <DonorDetailsSubTable
                 row={donorRow}
                 setRow={setDonorRow}
@@ -131,54 +121,6 @@ const AdminDashboard = ({ setAlertState }) => {
                 title={"View Donors"}
                 isAdmin={true}
                 isDeleteOnly={true}
-                setAlertState={setAlertState}
-              />
-            </Paper>
-          </Grid>
-
-          {/** DONORS SUBMISSIONS TABLE */}
-          <Grid item lg={7} md={9} sm={12} sx={{ p: 2 }}>
-            <Paper
-              sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: 3,
-                borderRadius: "25px",
-              }}
-            >
-              <DonorDetailsSubTable
-                row={row}
-                setRow={setRow}
-                open={true}
-                title={"Review Donor Submissions"}
-                isAdmin={true}
-                setAlertState={setAlertState}
-              />
-            </Paper>
-          </Grid>
-
-          {/** ORGANIZATION SUBMISSIONS TABLE */}
-          <Grid item lg={5} md={9} sm={12} sx={{ p: 2 }}>
-            <Paper
-              sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: 3,
-                borderRadius: "25px",
-              }}
-            >
-              <DonorDetailsSubTable
-                row={orgRow}
-                setRow={setOrgRow}
-                open={true}
-                title={"Review Organization Submissions"}
-                isAdmin={true}
                 setAlertState={setAlertState}
               />
             </Paper>
@@ -219,6 +161,54 @@ const AdminDashboard = ({ setAlertState }) => {
                 sx={{ marginBottom: "20px" }}
               />
               <Button variant="contained">Change</Button>
+            </Paper>
+          </Grid>
+
+          {/** DONORS SUBMISSIONS TABLE */}
+          <Grid item lg={7} md={9} sm={12} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <DonorDetailsSubTable
+                row={row}
+                setRow={setRow}
+                open={true}
+                title={"Review Donor Submissions"}
+                isAdmin={true}
+                setAlertState={setAlertState}
+              />
+            </Paper>
+          </Grid>
+
+          {/** ORGANIZATION SUBMISSIONS TABLE */}
+          <Grid item lg={7} md={9} sm={12} sx={{ p: 2 }}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: 3,
+                borderRadius: "25px",
+              }}
+            >
+              <DonorDetailsSubTable
+                row={orgRow}
+                setRow={setOrgRow}
+                open={true}
+                title={"Review Organization Submissions"}
+                isAdmin={true}
+                setAlertState={setAlertState}
+              />
             </Paper>
           </Grid>
         </Grid>

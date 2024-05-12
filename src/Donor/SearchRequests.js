@@ -216,7 +216,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
       });
     }
   });
-  const meds = ["Medication", "type", medications, medicationChecked]
+  const meds = ["Medication", "type", medications, medicationChecked];
   if (category.includes("Medical Supplies")) {
     filteredItems = filteredItems.filter((item) => {
       return meds[3].every((isChecked, index) => {
@@ -343,10 +343,11 @@ export default function AlignItemsList({ setOrgNotificationList }) {
         (!vCategories.includes(item.Category) &&
           category.includes(item.Category))
     );
-  } if (organization.length > 0) {
+  }
+  if (organization.length > 0) {
     filteredItems = filteredItems.filter(
       (item) =>
-        (organization.includes(item.HospitalName)) ||
+        organization.includes(item.HospitalName) ||
         (!vCategories.includes(item.Category) &&
           category.includes(item.Category))
     );
@@ -355,7 +356,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     const {
       target: { value },
     } = event;
-  
+
     // If the clicked governorate is already selected, deselect it
     if (governorate.includes(value)) {
       setGovernorate([]);
@@ -366,10 +367,10 @@ export default function AlignItemsList({ setOrgNotificationList }) {
         // On autofill we get a stringified value.
         typeof value === "string" ? value.split(",") : value
       );
-            setArea([]);
+      setArea([]);
     }
   };
-  
+
   const handleAreaChange = (event) => {
     const {
       target: { value },
@@ -392,7 +393,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
     setSelectedItemId(0); // Reset the selected item ID when closing
   };
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
   const [page, setPage] = React.useState(0);
   let [noOfPages, setNoOfPages] = React.useState(1);
 
@@ -657,16 +658,17 @@ export default function AlignItemsList({ setOrgNotificationList }) {
         )}
         {category.includes("Medical Supplies") && (
           <MedicalSuppliesFilters
-          medSuppliesChecked={medSuppliesChecked}
-          setMedSuppliesChecked={setMedSuppliesChecked}
+            medSuppliesChecked={medSuppliesChecked}
+            setMedSuppliesChecked={setMedSuppliesChecked}
           />
         )}
-        {category.includes("Medical Supplies") && (medSuppliesChecked[2]===true) && (
-          <MedicationFilters
-            medicationChecked={medicationChecked}
-            setMedicationChecked={setMedicationChecked}
-          />
-        )}
+        {category.includes("Medical Supplies") &&
+          medSuppliesChecked[2] === true && (
+            <MedicationFilters
+              medicationChecked={medicationChecked}
+              setMedicationChecked={setMedicationChecked}
+            />
+          )}
         {category.includes("School Supplies") && (
           <SchoolSuppliesFilters
             schoolSuppliesChecked={schoolSuppliesChecked}
@@ -707,7 +709,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
           sx={{
             width: "100%",
             display: "flex",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             flexWrap: "wrap",
           }}
         >
@@ -797,8 +799,8 @@ export default function AlignItemsList({ setOrgNotificationList }) {
                           backgroundColor: "#ffffff", // Background color
                           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Box shadow
                           borderRadius: "8px", // Border radius
-                          padding: "16px", 
-                          width: "450px", 
+                          padding: "16px",
+                          width: "450px",
                         },
                       }}
                     >

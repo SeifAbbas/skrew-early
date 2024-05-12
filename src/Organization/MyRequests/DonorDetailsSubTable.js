@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import DownloadIcon from "@mui/icons-material/Download";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import { jsPDF } from "jspdf";
 
@@ -49,7 +50,7 @@ const DonorDetailsSubTable = ({
   const handleReject = (index) => {
     const newDonorArray = row.Donor.filter((_, i) => i !== index);
     setRow({ ...row, Donor: newDonorArray });
-    setAlertState("Rejected");
+    setAlertState("Deleted");
   };
 
   useEffect(() => {
@@ -119,9 +120,9 @@ const DonorDetailsSubTable = ({
 
                     {isAdmin && isDeleteOnly && (
                       <TableCell align="center">
-                        <Tooltip title="Reject" placement="top">
+                        <Tooltip title="Delete" placement="top">
                           <IconButton onClick={() => handleReject(index)}>
-                            <ClearIcon className="text-red-600" />
+                            <DeleteIcon className="text-red-600" />
                           </IconButton>
                         </Tooltip>
                       </TableCell>
