@@ -729,7 +729,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
                     alt="green iguana"
                     sx={{
                       height: 300,
-                      objectFit: "cover",
+                      objectFit: "contain",
                       borderTopLeftRadius: "15px",
                       borderTopRightRadius: "15px",
                       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
@@ -737,6 +737,7 @@ export default function AlignItemsList({ setOrgNotificationList }) {
                       border: "1px solid rgba(0, 0, 0, 0.1)",
                       filter: "brightness(0.9)",
                       position: "relative",
+                      backgroundColor: "background.paper", // Match with card's background color
                       "&:before": {
                         content: '""',
                         display: "block",
@@ -796,7 +797,8 @@ export default function AlignItemsList({ setOrgNotificationList }) {
                           backgroundColor: "#ffffff", // Background color
                           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Box shadow
                           borderRadius: "8px", // Border radius
-                          padding: "16px", // Padding
+                          padding: "16px", 
+                          width: "450px", 
                         },
                       }}
                     >

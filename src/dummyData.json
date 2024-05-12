@@ -84,7 +84,7 @@
       "Backorder": 0,
       "Manufacturing": 0,
       "Category": "Clothes",
-      "ImageSrc": "https://contents.mediadecathlon.com/p2372983/k$40c2598010d34384b09cc908565df000/men-s-hoodie-essentials-500-hazelnut.jpg?format=auto&quality=40&f=452x452"
+      "ImageSrc": "https://pngimg.com/d/hoodie_PNG30.png"
     },
     {
       "ID": 4,
@@ -169,7 +169,7 @@
       "Backorder": 425,
       "Manufacturing": 75,
       "Category": "Food",
-      "ImageSrc": "https://www.eatingwell.com/thmb/fT-sHqVlgF3-bKn4fg_4RVhF2Gw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/7725524-353a378914d143929280d85059469d4e.jpg"
+      "ImageSrc": "https://img.freepik.com/free-photo/delicious-chicken-table_144627-8758.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714867200&semt=ais"
     },
     {
       "ID": 12,
@@ -250,7 +250,7 @@
       "Age": "Teenager",
       "Gender": "Male",
       "Type": "Cars",
-      "Current_Inventory": 0,
+      "Current_Inventory": 100,
       "Backorder": 325,
       "Manufacturing": 225,
       "Category": "Toys",
