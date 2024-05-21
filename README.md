@@ -1,17 +1,60 @@
-# skrew-early
+# Fa3el 5eir
 
-## Project overview
+<p align="center">
+<img src="public/logo.png" width="200"/>
 
-```
+## Table of Contents
+
+1. [🚀 Overview](#project-overview)
+2. [⚒️ Technologies and frameworks used](#technologies-and-frameworks-used)
+3. [📚 Functional & non-functional requirements](#functional--non-functional-requirements)
+4. [🔥 Features & Demo](#features--demo)
+5. [⚙️ Setup](#setup-guide)
+
+## 🚀 Project overview
+
 This is a donation-based web application that involves three main stakeholders: Admin, Organization, and Donor. The application is designed to facilitate the process of donations, making it easy for organizations to request donations and for donors to make contributions.
-```
 
-## Extra same as Excel Sheet (but coloured)
+## ⚒️ Technologies and frameworks used
 
-The Google Sheets link that we worked on is provided here; it will make it easy to view the requirements and we have stopped making changes, so it is final:
+This project is built with the following technologies:
+
+- **Git**
+- **ReactJS**
+- **Prettier**
+- **Material UI**
+- **Tailwind CSS**
+- **Google Maps API**
+- **Google Geocoding API**
+
+## 📚 Functional & non-Functional Requirements
+
 https://docs.google.com/spreadsheets/d/1S2SWhGfkTPY6pxWl0vG2PORnrT7TWhJx0WDmCxUf-8Q/edit?usp=sharing
 
-## Setup Guide
+## 🔥 Features & Demo
+
+<details>
+   <summary>Admin</summary>
+   <video  controls>
+      <source src="public/Demo/Admin.mp4" type="video/mp4">
+   </video>
+</details>
+
+<details>
+   <summary>Organization</summary>
+   <video  controls>
+      <source src="public/Demo/Organization.mp4" type="video/mp4">
+   </video>
+</details>
+
+<details>
+   <summary>Donor</summary>
+   <video  controls>
+      <source src="public/Demo/Donor.mp4" type="video/mp4">
+   </video>
+</details>
+
+## ⚙️ Setup Guide
 
 Follow these steps to set up and run the project locally:
 
@@ -35,19 +78,42 @@ Ensure you have the following installed on your system:
 
 2. **Navigate to the project directory**
 
-   ```
+   ```bash
    cd skrew-early
    ```
 
-3. **Install the dependencies**
+3. **Create a .env file**
 
-   ```
-   npm install
+   Create a new file in the root directory of the project named `.env`. This file will contain environment-specific variables. For example:
+
+   ```bash
+   touch .env
    ```
 
-4. **Start the application**
+   Open the `.env` file and add your environment variables:
 
+   ```bash
+   nano .env
    ```
+
+   Then add your variables:
+
+   ```bash
+   REACT_APP_GOOGLE_MAPS_API_KEY="api_key"
+   REACT_APP_GOOGLE_MAPS_GEOCODING_API_KEY="api_key"
+   ```
+
+   Replace `api_key` with an actual api key obtained from google cloud, then save and close the file.
+
+4. **Install the dependencies**
+
+   ```bash
+   npm i
+   ```
+
+5. **Start the application**
+
+   ```bash
    npm run start
    ```
 
