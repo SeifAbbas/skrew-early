@@ -5,11 +5,11 @@
 
 ## Table of Contents
 
-1. [🚀 Overview](#project-overview)
-2. [⚒️ Technologies and frameworks used](#technologies-and-frameworks-used)
-3. [📚 Functional & non-functional requirements](#functional--non-functional-requirements)
-4. [🔥 Features & Demo](#features--demo)
-5. [⚙️ Setup](#setup-guide)
+1. [🚀 Overview](#-project-overview)
+2. [⚒️ Technologies and frameworks used](#%EF%B8%8F-technologies-and-frameworks-used)
+3. [📚 Functional & non-functional requirements](#-functional--non-functional-requirements)
+4. [🔥 Features & Demo](#-features--demo)
+5. [⚙️ Setup](#%EF%B8%8F-setup-guide)
 
 ## 🚀 Project overview
 
