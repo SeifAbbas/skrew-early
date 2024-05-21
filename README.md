@@ -35,23 +35,23 @@ https://docs.google.com/spreadsheets/d/1S2SWhGfkTPY6pxWl0vG2PORnrT7TWhJx0WDmCxUf
 
 <details>
    <summary>Admin</summary>
-   <video  controls>
-      <source src="public/Demo/Admin.mp4" type="video/mp4">
-   </video>
+
+https://github.com/SeifAbbas/skrew-early/assets/20571619/5a5936df-d7d9-43e2-9c8c-021a0f2486c3
+   
 </details>
 
 <details>
    <summary>Organization</summary>
-   <video  controls>
-      <source src="public/Demo/Organization.mp4" type="video/mp4">
-   </video>
+
+https://github.com/SeifAbbas/skrew-early/assets/20571619/70404842-5d9c-40fd-b9ae-dfdc44fcb1a1
+   
 </details>
 
 <details>
    <summary>Donor</summary>
-   <video  controls>
-      <source src="public/Demo/Donor.mp4" type="video/mp4">
-   </video>
+   
+https://github.com/SeifAbbas/skrew-early/assets/20571619/7b8b7360-3ed8-4da6-bc86-c79f54619ebb
+   
 </details>
 
 ## ⚙️ Setup Guide
